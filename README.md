@@ -1,4 +1,4 @@
-## Brief Description
+## Project Managment
 ## User story
 - As a User, I should be able to see my own task
 - As a User, I should be able to create account
@@ -20,6 +20,17 @@
 ## wireframe
 
 ## ERD
+
+### Technologies
+- React
+- JavaScript 
+- Html
+- Css
+- Express
+- MongoDb
+- Bootstrap
+
+
 ## Feature Work
 ## Installation and Setup Instructions
 Clone down this repository. You will need `node` and `npm` installed globally on your machine.
