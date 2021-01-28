@@ -19,8 +19,7 @@ const users = require('./models/Users.js');
 
 //mongoose.connect(mongoConnectionString, {useNewUrlParser: true, useUnifiedTopology: true});
 
-// Require User Files
-const users = require('./models/Users.js');
+
 
 //mongoose.connect(mongoConnectionString, {useNewUrlParser: true, useUnifiedTopology: true});
 
