@@ -3,23 +3,27 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
+
 // Require Route Files
 const indexRouter = require('./routes/index');
-const articlesRouter = require('./routes/articles');
+
 
 // Require DB Configuration File
 const db_url = require('./db');
 
+// Require User Files
+const users = require('./models/Users.js');
+
+//mongoose.connect(mongoConnectionString, {useNewUrlParser: true, useUnifiedTopology: true});
+
 // Establish Database Connection
-mongoose.connect(db_url, { useNewUrlParser: true });
+mongoose.connect(db_url, { useNewUrlParser: true});
 mongoose.connection.once('open', () => {
   console.log('Connected to Mongo');
 });
 
 // Instantiate Express Application Object
 const app = express();
-
-
 app.get('/', (req, res) => {
   console.log('get /');
   res.json('result');
@@ -43,9 +47,6 @@ app.use(
 
 // Mount imported Routers
 app.use(indexRouter);
-// app.use(articlesRouter);
-// app.use('/',indexRouter);
-// app.use('/articles',articlesRouter);
 
 /*** Routes ***/
 // Define PORT for the API to run on
@@ -53,7 +54,7 @@ const PORT = process.env.PORT || 5000;
 
 // Start the server to listen for requests on a given port
 app.listen(PORT, () => {
-  console.log(`BLOGY => http://localhost:${PORT}`);
+  console.log(`project_managment  => http://localhost:${PORT}`);
 });
 
 /*
@@ -66,3 +67,8 @@ app.listen(PORT, () => {
   Update          UPDATE
   Delete          DESTROY
 */
+
+
+
+//---------------------------------------------------
+

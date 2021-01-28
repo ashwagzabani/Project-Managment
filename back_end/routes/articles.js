@@ -4,6 +4,7 @@ const express = require('express');
 // Instantiate a Router (mini app that only handles routes)
 const router = express.Router();
 
+
 /**
  * Action:      INDEX
  * Method:      GET
@@ -16,6 +17,5 @@ router.get('/articles/test', (req, res) => {
     message: 'Welcome to Articles',
   });
 });
-
 // Export the Router so we can use it in the server.js file
 module.exports = router;

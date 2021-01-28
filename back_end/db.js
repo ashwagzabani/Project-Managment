@@ -1,5 +1,5 @@
 // Creating a base name for the MongoDB
-const mongooseBaseName = 'blogy';
+const mongooseBaseName = 'project_managment';
 
 // Create the MongoDB URI for Development and Test
 const database = {
