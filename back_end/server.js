@@ -67,9 +67,9 @@ app.use(
 // Mount imported Routers
 app.use(indexRouter);
 
-app.use(newProjectRouter);
+// app.use(newProjectRouter);
 // app.use('/',indexRouter);
-app.use(projectRouter);
+// app.use(projectRouter);
 
 // Define PORT for the API to run on
 const PORT = process.env.PORT || 5000;

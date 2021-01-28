@@ -59,7 +59,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <dev className="sidebar">{/* <Sidebar /> */}</dev>
+        <div className="sidebar">{/* <Sidebar /> */}</div>
         <div className="container">
           <div className="form-div">
             <form onSubmit={this.onSubmit}>
