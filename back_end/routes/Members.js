@@ -8,31 +8,25 @@ const router = express.Router();
 
 //this user has two project: one as team member and another as manager his name: 'Najed'
 const userId = '60115b690ba0311c388c9aa8';
-
+const projectId = '6011b5dcd2af381b2c6a09b6';
 
 /**
  * Action:      INDEX
  * Method:      GET
- * URI:         /projects
- * Description: Get the user's projects as manager or member
+ * URI:         /members
+ * Description: Get all members in specific project with role = 'manager'
  */
-router.get('/projects', (req, res) => {
-    projects.find({
-        //get user's projects
-        // { "members.userId": userId },
-
-        //get user's projects with role === '...'
-        //        members: { $elemMatch: { userId: userId, role: 'manager' } }},
-        members: { $elemMatch: { userId: userId } }
+router.get('/members', (req, res) => {
+    projects.find({members: { $elemMatch: { userId: userId, role: 'manager' } },
+        _id:projectId
     },
-        // user.findById({ "_id": userId },
-        (err, result) => {
-            if (err) {
-                console.log(err);
-            }
-            res.json(result);
-            console.log(result)
-        });
+    (err, result) => {
+        if (err) {
+            console.log(err);
+        }
+        res.json(result);
+        console.log(result)
+    });
 });
 
 //User.findOne({'local.rooms': {$elemMatch: {name: req.body.username}}}, function (err, user) {

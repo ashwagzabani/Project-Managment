@@ -9,11 +9,10 @@ const router = express.Router();
 //this user has two project: one as team member and another as manager his name: 'Najed'
 const userId = '60115b690ba0311c388c9aa8';
 
-
 /**
  * Action:      INDEX
  * Method:      GET
- * URI:         /projects
+ * URI:         /
  * Description: Get the user's projects as manager or member
  */
 router.get('/projects', (req, res) => {

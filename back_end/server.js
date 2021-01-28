@@ -14,6 +14,7 @@ const indexRouter = require('./routes/index');
 const projectRouter = require('./routes/Projects');
 const newProjectRouter = require('./routes/NewProject');
 const updateProjectRouter = require('./routes/UpdateProject');
+const membersInProjectRouter = require('./routes/Members');
 
 
 // Require DB Configuration File
@@ -79,7 +80,7 @@ app.use(
 app.use(indexRouter);
 
 app.use(newProjectRouter);
-// app.use('/',indexRouter);
+app.use(membersInProjectRouter);
 app.use(projectRouter);
 app.use(updateProjectRouter);
 
