@@ -1,11 +1,11 @@
 // Require necessary NPM packages
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-
-
-
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+//test code -------------------------------
+const { usersData, projectsData } = require("./models/SeedData");
 // Require Route Files
+
 const indexRouter = require('./routes/index');
 
 
@@ -20,15 +20,12 @@ const users = require('./models/Users.js');
 //mongoose.connect(mongoConnectionString, {useNewUrlParser: true, useUnifiedTopology: true});
 
 
-
 //mongoose.connect(mongoConnectionString, {useNewUrlParser: true, useUnifiedTopology: true});
-
 // Establish Database Connection
+mongoose.connect(db_url, { useNewUrlParser: true });
+mongoose.connection.once("open", () => {
+  console.log("Connected to Mongo");
 
-mongoose.connect(db_url, { useNewUrlParser: true});
-
-mongoose.connection.once('open', () => {
-  console.log('Connected to Mongo');
   // projects.create(projectsData, (err, result) => {
   //   if (err) {
   //     console.log(err);
@@ -37,18 +34,17 @@ mongoose.connection.once('open', () => {
   //   }
   // });
   // console.log(projectsData[0].members);
-
 });
 
 // Instantiate Express Application Object
 const app = express();
 
-app.get('/', (req, res) => {
-  console.log('get /');
+app.get("/", (req, res) => {
+  console.log("get /");
   users.find({}, (err, result) => {
     // console.log(res);
-    res.json(result)
-  })
+    res.json(result);
+  });
   // res.json('result');
 });
 
@@ -71,9 +67,10 @@ app.use(
 // Mount imported Routers
 app.use(indexRouter);
 
+app.use(newProjectRouter);
+// app.use('/',indexRouter);
+app.use(projectRouter);
 
-
-/*** Routes ***/
 // Define PORT for the API to run on
 const PORT = process.env.PORT || 5000;
 
@@ -84,7 +81,6 @@ app.listen(PORT, () => {
 
 /*
   C.R.U.D - Actions Table
-
   Create          CREATE
   Read
     Read All      INDEX
@@ -92,8 +88,3 @@ app.listen(PORT, () => {
   Update          UPDATE
   Delete          DESTROY
 */
-
-
-
-//---------------------------------------------------
-
