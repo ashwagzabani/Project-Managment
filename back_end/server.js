@@ -4,15 +4,10 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 
-//test code -------------------------------
-const users = require('./models/Users')
-const { usersData, projectsData } = require('./models/SeedData');
-//test code -------------------------------
 
 // Require Route Files
 const indexRouter = require('./routes/index');
-const projectRouter = require('./routes/Projects');
-const newProjectRouter = require('./routes/NewProject');
+
 
 
 // Require DB Configuration File
@@ -24,9 +19,14 @@ const users = require('./models/Users.js');
 
 //mongoose.connect(mongoConnectionString, {useNewUrlParser: true, useUnifiedTopology: true});
 
+// Require User Files
+const users = require('./models/Users.js');
+
+//mongoose.connect(mongoConnectionString, {useNewUrlParser: true, useUnifiedTopology: true});
+
 // Establish Database Connection
 
-mongoose.connect(db_url, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(db_url, { useNewUrlParser: true});
 
 mongoose.connection.once('open', () => {
   console.log('Connected to Mongo');
@@ -72,9 +72,6 @@ app.use(
 // Mount imported Routers
 app.use(indexRouter);
 
-app.use(newProjectRouter);
-// app.use('/',indexRouter);
-app.use(projectRouter);
 
 
 /*** Routes ***/

@@ -48,8 +48,12 @@ export default class App extends Component {
     //we need to post that data into server
     //post registered to this endPoint which back end (Schema) - to MongoDB
     axios.post('http://localhost:5000/signUp',registered)
-    .then(res=>{
+    .then(  res=>{
       console.log('Response Data:',res.data)
+      if(res.data==='Already Exist'){
+        
+      }
+
       console.log("User Data",registered)
     })
   }
