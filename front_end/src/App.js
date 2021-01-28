@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
+import SignUp from './components/SignUp.js';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
+import Login from './components/Login.js'
 import Sidebar from "./components/Sidebar";
+
 export default class App extends Component {
   constructor() {
     super();
@@ -50,55 +54,30 @@ export default class App extends Component {
     axios.post("http://localhost:5000/signUp", registered).then((res) => {
       console.log("Response Data:", res.data);
       if (res.data === "Already Exist") {
+        alert('You Already have account please login')
       }
-
-      console.log("User Data", registered);
+      if (res.data._message === 'User validation failed') {
+        alert('Error!!')
+      }
+      else {
+        alert('Welcome')
+        console.log("User Data", registered);
+      }
     });
   };
 
   render() {
+    <Login changeEmail={this.changeEmail} changepassword={this.changepassword} changeUserName={this.changeUserName} onSubmit={this.onSubmit}
+    userName={this.state.userName} passwprd={this.state.password} email={this.state.email} />
     return (
-      <div>
-        <div className="sidebar">{/* <Sidebar /> */}</div>
-        <div className="container">
-          <div className="form-div">
-            <form onSubmit={this.onSubmit}>
-              <input
-                type="text"
-                placeholder="User Name "
-                onChange={(e) => {
-                  this.changeUserName(e);
-                }}
-                value={this.state.userName}
-                className="form-control-from-group"
-              />
-              <input
-                type="text"
-                placeholder="Email "
-                onChange={(e) => {
-                  this.changeEmail(e);
-                }}
-                value={this.state.email}
-                className="form-control-from-group"
-              />
-              <input
-                type="password"
-                placeholder="Password "
-                onChange={(e) => {
-                  this.changepassword(e);
-                }}
-                value={this.state.password}
-                className="form-control-from-group"
-              />
-              <input
-                type="submit"
-                className="btn btn-danger btn-black"
-                value="Sign Up"
-              />
-            </form>
-          </div>
+      <Router>
+        <div>
+          <SignUp changeEmail={this.changeEmail} changepassword={this.changepassword} changeUserName={this.changeUserName} onSubmit={this.onSubmit}
+                  userName={this.state.userName} passwprd={this.state.password} email={this.state.email}/>
+          {/* <Route exact path="/" component={()=> <Home />}/> */}
+          <Route path="/login" component={()=> <Login />} />
         </div>
-      </div>
+      </Router>
     );
   }
 }
