@@ -18,6 +18,7 @@ const users = require("./models/Users.js");
 mongoose.connect(db_url, { useNewUrlParser: true });
 mongoose.connection.once("open", () => {
   console.log("Connected to Mongo");
+
   // projects.create(projectsData, (err, result) => {
   //   if (err) {
   //     console.log(err);
@@ -58,6 +59,7 @@ app.use(
 
 // Mount imported Routers
 app.use(indexRouter);
+
 app.use(newProjectRouter);
 // app.use('/',indexRouter);
 app.use(projectRouter);

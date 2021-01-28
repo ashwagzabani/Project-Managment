@@ -55,6 +55,7 @@ export default class App extends Component {
       console.log("User Data", registered);
     });
   };
+
   render() {
     return (
       <div>
