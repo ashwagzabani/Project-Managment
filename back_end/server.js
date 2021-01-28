@@ -5,22 +5,22 @@ const cors = require('cors');
 
 
 //test code -------------------------------
-const users = require('./models/Users')
-const { usersData, projectsData } = require('./models/SeedData');
+
+const { usersData, projectsData, oneProject } = require('./models/SeedData');
 //test code -------------------------------
 
 // Require Route Files
 const indexRouter = require('./routes/index');
 const projectRouter = require('./routes/Projects');
 const newProjectRouter = require('./routes/NewProject');
+const updateProjectRouter = require('./routes/UpdateProject');
 
 
 // Require DB Configuration File
 const db_url = require('./db');
 const projects = require('./models/Projects');
+const users = require('./models/Users')
 
-// Require User Files
-const users = require('./models/Users.js');
 
 //mongoose.connect(mongoConnectionString, {useNewUrlParser: true, useUnifiedTopology: true});
 
@@ -37,8 +37,14 @@ mongoose.connection.once('open', () => {
   //     console.log(result);
   //   }
   // });
+  // projects.create(oneProject, (err, result) => {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     console.log(result);
+  //   }
+  // });
   // console.log(projectsData[0].members);
-
 });
 
 // Instantiate Express Application Object
@@ -75,6 +81,7 @@ app.use(indexRouter);
 app.use(newProjectRouter);
 // app.use('/',indexRouter);
 app.use(projectRouter);
+app.use(updateProjectRouter);
 
 
 /*** Routes ***/

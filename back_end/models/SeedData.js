@@ -49,7 +49,7 @@ const projectsData = [{
     }, {
         userId: '60115b690ba0311c388c9aa5'
     }],
-    startDate: Date.now,
+    startDate: Date.now(),
     endDate: '2021-02-25'
 }, {
     title: 'project 2',
@@ -61,7 +61,7 @@ const projectsData = [{
     }, {
         userId: '60115b690ba0311c388c9aa5'
     }],
-    startDate: Date.now,
+    startDate: Date.now(),
     endDate: '2021-02-25'
 },
 {
@@ -70,12 +70,20 @@ const projectsData = [{
         userId: '60115b690ba0311c388c9aa8',
         role: 'manager'
     }],
-    startDate: Date.now,
+    startDate: Date.now(),
     endDate: '2021-02-25'
 }
 ]
 
-const tasks = {
+const oneProject =
+{
+    title: 'ashwag',
+    members: [{
+        userId: '60115b690ba0311c388c9aa8',
+        role: 'manager'
+    }],
+    startDate: Date.now(),
+    endDate: '2021-02-25'
+};
 
-}
-module.exports = { usersData, projectsData };
+module.exports = { usersData, projectsData, oneProject };

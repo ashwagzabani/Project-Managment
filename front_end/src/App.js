@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css"
 import axios from 'axios'
+import Sidebar from './components/Sidebar';
+
 export default class App extends Component {
   constructor() {
     super()
@@ -47,16 +49,19 @@ export default class App extends Component {
     }
     //we need to post that data into server
     //post registered to this endPoint which back end (Schema) - to MongoDB
-    axios.post('http://localhost:5000/signUp',registered)
-    .then(res=>{
-      console.log('Response Data:',res.data)
-      console.log("User Data",registered)
-    })
+    axios.post('http://localhost:5000/signUp', registered)
+      .then(res => {
+        console.log('Response Data:', res.data)
+        console.log("User Data", registered)
+      })
   }
   render() {
     return (
       <div>
         <div className='container'>
+          <div>
+            <Sidebar />
+          </div>
           <div className='form-div'>
             <form onSubmit={this.onSubmit}>
               <input type='text' placeholder='User Name ' onChange={(e) => { this.changeUserName(e) }} value={this.state.userName} className='form-control-from-group' />

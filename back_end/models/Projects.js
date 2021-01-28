@@ -20,7 +20,7 @@ const projectsSchema = new mongoose.Schema({
     }],
     startDate: {
         type: Date,
-        default: Date.now
+        default: Date.now()
     },
     endDate: {
         type: Date
