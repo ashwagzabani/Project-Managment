@@ -17,7 +17,7 @@ const projectId = '6011b5dcd2af381b2c6a09b6';
  * Description: Get all members in specific project with role = 'manager'
  */
 router.get('/members', (req, res) => {
-    projects.find({members: { $elemMatch: { userId: userId, role: 'manager' } },
+    projects.findOne({members: { $elemMatch: { userId: userId, role: 'manager' } },
         _id:projectId
     },
     (err, result) => {
