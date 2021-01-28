@@ -56,14 +56,6 @@ router.get('/test', (req, res) => {
     })
 });
 
-router.get('/test2', (req, res) => {
-    users.find({}, (err, result) => {
-        if (err) {
-            res.json("error :(")
-        }
-        res.json(result);
-    })
-});
 
 // Export the Router so we can use it in the server.js file
 module.exports = router;
