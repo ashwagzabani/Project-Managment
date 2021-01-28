@@ -9,7 +9,7 @@ const projectsSchema = new mongoose.Schema({
         required: true
     },
     members: [{
-        user_Id: {
+        userId: {
             type: Schema.Types.ObjectId,
             ref: 'User'
         },
@@ -18,14 +18,17 @@ const projectsSchema = new mongoose.Schema({
             default: 'member'
         }
     }],
-    start_date: {
+    startDate: {
         type: Date,
         default: Date.now
     },
-    end_date: {
+    endDate: {
         type: Date
     },
-    status: Boolean
+    status: {
+        type: Boolean,
+        default: false
+    }
 })
 // Compile our Model based on the Schema
 const projects = mongoose.model("Project", projectsSchema);
