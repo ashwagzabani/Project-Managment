@@ -1,5 +1,5 @@
+## Brief Description
 ## User story
-
 - As a User, I should be able to see my own task
 - As a User, I should be able to create account
 - As a User, I should be able to log in
@@ -20,3 +20,18 @@
 ## wireframe
 
 ## ERD
+## Feature Work
+## Installation and Setup Instructions
+Clone down this repository. You will need `node` and `npm` installed globally on your machine.
+
+#### Installation
+`npm install`
+
+#### To Start Mongoose Server inside back-end folder
+`npm start`
+
+#### To Start Server inside front-end folder
+`npm start`
+
+Now, you can visit the Project-Managment website on `https://localhost:3000/` and visit the mngoose server on `https://localhost:5000/`.
+
