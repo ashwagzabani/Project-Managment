@@ -33,5 +33,5 @@ Clone down this repository. You will need `node` and `npm` installed globally on
 #### To Start Server inside front-end folder
 `npm start`
 
-Now, you can visit the Project-Managment website on `https://localhost:3000/` and visit the mngoose server on `https://localhost:5000/`.
+Now, you can visit the Project-Managment website on `https://localhost:3000/`.Also, you can visit the mngoose server on `https://localhost:5000/`.
 
