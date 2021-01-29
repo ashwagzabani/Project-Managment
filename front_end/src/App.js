@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import SignUp from './components/SignUp.js';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
 import Login from './components/Login.js'
 import Sidebar from "./components/Sidebar";
 
@@ -70,14 +68,16 @@ export default class App extends Component {
     <Login changeEmail={this.changeEmail} changepassword={this.changepassword} changeUserName={this.changeUserName} onSubmit={this.onSubmit}
     userName={this.state.userName} passwprd={this.state.password} email={this.state.email} />
     return (
-      <Router>
-        <div>
-          <SignUp changeEmail={this.changeEmail} changepassword={this.changepassword} changeUserName={this.changeUserName} onSubmit={this.onSubmit}
+      // <Router>
+      //   <div>
+      //     <SignUp changeEmail={this.changeEmail} changepassword={this.changepassword} changeUserName={this.changeUserName} onSubmit={this.onSubmit}
+      //             userName={this.state.userName} passwprd={this.state.password} email={this.state.email}/>
+      //     {/* <Route exact path="/" component={()=> <Home />}/> */}
+      //     <Route path="/login" component={()=> <Login />} />
+      //   </div>
+      // </Router>
+      <Sidebar changeEmail={this.changeEmail} changepassword={this.changepassword} changeUserName={this.changeUserName} onSubmit={this.onSubmit}
                   userName={this.state.userName} passwprd={this.state.password} email={this.state.email}/>
-          {/* <Route exact path="/" component={()=> <Home />}/> */}
-          <Route path="/login" component={()=> <Login />} />
-        </div>
-      </Router>
     );
   }
 }

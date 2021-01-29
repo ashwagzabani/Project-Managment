@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Link} from 'react-router-dom';
 
 export default class SignUp extends Component {
     render(){
@@ -45,9 +44,6 @@ export default class SignUp extends Component {
                 </form>
               </div>
             </div>
-                <Link to='/login' style={{ textDecoration: 'none' }}>
-                    <li className="divider-vertical">Go to Login Page</li>
-                </Link>
           </div>
         );
     }
