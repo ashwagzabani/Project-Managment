@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const users= require('../models/Users')
+const users= require('../models/Users');
 //SignUp request to create a user dependent in schema
 router.post('/signUp', async (req, res) => {
   console.log('/signUp');
@@ -37,12 +37,6 @@ async function verifyUser(req) {
     //handle exceptions here
   }
 }
-
-router.post('/login', async (req, res) => {
-  console.log('/login');
-
-})
-
 
 // Export the Router so we can use it in the server.js file
 module.exports = router;

@@ -7,7 +7,7 @@ const { usersData, projectsData } = require("./models/SeedData");
 // Require Route Files
 
 const indexRouter = require('./routes/index');
-
+const loginRouter = require('./routes/login')
 // Require DB Configuration File
 const db_url = require('./db');
 const projects = require('./models/Projects');
@@ -64,9 +64,9 @@ app.use(
 
 // Mount imported Routers
 app.use(indexRouter);
+app.use(loginRouter);
 
 // app.use(newProjectRouter);
-// app.use('/',indexRouter);
 // app.use(projectRouter);
 
 // Define PORT for the API to run on
