@@ -13,7 +13,7 @@ const router = express.Router();
  */
 router.post('/project/new', (req, res) => {
     //Miss some steps
-    //1. get manager id 
+    //1. get manager id ==> user id
     //2. set the manager role
     //3. create new project 
     projects.create(req.body, (err, result) => {

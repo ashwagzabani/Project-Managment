@@ -16,7 +16,7 @@ const userId = '60115b690ba0311c388c9aa8';
  * URI:         /projects
  * Description: Get the user's projects as manager or member
  */
-router.get('/projects', (req, res) => {
+router.get('/projects/:id', (req, res) => {
     projects.find({
         //get user's projects
         // { "members.userId": userId },
@@ -34,6 +34,28 @@ router.get('/projects', (req, res) => {
             console.log(result)
         });
 });
+
+
+router.get('/projects/:id/:role', (req, res) => {
+    projects.find({
+        //get user's projects
+        // { "members.userId": userId },
+
+        //get user's projects with role === '...'
+               members: { $elemMatch: { userId: req.params.role, role: req.params.role }},
+        // members: { $elemMatch: { userId: userId } }
+    },
+        // user.findById({ "_id": userId },
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            }
+            res.json(result);
+            console.log(result)
+        });
+});
+
+
 
 //User.findOne({'local.rooms': {$elemMatch: {name: req.body.username}}}, function (err, user) {
 

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Swich, Link } from "react-router-dom";
 import Home from "./Home";
 import CreateNewProject from "./project/CreateNewProject";
 import ProjectsList from "./project/ProjectsList";
+import UpdateProject from "./project/UpdateProject";
 export default class Sidebar extends Component {
   render() {
     const routes = [
@@ -11,13 +12,14 @@ export default class Sidebar extends Component {
         exact: true,
         sidebar: () => <div></div>,
         main: () => <Home isAuthed={true} />,
+      },
+      {
+        path: "/project/update",
+        exact: true,
+        sidebar: () => <div></div>,
+        main: () => <UpdateProject />,
       }
-      // {
-      //   path: "/project",
-      //   exact: true,
-      //   sidebar: () => <div></div>,
-      //   main: () => <ProjectsList />,
-      // },{
+      // ,{
       //   path: "/project/new",
       //   exact: true,
       //   sidebar: () => <div></div>,
@@ -35,7 +37,7 @@ export default class Sidebar extends Component {
                 <Link to="/">Home</Link>
               </li>
               <li className="fas fa-home">
-                <Link to="/project">Projects</Link>
+                <Link to="/project/update">Projects</Link>
               </li>
             </ul>
 
