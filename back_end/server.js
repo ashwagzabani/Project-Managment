@@ -8,8 +8,6 @@ const { usersData, projectsData } = require("./models/SeedData");
 
 const indexRouter = require('./routes/index');
 
-
-
 // Require DB Configuration File
 const db_url = require('./db');
 const projects = require('./models/Projects');
