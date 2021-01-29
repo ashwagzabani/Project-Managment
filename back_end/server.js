@@ -1,10 +1,22 @@
 // Require necessary NPM packages
+<<<<<<< HEAD
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+=======
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+
+
+//test code -------------------------------
+
+const { usersData, projectsData, oneProject } = require('./models/SeedData');
+>>>>>>> CRUD_operation_project
 //test code -------------------------------
 const { usersData, projectsData } = require("./models/SeedData");
 // Require Route Files
+<<<<<<< HEAD
 const indexRouter = require("./routes/index");
 const projectRouter = require("./routes/Projects");
 const newProjectRouter = require("./routes/NewProject");
@@ -12,6 +24,20 @@ const newProjectRouter = require("./routes/NewProject");
 const db_url = require("./db");
 const projects = require("./models/Projects");
 const users = require("./models/Users.js");
+=======
+const indexRouter = require('./routes/index');
+const projectRouter = require('./routes/Projects');
+const newProjectRouter = require('./routes/NewProject');
+const updateProjectRouter = require('./routes/UpdateProject');
+const membersInProjectRouter = require('./routes/Members');
+
+
+// Require DB Configuration File
+const db_url = require('./db');
+const projects = require('./models/Projects');
+const users = require('./models/Users')
+
+>>>>>>> CRUD_operation_project
 
 //mongoose.connect(mongoConnectionString, {useNewUrlParser: true, useUnifiedTopology: true});
 // Establish Database Connection
@@ -20,6 +46,13 @@ mongoose.connection.once("open", () => {
   console.log("Connected to Mongo");
 
   // projects.create(projectsData, (err, result) => {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     console.log(result);
+  //   }
+  // });
+  // projects.create(oneProject, (err, result) => {
   //   if (err) {
   //     console.log(err);
   //   } else {
@@ -61,8 +94,9 @@ app.use(
 app.use(indexRouter);
 
 app.use(newProjectRouter);
-// app.use('/',indexRouter);
+app.use(membersInProjectRouter);
 app.use(projectRouter);
+app.use(updateProjectRouter);
 
 // Define PORT for the API to run on
 const PORT = process.env.PORT || 5000;

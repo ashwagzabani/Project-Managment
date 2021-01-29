@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Swich, Link } from "react-router-dom";
 import Home from "./Home";
+import CreateNewProject from "./project/CreateNewProject";
+import ProjectsList from "./project/ProjectsList";
+import UpdateProject from "./project/UpdateProject";
 export default class Sidebar extends Component {
   render() {
     const routes = [
@@ -10,6 +13,18 @@ export default class Sidebar extends Component {
         sidebar: () => <div></div>,
         main: () => <Home isAuthed={true} />,
       },
+      {
+        path: "/project/update",
+        exact: true,
+        sidebar: () => <div></div>,
+        main: () => <UpdateProject />,
+      }
+      // ,{
+      //   path: "/project/new",
+      //   exact: true,
+      //   sidebar: () => <div></div>,
+      //   main: () => <CreateNewProject />,
+      // }
     ];
 
     return (
@@ -20,6 +35,9 @@ export default class Sidebar extends Component {
             <ul>
               <li className="fas fa-home">
                 <Link to="/">Home</Link>
+              </li>
+              <li className="fas fa-home">
+                <Link to="/project/update">Projects</Link>
               </li>
             </ul>
 

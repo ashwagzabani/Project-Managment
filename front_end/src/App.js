@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Sidebar from "./components/Sidebar";
+=======
+import React, { Component } from 'react'
+import "bootstrap/dist/css/bootstrap.min.css"
+import axios from 'axios'
+import Sidebar from './components/Sidebar';
+
+>>>>>>> CRUD_operation_project
 export default class App extends Component {
   constructor() {
     super();
@@ -47,6 +55,7 @@ export default class App extends Component {
     };
     //we need to post that data into server
     //post registered to this endPoint which back end (Schema) - to MongoDB
+<<<<<<< HEAD
     axios.post("http://localhost:5000/signUp", registered).then((res) => {
       console.log("Response Data:", res.data);
       if (res.data === "Already Exist") {
@@ -62,6 +71,22 @@ export default class App extends Component {
         <dev className="sidebar">{/* <Sidebar /> */}</dev>
         <div className="container">
           <div className="form-div">
+=======
+    axios.post('http://localhost:5000/signUp', registered)
+      .then(res => {
+        console.log('Response Data:', res.data)
+        console.log("User Data", registered)
+      })
+  }
+  render() {
+    return (
+      <div>
+        <div className='container'>
+          <div>
+            <Sidebar />
+          </div>
+          <div className='form-div'>
+>>>>>>> CRUD_operation_project
             <form onSubmit={this.onSubmit}>
               <input
                 type="text"
