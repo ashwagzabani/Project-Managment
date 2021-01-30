@@ -9,8 +9,17 @@ import UpdateProject from "./project/UpdateProject";
 import SignUp from "./SignUp.js";
 import Login from "./Login.js";
 import Members from "./Member/Members";
+
+import DeleteProject from "./project/DeletProject";
 export default class Sidebar extends Component {
   render() {
+
+  // <div class="dropdown-container">
+  //   <a href="#">Link 1</a>
+  //   <a href="#">Link 2</a>
+  //   <a href="#">Link 3</a>
+  // </div>;
+
     const routes = [
       {
         path: "/",
@@ -23,6 +32,12 @@ export default class Sidebar extends Component {
         exact: true,
         sidebar: () => <div></div>,
         main: () => <UpdateProject />,
+      },
+      {
+        path: "/project/list",
+        exact: true,
+        sidebar: () => <div></div>,
+        main: () => <DeleteProject />,
       },
       // ,{
       //   path: "/project/new",
@@ -69,6 +84,9 @@ export default class Sidebar extends Component {
               </li>
               <li className="fas fa-home">
                 <Link to="/members">Members</Link>
+              </li>
+              <li className="">
+                <Link to="/project/list">Projects list</Link>
               </li>
             </ul>
 
