@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 //test code -------------------------------
-<<<<<<< HEAD
 const { usersData, projectsData, oneProject } = require('./models/SeedData');
 //test code -------------------------------
 
@@ -15,37 +14,17 @@ const loginRouter = require('./routes/login')
 // Require DB Configuration File
 const db_url = require('./db');
 const projects = require('./models/Projects');
-
-// Require User Files
 const users = require('./models/Users.js');
 
 //mongoose.connect(mongoConnectionString, {useNewUrlParser: true, useUnifiedTopology: true});
-
 
 // const indexRouter = require('./routes/index');
 const projectRouter = require('./routes/Projects');
 const newProjectRouter = require('./routes/NewProject');
 const updateProjectRouter = require('./routes/UpdateProject');
 const membersInProjectRouter = require('./routes/Members');
-
-=======
-
-const { usersData, projectsData, oneProject } = require("./models/SeedData");
-
-//test code -------------------------------
-
-// Require File
-const db_url = require("./db");
-const projects = require("./models/Projects");
-const users = require("./models/Users.js");
-// Require Route File
-// const indexRouter = require("./routes/index");
-const projectRouter = require("./routes/Projects");
-const newProjectRouter = require("./routes/NewProject");
-const updateProjectRouter = require("./routes/UpdateProject");
-const membersInProjectRouter = require("./routes/Members");
 const deleteProjectRouter = require("./routes/DeleteProject");
->>>>>>> 94e04cd169d26c0770ec29d2b6e113b8947f8589
+const addNewMember = require("./routes/AddNewMember");
 
 //mongoose.connect(mongoConnectionString, {useNewUrlParser: true, useUnifiedTopology: true});
 
@@ -102,23 +81,14 @@ app.use(
 
 // Mount imported Routers
 // app.use(indexRouter);
-<<<<<<< HEAD
 app.use(loginRouter);
-
-=======
->>>>>>> 94e04cd169d26c0770ec29d2b6e113b8947f8589
 app.use(newProjectRouter);
 app.use(membersInProjectRouter);
 app.use(projectRouter);
 app.use(updateProjectRouter);
-<<<<<<< HEAD
-// app.use(newProjectRouter);
-
-
-
-=======
 app.use(deleteProjectRouter);
->>>>>>> 94e04cd169d26c0770ec29d2b6e113b8947f8589
+app.use(addNewMember);
+
 /*** Routes ***/
 // Define PORT for the API to run on
 const PORT = process.env.PORT || 5000;

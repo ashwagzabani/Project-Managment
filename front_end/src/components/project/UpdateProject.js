@@ -9,8 +9,8 @@ class UpdateProject extends Component {
             fakeprojectid: "6012b3214e50811ab09cc48b",
             userId: '60115b690ba0311c388c9aa8',
             projectTitle: "test from front end",
-            projectStartDate: "2021-02-30",
-            projectEndDate: "2021-020-30"
+            projectStartDate: "2021-01-30",
+            projectEndDate: "2021-01-30"
         }
     }
     componentDidMount() {
@@ -69,11 +69,11 @@ class UpdateProject extends Component {
                         </div>
                         <div class="form-group">
                             <label>Start Date</label>
-                            <input type="text" name="projectStartDate" class="form-control" defaultValue={this.state.projectStartDate} onChange={this.getChangeData} />
+                            <input type="date" name="projectStartDate" class="form-control" defaultValue={this.state.projectEndDate} onChange={this.getChangeData} />
                         </div>
                         <div class="form-group">
                             <label>End Date</label>
-                            <input type="text" class="form-control" name="projectEndDate" defaultValue={this.state.projectEndDate} onChange={this.getChangeData} />
+                            <input type="date" class="form-control" name="projectEndDate" defaultValue={this.state.projectEndDate} onChange={this.getChangeData} />
                         </div>
                         <button className="btn btn-default">Cancel</button>
                         <button type="submit" className="btn btn-success" >Save</button>
