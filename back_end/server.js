@@ -1,24 +1,16 @@
 // Require necessary NPM packages
-
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-
-
 //test code -------------------------------
-
 const { usersData, projectsData, oneProject } = require('./models/SeedData');
-
 //test code -------------------------------
 
 // Require Route Files
 
-const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login')
+
 // Require DB Configuration File
 const db_url = require('./db');
 const projects = require('./models/Projects');
@@ -29,18 +21,11 @@ const users = require('./models/Users.js');
 //mongoose.connect(mongoConnectionString, {useNewUrlParser: true, useUnifiedTopology: true});
 
 
-const indexRouter = require('./routes/index');
+// const indexRouter = require('./routes/index');
 const projectRouter = require('./routes/Projects');
 const newProjectRouter = require('./routes/NewProject');
 const updateProjectRouter = require('./routes/UpdateProject');
 const membersInProjectRouter = require('./routes/Members');
-
-
-// Require DB Configuration File
-const db_url = require('./db');
-const projects = require('./models/Projects');
-const users = require('./models/Users')
-
 
 
 //mongoose.connect(mongoConnectionString, {useNewUrlParser: true, useUnifiedTopology: true});
@@ -97,7 +82,7 @@ app.use(
 /*** Routes ***/
 
 // Mount imported Routers
-app.use(indexRouter);
+// app.use(indexRouter);
 app.use(loginRouter);
 
 app.use(newProjectRouter);
