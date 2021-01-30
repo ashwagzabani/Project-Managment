@@ -8,6 +8,7 @@ import UpdateProject from "./project/UpdateProject";
 
 import SignUp from "./SignUp.js";
 import Login from "./Login.js";
+import Members from "./Member/Members";
 export default class Sidebar extends Component {
   render() {
     const routes = [
@@ -40,7 +41,12 @@ export default class Sidebar extends Component {
       exact: true,
       sidebar: () => <div></div>,
       main: () => <Login />,
-    },
+    },{
+      path: "/members",
+     exact: true,
+     sidebar: () => <div></div>,
+     main: () => <Members />,
+   }
     ];
 
     return (
@@ -60,6 +66,9 @@ export default class Sidebar extends Component {
               </li>
               <li className="fas fa-home">
                 <Link to="/login">Log In</Link>
+              </li>
+              <li className="fas fa-home">
+                <Link to="/members">Members</Link>
               </li>
             </ul>
 

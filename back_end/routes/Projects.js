@@ -57,20 +57,6 @@ router.get('/projects/:id/:role', (req, res) => {
 
 
 
-router.get('/project/:id', (req, res) => {
-    projects.findOne({ "_id": req.params.id },
-        // user.findById({ "_id": userId },
-        (err, result) => {
-            if (err) {
-                console.log(err);
-            }
-            res.json(result);
-            console.log(result)
-        });
-});
-
-
-
 //User.findOne({'local.rooms': {$elemMatch: {name: req.body.username}}}, function (err, user) {
 
 
