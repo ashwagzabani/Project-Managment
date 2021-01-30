@@ -17,9 +17,8 @@ router.patch('/project/:id', (req, res) => {
         if (error) {
             console.log(error);
         }
-        res.json(// message: 'I am in patch route',
-            // req.params.id
-            result);
+        console.log(req.body);
+        res.json(result);
     })
 });
 

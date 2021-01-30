@@ -42,7 +42,7 @@ router.get('/projects/:id/:role', (req, res) => {
         // { "members.userId": userId },
 
         //get user's projects with role === '...'
-               members: { $elemMatch: { userId: req.params.role, role: req.params.role }},
+        members: { $elemMatch: { userId: req.params.id, role: "manager" } },
         // members: { $elemMatch: { userId: userId } }
     },
         // user.findById({ "_id": userId },
@@ -57,7 +57,22 @@ router.get('/projects/:id/:role', (req, res) => {
 
 
 
+router.get('/project/:id', (req, res) => {
+    projects.findOne({ "_id": req.params.id },
+        // user.findById({ "_id": userId },
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            }
+            res.json(result);
+            console.log(result)
+        });
+});
+
+
+
 //User.findOne({'local.rooms': {$elemMatch: {name: req.body.username}}}, function (err, user) {
+
 
 // router.post('/signIn', (req, res) => {
 //     users.create(req.body)

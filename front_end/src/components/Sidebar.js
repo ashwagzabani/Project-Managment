@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Home from "./Home";
-<<<<<<< HEAD
+
 import CreateNewProject from "./project/CreateNewProject";
 import ProjectsList from "./project/ProjectsList";
 import UpdateProject from "./project/UpdateProject";
-=======
+
 import SignUp from "./SignUp.js";
 import Login from "./Login.js";
->>>>>>> a946868be1e55c81862dd1e3f2bbd393f5278d70
 export default class Sidebar extends Component {
   render() {
     const routes = [
@@ -19,20 +18,18 @@ export default class Sidebar extends Component {
         main: () => <Home username={this.props.username} isAuthed={true} />,
       },
       {
-<<<<<<< HEAD
         path: "/project/update",
         exact: true,
         sidebar: () => <div></div>,
         main: () => <UpdateProject />,
-      }
+      },
       // ,{
       //   path: "/project/new",
       //   exact: true,
       //   sidebar: () => <div></div>,
       //   main: () => <CreateNewProject />,
       // }
-=======
-        path: "/signup",
+       {path: "/signup",
         exact: true,
         sidebar: () => <div></div>,
         main: () => <SignUp changeEmail={this.props.changeEmail} changepassword={this.props.changepassword} changeUserName={this.props.changeUserName} onSubmit={this.props.onSubmit}
@@ -44,7 +41,6 @@ export default class Sidebar extends Component {
       sidebar: () => <div></div>,
       main: () => <Login />,
     },
->>>>>>> a946868be1e55c81862dd1e3f2bbd393f5278d70
     ];
 
     return (
@@ -55,12 +51,9 @@ export default class Sidebar extends Component {
             <ul>
               <li className="fas fa-home">
                 <Link to="/">Home</Link>
-                <Link to="/Sign Up">Sign Up</Link>
-                <Link to="/Log In">Sign Up</Link>
-
               </li>
               <li className="fas fa-home">
-                <Link to="/project/update">Projects</Link>
+                <Link to="/project/update">Update Project</Link>
               </li>
               <li className="fas fa-home">
                 <Link to="/signup">Sign Up</Link>
