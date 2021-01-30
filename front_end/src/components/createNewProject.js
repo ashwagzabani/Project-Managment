@@ -17,11 +17,6 @@ export default class createNewProject extends Component {
 
     }
 
-
-
-
-
-
     //after user Submit the data
     onSubmit = (e) => {
         /*The Event interface's preventDefault() method tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be. The event continues to propagate as usual, unless one of its event listeners calls stopPropagation() or stopImmediatePropagation(), either of which terminates propagation at once.*/

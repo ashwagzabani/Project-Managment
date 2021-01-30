@@ -14,19 +14,17 @@ const projectId = '6011b5dcd2af381b2c6a09b6';
  * Action:      INDEX
  * Method:      GET
  * URI:         /members
- * Description: Get all members in specific project with role = 'manager'
+ * Description: Get all members in specific project 
  */
-router.get('/members', (req, res) => {
-    projects.findOne({members: { $elemMatch: { userId: userId, role: 'manager' } },
-        _id:projectId
-    },
-    (err, result) => {
-        if (err) {
-            console.log(err);
-        }
-        res.json(result);
-        console.log(result)
-    });
+router.get('/members/:id', (req, res) => {
+    projects.findOne({ _id: req.params.id },
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            }
+            res.json(result);
+            console.log(result)
+        });
 });
 
 //User.findOne({'local.rooms': {$elemMatch: {name: req.body.username}}}, function (err, user) {
