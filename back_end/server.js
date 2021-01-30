@@ -16,13 +16,18 @@ const { usersData, projectsData, oneProject } = require('./models/SeedData');
 //test code -------------------------------
 
 // Require Route Files
-const indexRouter = require("./routes/index");
-const projectRouter = require("./routes/Projects");
-const newProjectRouter = require("./routes/NewProject");
-// Require File
-const db_url = require("./db");
-const projects = require("./models/Projects");
-const users = require("./models/Users.js");
+
+const indexRouter = require('./routes/index');
+const loginRouter = require('./routes/login')
+// Require DB Configuration File
+const db_url = require('./db');
+const projects = require('./models/Projects');
+
+// Require User Files
+const users = require('./models/Users.js');
+
+//mongoose.connect(mongoConnectionString, {useNewUrlParser: true, useUnifiedTopology: true});
+
 
 const indexRouter = require('./routes/index');
 const projectRouter = require('./routes/Projects');
@@ -93,11 +98,17 @@ app.use(
 
 // Mount imported Routers
 app.use(indexRouter);
+app.use(loginRouter);
 
+<<<<<<< HEAD
 app.use(newProjectRouter);
 app.use(membersInProjectRouter);
 app.use(projectRouter);
 app.use(updateProjectRouter);
+=======
+// app.use(newProjectRouter);
+// app.use(projectRouter);
+>>>>>>> a946868be1e55c81862dd1e3f2bbd393f5278d70
 
 
 /*** Routes ***/
