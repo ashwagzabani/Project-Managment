@@ -1,9 +1,14 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Swich, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Home from "./Home";
+<<<<<<< HEAD
 import CreateNewProject from "./project/CreateNewProject";
 import ProjectsList from "./project/ProjectsList";
 import UpdateProject from "./project/UpdateProject";
+=======
+import SignUp from "./SignUp.js";
+import Login from "./Login.js";
+>>>>>>> a946868be1e55c81862dd1e3f2bbd393f5278d70
 export default class Sidebar extends Component {
   render() {
     const routes = [
@@ -14,6 +19,7 @@ export default class Sidebar extends Component {
         main: () => <Home username={this.props.username} isAuthed={true} />,
       },
       {
+<<<<<<< HEAD
         path: "/project/update",
         exact: true,
         sidebar: () => <div></div>,
@@ -25,6 +31,20 @@ export default class Sidebar extends Component {
       //   sidebar: () => <div></div>,
       //   main: () => <CreateNewProject />,
       // }
+=======
+        path: "/signup",
+        exact: true,
+        sidebar: () => <div></div>,
+        main: () => <SignUp changeEmail={this.props.changeEmail} changepassword={this.props.changepassword} changeUserName={this.props.changeUserName} onSubmit={this.props.onSubmit}
+        userName={this.props.userName} passwprd={this.props.password} email={this.props.email}/>,
+      },
+     {
+       path: "/login",
+      exact: true,
+      sidebar: () => <div></div>,
+      main: () => <Login />,
+    },
+>>>>>>> a946868be1e55c81862dd1e3f2bbd393f5278d70
     ];
 
     return (
@@ -42,9 +62,15 @@ export default class Sidebar extends Component {
               <li className="fas fa-home">
                 <Link to="/project/update">Projects</Link>
               </li>
+              <li className="fas fa-home">
+                <Link to="/signup">Sign Up</Link>
+              </li>
+              <li className="fas fa-home">
+                <Link to="/login">Log In</Link>
+              </li>
             </ul>
 
-            <switch>
+            <Switch>
               {routes.map((route, index) => (
                 <Route
                   key={index}
@@ -53,12 +79,12 @@ export default class Sidebar extends Component {
                   children={<route.sidebar />}
                 />
               ))}
-            </switch>
+            </Switch>
           </div>
 
           <div className="main"></div>
 
-          <switch>
+          <Switch>
             {routes.map((route, index) => (
               <Route
                 key={index}
@@ -67,7 +93,7 @@ export default class Sidebar extends Component {
                 children={<route.main />}
               />
             ))}
-          </switch>
+          </Switch>
         </div>
       </Router>
     );

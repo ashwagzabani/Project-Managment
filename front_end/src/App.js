@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 import React, { Component } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -111,6 +112,17 @@ export default class App extends Component {
           </div>
         </div>
       </div>
+=======
+import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Sidebar from "./components/Sidebar";
+
+export default class App extends Component {
+
+  render() {
+    return (
+      <Sidebar/>
+>>>>>>> a946868be1e55c81862dd1e3f2bbd393f5278d70
     );
   }
 }

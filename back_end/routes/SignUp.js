@@ -1,12 +1,6 @@
-// Require necessary NPM packages
 const express = require('express');
-const users = require('../models/Users.js')
-const projects = require('../models/Projects.js')
-const tasks = require('../models/Tasks.js')
-//you see this file and the project folder?
-
-// Instantiate a Router (mini app that only handles routes)
 const router = express.Router();
+<<<<<<< HEAD:back_end/routes/SignUp.js
 
 users.create()
 /**
@@ -20,6 +14,12 @@ users.create()
 //SignUp request to create a user dependent in schema
 router.post('/signUp', async (req, res) => {
   console.log('/signUp')
+=======
+const users= require('../models/Users');
+//SignUp request to create a user dependent in schema
+router.post('/signUp', async (req, res) => {
+  console.log('/signUp');
+>>>>>>> a946868be1e55c81862dd1e3f2bbd393f5278d70:back_end/routes/index.js
   //to add new user into DB
   const signedUpUser = new users({
     //cheack in post man ---DONE
@@ -44,7 +44,6 @@ router.post('/signUp', async (req, res) => {
       res.json(error)
     })
 })
-
 async function verifyUser(req) {
   try {
     const userExisit = await users.findOne({ email: req.body.email })
