@@ -100,15 +100,12 @@ app.use(
 app.use(indexRouter);
 app.use(loginRouter);
 
-<<<<<<< HEAD
 app.use(newProjectRouter);
 app.use(membersInProjectRouter);
 app.use(projectRouter);
 app.use(updateProjectRouter);
-=======
 // app.use(newProjectRouter);
-// app.use(projectRouter);
->>>>>>> a946868be1e55c81862dd1e3f2bbd393f5278d70
+
 
 
 /*** Routes ***/
