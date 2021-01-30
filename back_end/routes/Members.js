@@ -17,7 +17,7 @@ const projectId = '6011b5dcd2af381b2c6a09b6';
  * Description: Get all members in specific project 
  */
 router.get('/members/:id', (req, res) => {
-    projects.findOne({ _id: req.params.id },
+    Users.findOne({ _id: req.params.id },
         (err, result) => {
             if (err) {
                 console.log(err);
@@ -27,6 +27,16 @@ router.get('/members/:id', (req, res) => {
         });
 });
 
+router.get('/users', (req, res) => {
+    Users.find({ },
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            }
+            res.json(result);
+            console.log(result)
+        });
+});
 //User.findOne({'local.rooms': {$elemMatch: {name: req.body.username}}}, function (err, user) {
 
 // router.post('/signIn', (req, res) => {

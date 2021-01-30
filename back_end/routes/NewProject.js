@@ -1,6 +1,7 @@
 // Require necessary NPM packages
 const express = require('express');
 const projects = require('../models/Projects.js')
+const { verifyUser } = require('./SignUp')
 
 // Instantiate a Router (mini app that only handles routes)
 const router = express.Router();
@@ -23,6 +24,7 @@ router.post('/project/new', (req, res) => {
         res.json(result);
     });
     console.log("result");
+    verifyUser();
 });
 
 

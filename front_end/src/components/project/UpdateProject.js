@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import API_URL from "../../apiConfig";
 
 class UpdateProject extends Component {
     constructor() {
@@ -18,7 +19,7 @@ class UpdateProject extends Component {
     }
 
     readAllProjects = () => {
-        axios.get('http://localhost:5000/projects/6011b5dcd2af381b2c6a09b6')
+        axios.get(`${API_URL}/projects/6011b5dcd2af381b2c6a09b6`)
             .then(res => {
                 console.log('Response Data:', res.data)
                 this.setState({ projecs_list: res.data })
@@ -42,7 +43,7 @@ class UpdateProject extends Component {
             "startDate": this.state.projectStartDate,
             "endDate": this.state.projectEndDate
         };
-        axios.patch(`http://localhost:5000/project/6011b5dcd2af381b2c6a09b6`, newData)
+        axios.patch(`${API_URL}/project/6011b5dcd2af381b2c6a09b6`, newData)
             .then(res => {
                 console.log('Response Data:', res.data)
                 this.setState({ projecs_list: res.data })

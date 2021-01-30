@@ -1,14 +1,10 @@
 const express = require('express');
-<<<<<<< HEAD
-=======
+
 const users = require('../models/Users.js')
 //you see this file and the project folder?
 
 // Instantiate a Router (mini app that only handles routes)
->>>>>>> 94e04cd169d26c0770ec29d2b6e113b8947f8589
 const router = express.Router();
-<<<<<<< HEAD:back_end/routes/SignUp.js
-
 users.create()
 /**
  * Action:      INDEX
@@ -16,17 +12,9 @@ users.create()
  * URI:         /
  * Description: Get the Root Route
  */
-
-//------------------------------------------
-//SignUp request to create a user dependent in schema
-router.post('/signUp', async (req, res) => {
-  console.log('/signUp')
-=======
-const users= require('../models/Users');
 //SignUp request to create a user dependent in schema
 router.post('/signUp', async (req, res) => {
   console.log('/signUp');
->>>>>>> a946868be1e55c81862dd1e3f2bbd393f5278d70:back_end/routes/index.js
   //to add new user into DB
   const signedUpUser = new users({
     //cheack in post man ---DONE
@@ -61,4 +49,4 @@ async function verifyUser(req) {
   }
 }
 // Export the Router so we can use it in the server.js file
-module.exports = router;
+module.exports = {router, verifyUser};

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API_URL from "../../apiConfig";
 import axios from "axios";
+import { BrowserRouter as Router, Route, Swich, Link } from "react-router-dom";
 
 class ProjectsList extends Component {
   constructor() {
@@ -28,8 +29,13 @@ class ProjectsList extends Component {
     const showAllProjectsList = this.state.projecs_list.map((projects) => {
       return (
         <div className='projectList'>
-          <p>{projects.title}</p>
-          <p>member: {projects.members.length}</p>
+          <p><Link to={{
+            pathname: "/project/details",
+            state: {
+              projecDetails: projects
+            }
+          }} >{projects.title}</Link></p>
+          {/* <p>member: {projects.members.length}</p> */}
           {/* <p>{ task}</p> */}
           {/* {proresspar} */}
         </div>
