@@ -1,4 +1,3 @@
-
 /*
 -the input email and password 
 -searching for the input in the database
@@ -14,20 +13,24 @@ router.post("/login", async (req, res) => {
     email: req.body.email,
     password: req.body.password,
   };
+ 
   try {
-    let user = await User.findOne({ email: loginInfo.email });
+    let user = await User.findOne({ email: loginInfo.email },(error,res)=>{
+      console.log(res)
+    });
+    console.log(user);
     if (user) {
       let isPasswordCorrect = loginInfo.password===user.password?true:false;
       if (isPasswordCorrect) {
-        return res.status(200).json({ success: "Login successful!", token });
+        throw "Login successful!";
       } else {
-        throw "Email does not exist or password is incorrect";
+        throw "Password is not correct";
       }
     } else {
-      throw "Email does not exist or password is incorrect";
+      throw "Email does not exist";
     }
   } catch (error) {
-    return res.status(400).json({ error });
+   res.json(error);
   }
 });
 

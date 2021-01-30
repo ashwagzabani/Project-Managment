@@ -17,34 +17,40 @@ export default class Login extends Component {
     event.preventDefault();
 
     const loginInfo={
-      loginEmail:this.state.loginEmail,
-      loginPassword:this.state.loginPassword
+      email:this.state.email,
+      password:this.state.password
     };
     axios.post("http://localhost:5000/login",loginInfo).then((res) => {
       console.log("Response Data:", res.data);
-      if (res.data === "User is logged in") {
+      if (res.data === "Login successful!") {
         alert('Correct email and password')
       }
-      if (res.data._message === 'user does not exist') {
-        alert('Error!!')
+      if (res.data === "Password is not correct") {
+        alert('Wrong Password')
       }
-    });
+      if(res.data === "Email does not exist"){
+        alert('Email does not exist')
+      }
+    })
   }
   getEmail = (event) => {
+    
     this.setState({
       email: event.target.value,
     });
+    console.log(this.state.email)
   };
   getPassword = (event) => {
     this.setState({
-      email: event.target.value,
+      password: event.target.value,
     });
+    console.log(this.state.password)
   };
     render(){
         return(
             <div>
                 <div className="form-div">
-            <form >
+            <form onSubmit={this.onSubmit} >
               <input
                 type="text"
                 placeholder="Email "
