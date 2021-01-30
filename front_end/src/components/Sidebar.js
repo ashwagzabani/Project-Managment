@@ -5,12 +5,24 @@ import Home from "./Home";
 import CreateNewProject from "./project/CreateNewProject";
 import ProjectsList from "./project/ProjectsList";
 import UpdateProject from "./project/UpdateProject";
+<<<<<<< HEAD
 
 import SignUp from "./SignUp.js";
 import Login from "./Login.js";
 import Members from "./Member/Members";
+=======
+import DeleteProject from "./project/DeletProject";
+
+>>>>>>> 94e04cd169d26c0770ec29d2b6e113b8947f8589
 export default class Sidebar extends Component {
   render() {
+
+  // <div class="dropdown-container">
+  //   <a href="#">Link 1</a>
+  //   <a href="#">Link 2</a>
+  //   <a href="#">Link 3</a>
+  // </div>;
+
     const routes = [
       {
         path: "/",
@@ -24,6 +36,15 @@ export default class Sidebar extends Component {
         sidebar: () => <div></div>,
         main: () => <UpdateProject />,
       },
+<<<<<<< HEAD
+=======
+      {
+        path: "/project/list",
+        exact: true,
+        sidebar: () => <div></div>,
+        main: () => <DeleteProject />,
+      },
+>>>>>>> 94e04cd169d26c0770ec29d2b6e113b8947f8589
       // ,{
       //   path: "/project/new",
       //   exact: true,
@@ -57,6 +78,11 @@ export default class Sidebar extends Component {
             <ul>
               <li className="fas fa-home">
                 <Link to="/">Home</Link>
+<<<<<<< HEAD
+=======
+                <Link to="/Sign Up">Sign Up</Link>
+                <Link to="/Log In">Sign Up</Link>
+>>>>>>> 94e04cd169d26c0770ec29d2b6e113b8947f8589
               </li>
               <li className="fas fa-home">
                 <Link to="/project/update">Update Project</Link>
@@ -69,6 +95,9 @@ export default class Sidebar extends Component {
               </li>
               <li className="fas fa-home">
                 <Link to="/members">Members</Link>
+              </li>
+              <li className="">
+                <Link to="/project/list">Projects list</Link>
               </li>
             </ul>
 

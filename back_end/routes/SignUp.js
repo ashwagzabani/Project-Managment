@@ -1,4 +1,11 @@
 const express = require('express');
+<<<<<<< HEAD
+=======
+const users = require('../models/Users.js')
+//you see this file and the project folder?
+
+// Instantiate a Router (mini app that only handles routes)
+>>>>>>> 94e04cd169d26c0770ec29d2b6e113b8947f8589
 const router = express.Router();
 <<<<<<< HEAD:back_end/routes/SignUp.js
 
