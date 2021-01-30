@@ -11,7 +11,7 @@ export default class Sidebar extends Component {
         path: "/",
         exact: true,
         sidebar: () => <div></div>,
-        main: () => <Home isAuthed={true} />,
+        main: () => <Home username={this.props.username} isAuthed={true} />,
       },
       {
         path: "/project/update",
@@ -35,6 +35,9 @@ export default class Sidebar extends Component {
             <ul>
               <li className="fas fa-home">
                 <Link to="/">Home</Link>
+                <Link to="/Sign Up">Sign Up</Link>
+                <Link to="/Log In">Sign Up</Link>
+
               </li>
               <li className="fas fa-home">
                 <Link to="/project/update">Projects</Link>

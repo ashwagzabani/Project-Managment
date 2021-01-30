@@ -1,9 +1,9 @@
 // Require necessary NPM packages
-<<<<<<< HEAD
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-=======
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -12,11 +12,10 @@ const cors = require('cors');
 //test code -------------------------------
 
 const { usersData, projectsData, oneProject } = require('./models/SeedData');
->>>>>>> CRUD_operation_project
+
 //test code -------------------------------
-const { usersData, projectsData } = require("./models/SeedData");
+
 // Require Route Files
-<<<<<<< HEAD
 const indexRouter = require("./routes/index");
 const projectRouter = require("./routes/Projects");
 const newProjectRouter = require("./routes/NewProject");
@@ -24,7 +23,7 @@ const newProjectRouter = require("./routes/NewProject");
 const db_url = require("./db");
 const projects = require("./models/Projects");
 const users = require("./models/Users.js");
-=======
+
 const indexRouter = require('./routes/index');
 const projectRouter = require('./routes/Projects');
 const newProjectRouter = require('./routes/NewProject');
@@ -37,14 +36,16 @@ const db_url = require('./db');
 const projects = require('./models/Projects');
 const users = require('./models/Users')
 
->>>>>>> CRUD_operation_project
+
 
 //mongoose.connect(mongoConnectionString, {useNewUrlParser: true, useUnifiedTopology: true});
-// Establish Database Connection
-mongoose.connect(db_url, { useNewUrlParser: true });
-mongoose.connection.once("open", () => {
-  console.log("Connected to Mongo");
 
+// Establish Database Connection
+
+mongoose.connect(db_url, { useNewUrlParser: true, useUnifiedTopology: true });
+
+mongoose.connection.once('open', () => {
+  console.log('Connected to Mongo');
   // projects.create(projectsData, (err, result) => {
   //   if (err) {
   //     console.log(err);
@@ -65,12 +66,12 @@ mongoose.connection.once("open", () => {
 // Instantiate Express Application Object
 const app = express();
 
-app.get("/", (req, res) => {
-  console.log("get /");
+app.get('/', (req, res) => {
+  console.log('get /');
   users.find({}, (err, result) => {
     // console.log(res);
-    res.json(result);
-  });
+    res.json(result)
+  })
   // res.json('result');
 });
 
@@ -98,6 +99,8 @@ app.use(membersInProjectRouter);
 app.use(projectRouter);
 app.use(updateProjectRouter);
 
+
+/*** Routes ***/
 // Define PORT for the API to run on
 const PORT = process.env.PORT || 5000;
 
@@ -108,6 +111,7 @@ app.listen(PORT, () => {
 
 /*
   C.R.U.D - Actions Table
+
   Create          CREATE
   Read
     Read All      INDEX
@@ -115,3 +119,8 @@ app.listen(PORT, () => {
   Update          UPDATE
   Delete          DESTROY
 */
+
+
+
+//---------------------------------------------------
+
