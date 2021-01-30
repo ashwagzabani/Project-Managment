@@ -1,11 +1,20 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Swich, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Home from "./Home";
 import CreateNewProject from "./project/CreateNewProject";
 import ProjectsList from "./project/ProjectsList";
 import UpdateProject from "./project/UpdateProject";
+import DeleteProject from "./project/DeletProject";
+
 export default class Sidebar extends Component {
   render() {
+
+  // <div class="dropdown-container">
+  //   <a href="#">Link 1</a>
+  //   <a href="#">Link 2</a>
+  //   <a href="#">Link 3</a>
+  // </div>;
+
     const routes = [
       {
         path: "/",
@@ -18,7 +27,13 @@ export default class Sidebar extends Component {
         exact: true,
         sidebar: () => <div></div>,
         main: () => <UpdateProject />,
-      }
+      },
+      {
+        path: "/project/list",
+        exact: true,
+        sidebar: () => <div></div>,
+        main: () => <DeleteProject />,
+      },
       // ,{
       //   path: "/project/new",
       //   exact: true,
@@ -37,14 +52,16 @@ export default class Sidebar extends Component {
                 <Link to="/">Home</Link>
                 <Link to="/Sign Up">Sign Up</Link>
                 <Link to="/Log In">Sign Up</Link>
-
               </li>
               <li className="fas fa-home">
                 <Link to="/project/update">Projects</Link>
               </li>
+              <li className="">
+                <Link to="/project/list">Projects list</Link>
+              </li>
             </ul>
 
-            <switch>
+            <Switch>
               {routes.map((route, index) => (
                 <Route
                   key={index}
@@ -53,12 +70,12 @@ export default class Sidebar extends Component {
                   children={<route.sidebar />}
                 />
               ))}
-            </switch>
+            </Switch>
           </div>
 
           <div className="main"></div>
 
-          <switch>
+          <Switch>
             {routes.map((route, index) => (
               <Route
                 key={index}
@@ -67,7 +84,7 @@ export default class Sidebar extends Component {
                 children={<route.main />}
               />
             ))}
-          </switch>
+          </Switch>
         </div>
       </Router>
     );

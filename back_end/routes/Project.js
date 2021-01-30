@@ -19,18 +19,17 @@ router.get('/', (req, res) => {
 });
 
 
-router.post('/signIn', (req, res) => {
-    users.create(req.body)
-    users.find({}, (err, result) => {
-        if (err) {
-            res.json("error :(")
-        }
-        res.json(result);
-    })
-});
+// router.post('/signIn', (req, res) => {
+//     users.create(req.body)
+//     users.find({}, (err, result) => {
+//         if (err) {
+//             res.json("error :(")
+//         }
+//         res.json(result);
+//     })
+// });
 
 router.post('/project', (req, res) => {
-    // users.findById()
     projects.create(req.body)
     projects.find({}, (err, result) => {
         if (err) {
@@ -48,12 +47,12 @@ router.get('/test', (req, res) => {
         res.json(result);
     })
 
-    users.find({}, (err, result) => {
-        if (err) {
-            res.json("error :(")
-        }
-        res.json(result);
-    })
+    // users.find({}, (err, result) => {
+    //     if (err) {
+    //         res.json("error :(")
+    //     }
+    //     res.json(result);
+    // })
 });
 
 

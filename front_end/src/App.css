@@ -1,20 +1,22 @@
 .App {
   text-align: center;
 }
-.Sidebar {
-  width: 100%;
-  height: 100%;
-}
+
 .nav {
+  background: #084e6e5d;
   position: fixed;
   display: flex;
-  width: 250px;
   width: 20%;
-  background: #042331;
   transition: all 0.5s ease;
   font-size: 26px;
   height: 100%;
-  background: linear-gradient(#063146, #061218);
+}
+.nav header {
+  font-size: 22px;
+  color: white;
+  line-height: 70px;
+  user-select: none;
+  text-align: center;
 }
 .nav ul {
   display: block;
@@ -41,16 +43,16 @@ li:hover {
 }
 .main {
   overflow-y: scroll;
-
-  position: fixed;
-  width: 80%;
+  width: 22%;
   text-align: center;
-  background-image: url(./img/bg.jpg);
-  background-repeat: no-repeat, repeat;
-  background-position: center;
-  background-size: cover;
-  left: 245px;
-  flex: 1;
+  /* left: 245px; */
+  /* flex: 1; */
   padding: "10px";
   height: 100%;
+}
+
+.projectList {
+  width: 150px;
+  height: 80px;
+  background-color: darkgray;
 }

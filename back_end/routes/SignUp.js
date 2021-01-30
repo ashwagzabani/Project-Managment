@@ -1,8 +1,6 @@
 // Require necessary NPM packages
 const express = require('express');
 const users = require('../models/Users.js')
-const projects = require('../models/Projects.js')
-const tasks = require('../models/Tasks.js')
 //you see this file and the project folder?
 
 // Instantiate a Router (mini app that only handles routes)
