@@ -14,23 +14,26 @@ const projectId = '6011b5dcd2af381b2c6a09b6';
  * Action:      INDEX
  * Method:      GET
  * URI:         /members
- * Description: Get all members in specific project with role = 'manager'
- */
-router.get('/members', (req, res) => {
-    projects.findOne({members: { $elemMatch: { userId: userId, role: 'manager' } },
-        _id:projectId
-    },
-    (err, result) => {
-        if (err) {
-            console.log(err);
-        }
-        res.json(result);
-        console.log(result)
-    });
  * Description: Get all members in specific project 
  */
-router.get('/member/:id', (req, res) => {
-    Users.findOne({ _id: req.params.id },
+//body syntax 
+/**
+ *   [
+        {
+            "role": "member",
+            "_id": "6012b3064e0a54479c695191",
+            "userId": "60115b690ba0311c388c9aa7"
+        },
+        {
+            "role": "member",
+            "_id": "6012b3064e0a54479c695192",
+            "userId": "60115b690ba0311c388c9aa5"
+        }
+    ]
+ */
+//{ $push: { hates: { $each: ['alarm clocks', 'jackalopes'] } } }
+router.patch('/members/new/:id', (req, res) => {
+    projects.findByIdAndUpdate({ _id: req.params.id }, { $push: { members: {$each: req.body }} },
         (err, result) => {
             if (err) {
                 console.log(err);
@@ -38,18 +41,9 @@ router.get('/member/:id', (req, res) => {
             res.json(result);
             console.log(result)
         });
+    // res.json("hii")
 });
 
-router.get('/users', (req, res) => {
-    Users.find({ },
-        (err, result) => {
-            if (err) {
-                console.log(err);
-            }
-            res.json(result);
-            console.log(result)
-        });
-});
 //User.findOne({'local.rooms': {$elemMatch: {name: req.body.username}}}, function (err, user) {
 
 // router.post('/signIn', (req, res) => {

@@ -1,43 +1,48 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import API_URL from "../../apiConfig";
 
 class Members extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            projectId: "6011b5dcd2af381b2c6a09b6",
-            members: []
+            userId: props.userId,
+            memberDetails: {},
+            managerId : ''
         }
     }
 
     componentDidMount() {
-        this.membersList();
+        this.getAllmembers(this.state.userId);
     }
-
-    membersList = () => {
-        console.log(this.state.projectId);
-        axios.get(`http://localhost:5000/members/${this.state.projectId}`)
-            .then(res => {
-                console.log('Response Data:', res.data)
-                this.setState({ members: res.data.members })
+    getAllmembers = (userId) => {
+        axios
+            .get(`${API_URL}/member/${userId}`)
+            .then((res) => {
+                this.setState({ memberDetails: res.data });
             })
-            .catch(error => {
+            .catch((error) => {
                 console.log("ERROR:", error);
-            })
+            });
+        // return (<td>this.state.memberDetails.userName</td>)
     }
+    // getMemberDetails = (userId) => {
+    //     let userName = '';
+    //     this.state.memberDetails.map(member => {
+    //         if (member._id === userId) {
+    //             userName = member.userName;
+    //         }
+    //         // console.log(member._id == userId);
+    //     });
+    //     return userName;
+    // }
 
     render() {
-        console.log(this.state.members);
-        const members = this.state.members.map((mem) => {
-            // <p>{mem}</p>
-            //get all member except manager
-            if (mem.role === "member")
-                console.log(mem);
-        })
+        // console.log(this.state.memberDetails);
         return (
             <div className="Members">
-                {members}
+                <td>{this.state.memberDetails.userName}</td>
             </div>
         );
     }

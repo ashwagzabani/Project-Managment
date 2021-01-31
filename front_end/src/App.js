@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import axios from "axios";
 import Sidebar from "./components/Sidebar";
 export default class App extends Component {
+
   constructor() {
     super();
     //signUp faild

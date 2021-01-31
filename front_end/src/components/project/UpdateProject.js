@@ -1,31 +1,17 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import API_URL from "../../apiConfig";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 class UpdateProject extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            projecs_list: [],
-            fakeprojectid: "6012b3214e50811ab09cc48b",
-            userId: '60115b690ba0311c388c9aa8',
-            projectTitle: "test from front end",
-            projectStartDate: "2021-02-30",
-            projectEndDate: "2021-020-30"
+            projectid: props.location.state.id,
+            projectTitle: props.location.state.title,
+            projectStartDate: props.location.state.startDate,
+            projectEndDate: props.location.state.endDate
         }
-    }
-    componentDidMount() {
-        this.readAllProjects();
-    }
-
-    readAllProjects = () => {
-        axios.get('http://localhost:5000/projects/6011b5dcd2af381b2c6a09b6')
-            .then(res => {
-                console.log('Response Data:', res.data)
-                this.setState({ projecs_list: res.data })
-            })
-            .catch(error => {
-                console.log("ERROR:", error);
-            })
     }
 
     getChangeData = (event) => {
@@ -33,6 +19,7 @@ class UpdateProject extends Component {
         this.setState({
             [fieldName]: event.target.value
         })
+        console.log(this.state[fieldName]);
     }
 
     saveChnages = (event) => {
@@ -42,10 +29,9 @@ class UpdateProject extends Component {
             "startDate": this.state.projectStartDate,
             "endDate": this.state.projectEndDate
         };
-        axios.patch(`http://localhost:5000/project/6011b5dcd2af381b2c6a09b6`, newData)
+        axios.patch(`${API_URL}/project/${this.state.projectid}`, newData)
             .then(res => {
                 console.log('Response Data:', res.data)
-                this.setState({ projecs_list: res.data })
             })
             .catch(error => {
                 console.log("ERROR:", error);
@@ -53,11 +39,7 @@ class UpdateProject extends Component {
     }
 
     render() {
-        console.log(this.state.projecs_list);
-        // const showAllProjectsList = this.state.projecs_list.map(projects => {
-        //     <li>projects</li>
-        //     console.log(projects);
-        // })
+        console.log(this.state.projectEndDate);
         return (
             <div className="UpdateProject">
                 <form onSubmit={this.saveChnages}>
@@ -69,13 +51,13 @@ class UpdateProject extends Component {
                         </div>
                         <div class="form-group">
                             <label>Start Date</label>
-                            <input type="text" name="projectStartDate" class="form-control" defaultValue={this.state.projectStartDate} onChange={this.getChangeData} />
+                            <input type="date" name="projectStartDate" class="form-control" defaultValue={this.state.projectStartDate} onChange={this.getChangeData} />
                         </div>
                         <div class="form-group">
                             <label>End Date</label>
-                            <input type="text" class="form-control" name="projectEndDate" defaultValue={this.state.projectEndDate} onChange={this.getChangeData} />
+                            <input type="date" class="form-control" name="projectEndDate" defaultValue={this.state.projectEndDate} onChange={this.getChangeData} />
                         </div>
-                        <button className="btn btn-default">Cancel</button>
+                        <Link to="/" className="btn btn-default">Cancel</Link>
                         <button type="submit" className="btn btn-success" >Save</button>
                     </fieldset>
                 </form>

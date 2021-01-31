@@ -16,7 +16,7 @@ router.patch('/project/:id', (req, res) => {
     projects.findByIdAndUpdate({ "_id": req.params.id }, req.body, (error, result) => {
         if (error) {
             console.log(error);
-            res.json({ error: "("  });
+           res.json({ error: "("  });
         }
         console.log(req.body);
         res.json(result);

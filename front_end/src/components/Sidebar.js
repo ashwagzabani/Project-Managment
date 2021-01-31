@@ -1,24 +1,23 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Home from "./Home";
-
-import CreateNewProject from "./project/CreateNewProject";
 import ProjectsList from "./project/ProjectsList";
 import UpdateProject from "./project/UpdateProject";
-
 import SignUp from "./SignUp.js";
 import Login from "./Login.js";
+import CreateNewproject from './project/CreateNewproject'
 import Members from "./Member/Members";
-
 import DeleteProject from "./project/DeletProject";
+import ProjectDetails from "./project/ProjectDetails";
+
 export default class Sidebar extends Component {
   render() {
 
-  // <div class="dropdown-container">
-  //   <a href="#">Link 1</a>
-  //   <a href="#">Link 2</a>
-  //   <a href="#">Link 3</a>
-  // </div>;
+    // <div class="dropdown-container">
+    //   <a href="#">Link 1</a>
+    //   <a href="#">Link 2</a>
+    //   <a href="#">Link 3</a>
+    // </div>;
 
     const routes = [
       {
@@ -28,10 +27,16 @@ export default class Sidebar extends Component {
         main: () => <Home username={this.props.username} isAuthed={true} />,
       },
       {
+        path: "/NewProject",
+        exact: true,
+        sidebar: () => <div></div>,
+        main: () => <CreateNewproject username={this.props.username} />,
+      },
+      {
         path: "/project/update",
         exact: true,
         sidebar: () => <div></div>,
-        main: () => <UpdateProject />,
+        main: (props) => <UpdateProject {...props} />,
       },
       {
         path: "/project/list",
@@ -45,23 +50,29 @@ export default class Sidebar extends Component {
       //   sidebar: () => <div></div>,
       //   main: () => <CreateNewProject />,
       // }
-       {path: "/signup",
+      {
+        path: "/signup",
         exact: true,
         sidebar: () => <div></div>,
         main: () => <SignUp changeEmail={this.props.changeEmail} changepassword={this.props.changepassword} changeUserName={this.props.changeUserName} onSubmit={this.props.onSubmit}
-        userName={this.props.userName} passwprd={this.props.password} email={this.props.email}/>,
+          userName={this.props.userName} passwprd={this.props.password} email={this.props.email} />,
       },
-     {
-       path: "/login",
-      exact: true,
-      sidebar: () => <div></div>,
-      main: () => <Login />,
-    },{
-      path: "/members",
-     exact: true,
-     sidebar: () => <div></div>,
-     main: () => <Members />,
-   }
+      {
+        path: "/login",
+        exact: true,
+        sidebar: () => <div></div>,
+        main: () => <Login />,
+      }, {
+        path: "/members",
+        exact: true,
+        sidebar: () => <div></div>,
+        main: () => <Members />,
+      }, {
+        path: "/project/details",
+        exact: true,
+        sidebar: () => <div></div>,
+        main: (props) => <ProjectDetails {...props} />,
+      }
     ];
 
     return (
@@ -96,7 +107,7 @@ export default class Sidebar extends Component {
                   key={index}
                   path={route.path}
                   exact={route.exact}
-                  children={<route.sidebar />}
+                  children={(props) => <route.sidebar {...props} />}
                 />
               ))}
             </Switch>
@@ -110,7 +121,7 @@ export default class Sidebar extends Component {
                 key={index}
                 path={route.path}
                 exact={route.exact}
-                children={<route.main />}
+                children={(props) => <route.main {...props} />}
               />
             ))}
           </Switch>

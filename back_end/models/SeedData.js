@@ -30,8 +30,7 @@ const usersData = [{
     userName: 'salwa',
     email: 'salwa@hotmail.com',
     password: '123123'
-},
-    , {
+}, {
     userName: 'Najed',
     email: 'Najed@hotmail.com',
     password: '123123'
@@ -86,4 +85,12 @@ const oneProject =
     endDate: '2021-02-25'
 };
 
-module.exports = { usersData, projectsData, oneProject };
+
+const user = [
+    {
+    userName: 'njooud',
+        email: 'njooud@hotmail.com',
+            password: '123123'
+}
+];
+module.exports = { usersData, projectsData, oneProject,user };
