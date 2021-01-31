@@ -4,39 +4,28 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 //test code -------------------------------
-const { usersData, projectsData, oneProject } = require('./models/SeedData');
+const { usersData, projectsData, oneProject,user } = require('./models/SeedData');
+
 //test code -------------------------------
 
 // Require Route Files
 const loginRouter = require('./routes/login')
 const signUpRouter = require('./routes/SignUp')
-=======
 
 // Require Route Files
-
-const loginRouter = require('./routes/login')
 
 // Require DB Configuration File
 const db_url = require('./db');
 const projects = require('./models/Projects');
-
-// Require User Files
 const users = require('./models/Users.js');
-
-//mongoose.connect(mongoConnectionString, {useNewUrlParser: true, useUnifiedTopology: true});
-
-//test code -------------------------------
-
-// Require File
-const db_url = require("./db");
-const projects = require("./models/Projects");
-const users = require("./models/Users.js");
-// const indexRouter = require("./routes/index");
-const projectRouter = require("./routes/Projects");
-const newProjectRouter = require("./routes/NewProject");
-const updateProjectRouter = require("./routes/UpdateProject");
-const membersInProjectRouter = require("./routes/Members");
+// const indexRouter = require('./routes/index');
+const projectRouter = require('./routes/Projects');
+const newProjectRouter = require('./routes/NewProject');
+const updateProjectRouter = require('./routes/UpdateProject');
+const membersInProjectRouter = require('./routes/Members');
 const deleteProjectRouter = require("./routes/DeleteProject");
+const addNewMember = require("./routes/AddNewMember");
+
 
 //mongoose.connect(mongoConnectionString, {useNewUrlParser: true, useUnifiedTopology: true});
 // const addNewMember = require("./routes/AddNewMember");
@@ -54,13 +43,13 @@ mongoose.connection.once("open", () => {
   //     console.log(result);
   //   }
   // });
-  // projects.create(oneProject, (err, result) => {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     console.log(result);
-  //   }
-  // });
+  users.insertMany(user, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(result);
+    }
+  });
   // console.log(projectsData[0].members);
 });
 // Instantiate Express Application Object
@@ -93,8 +82,9 @@ app.use(newProjectRouter);
 app.use(membersInProjectRouter);
 app.use(projectRouter);
 app.use(updateProjectRouter);
-app.use(signUpRouter);
 app.use(deleteProjectRouter);
+app.use(addNewMember);
+app.use(signUpRouter);
 /*** Routes ***/
 // Define PORT for the API to run on
 const PORT = process.env.PORT || 5000;

@@ -54,3 +54,13 @@ li:hover {
   height: 80px;
   background-color: darkgray;
 }
+
+.card-header {
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+/* .card-header.fa {
+  font-size: 20pt;
+  margin-top: 3px;
+} */
