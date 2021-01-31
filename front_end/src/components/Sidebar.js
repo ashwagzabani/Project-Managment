@@ -1,16 +1,14 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Home from "./Home";
-
-import CreateNewProject from "./project/CreateNewProject";
 import ProjectsList from "./project/ProjectsList";
 import UpdateProject from "./project/UpdateProject";
-
 import SignUp from "./SignUp.js";
 import Login from "./Login.js";
+import CreateNewproject from './project/CreateNewproject'
 import Members from "./Member/Members";
-
 import DeleteProject from "./project/DeletProject";
+
 export default class Sidebar extends Component {
   render() {
 
@@ -28,11 +26,18 @@ export default class Sidebar extends Component {
         main: () => <Home username={this.props.username} isAuthed={true} />,
       },
       {
+        path: "/NewProject",
+        exact: true,
+        sidebar: () => <div></div>,
+        main: () => <CreateNewproject username={this.props.username} />,
+      },
+      {
         path: "/project/update",
         exact: true,
         sidebar: () => <div></div>,
         main: () => <UpdateProject />,
-      },
+      }
+      ,
       {
         path: "/project/list",
         exact: true,

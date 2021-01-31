@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
+import Apiconfig from '../Apiconfig'
+
 
 export default class Login extends Component {
   constructor() {
@@ -17,7 +19,7 @@ export default class Login extends Component {
     event.preventDefault();
 
     const loginInfo={
-      email:this.state.email,
+       email:this.state.email,
       password:this.state.password
     };
     axios.post("http://localhost:5000/login",loginInfo).then((res) => {

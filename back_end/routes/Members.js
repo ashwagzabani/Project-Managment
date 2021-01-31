@@ -14,6 +14,19 @@ const projectId = '6011b5dcd2af381b2c6a09b6';
  * Action:      INDEX
  * Method:      GET
  * URI:         /members
+ * Description: Get all members in specific project with role = 'manager'
+ */
+router.get('/members', (req, res) => {
+    projects.findOne({members: { $elemMatch: { userId: userId, role: 'manager' } },
+        _id:projectId
+    },
+    (err, result) => {
+        if (err) {
+            console.log(err);
+        }
+        res.json(result);
+        console.log(result)
+    });
  * Description: Get all members in specific project 
  */
 router.get('/members/:id', (req, res) => {

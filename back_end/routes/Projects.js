@@ -1,4 +1,5 @@
 // Require necessary NPM packages
+
 const express = require("express");
 const projects = require("../models/Projects.js");
 const Users = require("../models/Users.js");
@@ -7,7 +8,7 @@ const Users = require("../models/Users.js");
 const router = express.Router();
 
 //this user has two project: one as team member and another as manager his name: 'Najed'
-const userId = "6012b20254cb2f31685b14a4";
+const userId = '60115b690ba0311c388c9aa8';
 
 /**
  * Action:      INDEX
@@ -15,6 +16,25 @@ const userId = "6012b20254cb2f31685b14a4";
  * URI:         /projects
  * Description: Get the user's projects as manager or member
  */
+router.get('/projects/:id', (req, res) => {
+    projects.find({
+        //get user's projects
+        // { "members.userId": userId },
+
+        //get user's projects with role === '...'
+        //        members: { $elemMatch: { userId: userId, role: 'manager' } }},
+        members: { $elemMatch: { userId: userId } }
+    },
+        // user.findById({ "_id": userId },
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            }
+            res.json(result);
+            console.log(result)
+        });
+});
+
 router.get("/projects", (req, res) => {
   projects.find(
     {
@@ -32,7 +52,6 @@ router.get("/projects", (req, res) => {
   );
 });
 
-<<<<<<< HEAD
 
 router.get('/projects/:id/:role', (req, res) => {
     projects.find({
@@ -40,34 +59,18 @@ router.get('/projects/:id/:role', (req, res) => {
         // { "members.userId": userId },
 
         //get user's projects with role === '...'
-        members: { $elemMatch: { userId: req.params.id, role: "manager" } },
+               members: { $elemMatch: { userId: req.params.role, role: req.params.role }},
         // members: { $elemMatch: { userId: userId } }
-=======
-router.get("/projects/:id/:role", (req, res) => {
-  projects.find(
-    {
-      //get user's projects
-      // { "members.userId": userId },
-
-      //get user's projects with role === '...'
-      members: {
-        $elemMatch: { userId: req.params.role, role: req.params.role },
-      },
-      // members: { $elemMatch: { userId: userId } }
->>>>>>> 94e04cd169d26c0770ec29d2b6e113b8947f8589
     },
-    (err, result) => {
-      if (err) {
-        console.log(err);
-      }
-      res.json(result);
-      console.log(result);
-    }
-  );
+        // user.findById({ "_id": userId },
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            }
+            res.json(result);
+            console.log(result)
+        });
 });
-
-<<<<<<< HEAD
-
 
 //User.findOne({'local.rooms': {$elemMatch: {name: req.body.username}}}, function (err, user) {
 
@@ -82,7 +85,5 @@ router.get("/projects/:id/:role", (req, res) => {
 //     })
 // });
 
-=======
->>>>>>> 94e04cd169d26c0770ec29d2b6e113b8947f8589
 // Export the Router so we can use it in the server.js file
 module.exports = router;

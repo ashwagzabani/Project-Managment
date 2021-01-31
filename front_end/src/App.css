@@ -45,8 +45,6 @@ li:hover {
   overflow-y: scroll;
   width: 22%;
   text-align: center;
-  /* left: 245px; */
-  /* flex: 1; */
   padding: "10px";
   height: 100%;
 }

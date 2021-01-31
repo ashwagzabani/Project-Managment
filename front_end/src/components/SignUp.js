@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
-
+import Apiconfig from '../Apiconfig'
 export default class SignUp extends Component {
     constructor(props){
       super(props);
@@ -47,7 +47,8 @@ export default class SignUp extends Component {
     };
     //we need to post that data into server
     //post registered to this endPoint which back end (Schema) - to MongoDB
-    axios.post("http://localhost:5000/signUp", registered).then((res) => {
+    axios.post(`${Apiconfig}/signUp`, registered).then((res) => {
+
       console.log("Response Data:", res.data);
       if (res.data === "Already Exist") {
         alert('You Already have account please login')
@@ -61,50 +62,50 @@ export default class SignUp extends Component {
       }
     });
   };
-    render(){
-        return(
-            <div>
-            <div className="container">
-              <div className="form-div">
-                <form onSubmit={this.onSubmit}>
-                  <input
-                    type="text"
-                    placeholder="User Name "
-                    onChange={(e) => {
-                      this.changeUserName(e);
-                    }}
-                    value={this.state.userName}
-                    className="form-control-from-group"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Email "
-                    onChange={(e) => {
-                      this.changeEmail(e);
-                    }}
-                    value={this.state.email}
-                    className="form-control-from-group"
-                  />
-                  <input
-                    type="password"
-                    placeholder="Password "
-                    onChange={(e) => {
-                      this.changepassword(e);
-                    }}
-                    value={this.state.password}
-                    className="form-control-from-group"
-                  />
-                  <input
-                    type="submit"
-                    className="btn btn-danger btn-black"
-                    value="Sign Up"
-                  />
-                </form>
-              </div>
-            </div>
+  render() {
+    return (
+      <div>
+        <div className="container">
+          <div className="form-div">
+            <form onSubmit={this.onSubmit}>
+              <input
+                type="text"
+                placeholder="User Name "
+                onChange={(e) => {
+                  this.changeUserName(e);
+                }}
+                value={this.state.userName}
+                className="form-control-from-group"
+              />
+              <input
+                type="text"
+                placeholder="Email "
+                onChange={(e) => {
+                  this.changeEmail(e);
+                }}
+                value={this.state.email}
+                className="form-control-from-group"
+              />
+              <input
+                type="password"
+                placeholder="Password "
+                onChange={(e) => {
+                  this.changepassword(e);
+                }}
+                value={this.state.password}
+                className="form-control-from-group"
+              />
+              <input
+                type="submit"
+                className="btn btn-danger btn-black"
+                value="Sign Up"
+              />
+            </form>
           </div>
-        );
-    }
+        </div>
+      </div>
+    );
+  }
 }
 
 

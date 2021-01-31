@@ -1,13 +1,7 @@
 const express = require('express');
-<<<<<<< HEAD
-=======
+const router = express.Router();
 const users = require('../models/Users.js')
 //you see this file and the project folder?
-
-// Instantiate a Router (mini app that only handles routes)
->>>>>>> 94e04cd169d26c0770ec29d2b6e113b8947f8589
-const router = express.Router();
-<<<<<<< HEAD:back_end/routes/SignUp.js
 
 users.create()
 /**
@@ -19,14 +13,15 @@ users.create()
 
 //------------------------------------------
 //SignUp request to create a user dependent in schema
-router.post('/signUp', async (req, res) => {
-  console.log('/signUp')
-=======
-const users= require('../models/Users');
+
 //SignUp request to create a user dependent in schema
 router.post('/signUp', async (req, res) => {
   console.log('/signUp');
->>>>>>> a946868be1e55c81862dd1e3f2bbd393f5278d70:back_end/routes/index.js
+  //to add new user into DB
+  var signedUpUser = new users({
+    //cheack in post man ---DONE
+    //userName field grap the user name from the body request which  mean the user name that write it by user in input form
+    userName: req.body.userName,
   //to add new user into DB
   const signedUpUser = new users({
     //cheack in post man ---DONE
