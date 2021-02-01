@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Apiconfig from "../ApiConfig";
+import { Redirect} from "react-router-dom";
 
 export default class Login extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       email: "",
       password: "",
+      isLogged: false,
       userId: "",
     };
     this.onSubmit = this.onSubmit.bind(this);
@@ -27,6 +29,7 @@ export default class Login extends Component {
       if (res.data === "Login successful!") {
         alert("Correct email and password");
         this.setState({ userId: res.data._id });
+        this.setState({ isLogged: true });
       }
       if (res.data === "Password is not correct") {
         alert("Wrong Password");
@@ -55,6 +58,10 @@ export default class Login extends Component {
   };
   render() {
     return (
+      <>
+      {this.state.isLogged ? (
+        <Redirect to="/" />
+      ) : (
       <div>
         <div className="form-div">
           <form onSubmit={this.onSubmit}>
@@ -93,6 +100,8 @@ export default class Login extends Component {
           </form>
         </div>
       </div>
-    );
+        )}
+        </>
+      );  
   }
 }

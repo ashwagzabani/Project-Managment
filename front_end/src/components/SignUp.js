@@ -15,7 +15,6 @@ export default class SignUp extends Component {
     this.changepassword = this.changepassword.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-
   changeUserName = (event) => {
     //change userName by user name that write it by user
     this.setState({

@@ -11,6 +11,7 @@ import DeleteProject from "./project/DeletProject";
 import ProjectDetails from "./project/ProjectDetails";
 
 export default class Sidebar extends Component {
+  
   render() {
     // <div class="dropdown-container">
     //   <a href="#">Link 1</a>
@@ -23,7 +24,7 @@ export default class Sidebar extends Component {
         path: "/",
         exact: true,
         sidebar: () => <div></div>,
-        main: () => <Home username={this.props.username} isAuthed={true} />,
+        main: (props)=> <Home username={this.props.username} isAuthed={true} />,
       },
       {
         path: "/NewProject",
