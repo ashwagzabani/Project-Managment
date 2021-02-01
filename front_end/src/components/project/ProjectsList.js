@@ -3,7 +3,6 @@ import API_URL from "../../ApiConfig";
 import axios from "axios";
 import { BrowserRouter as Router, Route, Swich, Link } from "react-router-dom";
 import ProjectDetails from "./ProjectDetails";
-
 class ProjectsList extends Component {
   constructor() {
     super();
@@ -11,7 +10,6 @@ class ProjectsList extends Component {
       projecs_list: [],
       userId: "60115b690ba0311c388c9aa5",
     };
-
     // this.getProjectDetails = this.getProjectDetails.bind(this)
   }
   componentDidMount = () => {
@@ -27,7 +25,6 @@ class ProjectsList extends Component {
         console.log("ERROR:", error);
       });
   };
-
   getProjectDetails = (projectId) => {
     return <ProjectDetails projectId={projectId} />;
   };
@@ -55,5 +52,4 @@ class ProjectsList extends Component {
     return <div className="ProjectsList">{showAllProjectsList}</div>;
   }
 }
-
 export default ProjectsList;

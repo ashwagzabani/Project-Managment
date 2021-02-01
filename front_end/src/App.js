@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -8,7 +9,7 @@ import { Redirect } from "react-router-dom";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import CreateNewTask from "./components/Task/CreateNewTask";
 export default class App extends Component {
-  constructor() {
+constructor() {
     super();
     //signUp faild
     this.state = {
@@ -43,6 +44,7 @@ export default class App extends Component {
           <CreateNewTask />
         </div>
       </div>
+
     );
   }
 }

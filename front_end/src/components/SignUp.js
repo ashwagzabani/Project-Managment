@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import axios from "axios";
-import Apiconfig from "../ApiConfig";
+import axios from 'axios';
+import API_URL from "../apiConfig";
+import Sidebar from "./Sidebar";
 export default class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -9,7 +10,7 @@ export default class SignUp extends Component {
       userName: "",
       email: "",
       password: "",
-    };
+    }
     this.changeUserName = this.changeUserName.bind(this);
     this.changeEmail = this.changeEmail.bind(this);
     this.changepassword = this.changepassword.bind(this);
@@ -46,7 +47,7 @@ export default class SignUp extends Component {
     };
     //we need to post that data into server
     //post registered to this endPoint which back end (Schema) - to MongoDB
-    axios.post(`${Apiconfig}/signUp`, registered).then((res) => {
+    axios.post(`${API_URL}/signUp`, registered).then((res) => {
       console.log("Response Data:", res.data);
       if (res.data === "Already Exist") {
         alert("You Already have account please login");

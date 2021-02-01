@@ -6,7 +6,8 @@ const Schema = mongoose.Schema;
 const projectsSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true
+        required: true, unique: true
+
     },
     members: [{
         userId: {

@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import axios from "axios";
-import Apiconfig from "../ApiConfig";
-import { Redirect} from "react-router-dom";
-
+import axios from 'axios';
+import API_URL from "../apiConfig";
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -24,7 +22,7 @@ export default class Login extends Component {
       email: this.state.email,
       password: this.state.password,
     };
-    axios.post("Apiconfig", loginInfo).then((res) => {
+    axios.post(`${API_URL}/login`,loginInfo).then((res) => {
       console.log("Response Data:", res.data);
       if (res.data === "Login successful!") {
         alert("Correct email and password");
