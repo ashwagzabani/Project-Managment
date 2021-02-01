@@ -1,14 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const users = require("../models/Users");
+const User = require("../models/Users");
 //SignUp request to create a user dependent in schema
 router.post("/signUp", async (req, res) => {
   console.log("/signUp");
   //to add new user into DB
-  const signedUpUser = new users({
+  const signedUpUser = new User({
     //cheack in post man ---DONE
     //userName field grap the user name from the body request which  mean the user name that write it by user in input form
-    userName: req.registered.userName,
+    userName: req.body.userName,
     //grap the email that user enter in body req (when the user enter into submit)
     email: req.body.email,
     //grap the email that user enter in body req (when the user enter into submit)
@@ -32,7 +32,7 @@ router.post("/signUp", async (req, res) => {
 });
 async function verifyUser(req) {
   try {
-    const userExisit = await users.findOne({ email: req.body.email });
+    const userExisit = await User.findOne({ email: req.body.email });
     return userExisit;
     // next();
   } catch (error) {

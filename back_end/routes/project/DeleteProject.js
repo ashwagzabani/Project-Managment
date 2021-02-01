@@ -1,5 +1,5 @@
 const express = require("express");
-const projects = require("../models/Projects.js");
+const projects = require("../../models/Projects.js");
 
 // Instantiate a Router (mini app that only handles routes)
 const router = express.Router();
@@ -10,13 +10,7 @@ const router = express.Router();
  * URI:         /project/id/
  * Description: Update an esisting project status, Date and/or title
  */
-router.get("/project/:id", (req, res) => {
-  projects.findByIdAndDelete({ _id: req.params.id }, (error, result) => {
-    if (error) {
-      console.log(error);
-    } else console.log("DELETE SUCCESS");
-  });
-});
+
 
 router.delete("/project/:id", (req, res) => {
   projects.findByIdAndDelete({ _id: req.params.id }, (error, result) => {

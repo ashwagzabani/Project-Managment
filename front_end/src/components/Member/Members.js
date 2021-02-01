@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import API_URL from "../../apiConfig";
+import API_URL from "../../ApiConfig";
 
 class Members extends Component {
     constructor(props) {

@@ -1,7 +1,7 @@
 // Require necessary NPM packages
 const express = require('express');
-const projects = require('../models/Projects.js')
-const Users = require('../models/Users.js')
+const projects = require('../../models/Projects.js')
+const Users = require('../../models/Users.js')
 
 // Instantiate a Router (mini app that only handles routes)
 const router = express.Router();
