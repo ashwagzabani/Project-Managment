@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import API_URL from "../../apiConfig";
+import API_URL from "../../Apiconfig";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Members from '../Member/Members';

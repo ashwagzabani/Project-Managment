@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import API_URL from "../../apiConfig";
+import API_URL from "../../Apiconfig";
 import axios from "axios";
 import { BrowserRouter as Router, Route, Swich, Link } from "react-router-dom";
 import ProjectDetails from "./ProjectDetails";

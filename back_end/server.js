@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 //test code -------------------------------
-const { usersData, projectsData, oneProject,user } = require('./models/SeedData');
+const { usersData, projectsData, oneProject, user } = require('./models/SeedData');
 
 //test code -------------------------------
 
@@ -43,13 +43,13 @@ mongoose.connection.once("open", () => {
   //     console.log(result);
   //   }
   // });
-  users.insertMany(user, (err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(result);
-    }
-  });
+  // users.insertMany(user, (err, result) => {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     console.log(result);
+  //   }
+  // });
   // console.log(projectsData[0].members);
 });
 // Instantiate Express Application Object

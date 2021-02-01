@@ -19,8 +19,8 @@ router.get("/projects", (req, res) => {
   projects.find(
     {
       //get user's projects
-        //  "members.userId": userId
-        // members: { $elemMatch: { userId: userId } },
+      //  "members.userId": userId
+      // members: { $elemMatch: { userId: userId } },
     },
     (err, result) => {
       if (err) {
@@ -33,13 +33,14 @@ router.get("/projects", (req, res) => {
 });
 
 router.get('/projects/:id/:role', (req, res) => {
-    projects.find({
-        //get user's projects
-        // { "members.userId": userId },
+  projects.find({
+    //get user's projects
+    // { "members.userId": userId },
 
-        //get user's projects with role === '...'
-        members: { $elemMatch: { userId: req.params.id, role: "manager" } }},
-        // members: { $elemMatch: { userId: userId } }
+    //get user's projects with role === '...'
+    members: { $elemMatch: { userId: req.params.id, role: "manager" } }
+  },
+    // members: { $elemMatch: { userId: userId } }
     (err, result) => {
       if (err) {
         console.log(err);
@@ -50,5 +51,63 @@ router.get('/projects/:id/:role', (req, res) => {
   );
 });
 
+
+/**
+ * Action:      INDEX
+ * Method:      GET
+ * URI:         /projects
+ * Description: Get the user's projects as manager or member
+ */
+router.get('/projects/:id', (req, res) => {
+  projects.find({
+    //get user's projects
+    // { "members.userId": userId },
+
+    //get user's projects with role === '...'
+    //        members: { $elemMatch: { userId: userId, role: 'manager' } }},
+    members: { $elemMatch: { userId: req.params.id } }
+  },
+    // user.findById({ "_id": userId },
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      }
+      res.json(result);
+      console.log(result)
+    });
+});
+router.get("/projects/:id/:role", (req, res) => {
+  projects.find(
+    {
+      //get user's projects
+      // { "members.userId": userId },
+
+      //get user's projects with role === '...'
+      // members: { $elemMatch: { userId: req.params.id, role: "manager" } },      members: {
+      $elemMatch: { userId: req.params.id, role: req.params.role }
+    },
+    // members: { $elemMatch: { userId: userId } }
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      }
+      res.json(result);
+      console.log(result);
+    }
+  );
+});
+
+
+router.get("/projects/:projectId", (req, res) => {
+  projects.findOne({ "_id": req.params.projectId },
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      }
+      res.json(result);
+      console.log(result);
+    }
+  );
+});
 // Export the Router so we can use it in the server.js file
 module.exports = router;

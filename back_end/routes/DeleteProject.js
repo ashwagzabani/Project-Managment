@@ -10,13 +10,13 @@ const router = express.Router();
  * URI:         /project/id/
  * Description: Update an esisting project status, Date and/or title
  */
-router.get("/project/:id", (req, res) => {
-  projects.findByIdAndDelete({ _id: req.params.id }, (error, result) => {
-    if (error) {
-      console.log(error);
-    } else console.log("DELETE SUCCESS");
-  });
-});
+// router.get("/project/:id", (req, res) => {
+//   projects.findByIdAndDelete({ _id: req.params.id }, (error, result) => {
+//     if (error) {
+//       console.log(error);
+//     } else console.log("DELETE SUCCESS");
+//   });
+// });
 
 router.delete("/project/:id", (req, res) => {
   projects.findByIdAndDelete({ _id: req.params.id }, (error, result) => {

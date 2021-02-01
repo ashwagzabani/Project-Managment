@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import API_URL from "../../apiConfig";
+import API_URL from "../../Apiconfig";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 class UpdateProject extends Component {

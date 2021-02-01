@@ -17,18 +17,20 @@ const projectId = '6011b5dcd2af381b2c6a09b6';
  * Description: Get all members in specific project with role = 'manager'
  */
 router.get('/members', (req, res) => {
-    projects.findOne({members: { $elemMatch: { userId: userId, role: 'manager' } },
-        _id:projectId
+    projects.findOne({
+        members: { $elemMatch: { userId: userId, role: 'manager' } },
+        _id: projectId
     },
-    (err, result) => {
-        if (err) {
-            console.log(err);
-        }
-        res.json(result);
-        console.log(result)
-    });
- * Description: Get all members in specific project 
- */
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            }
+            res.json(result);
+            console.log(result)
+        });
+})
+/* Description: Get all members in specific project 
+*/
 router.get('/member/:id', (req, res) => {
     Users.findOne({ _id: req.params.id },
         (err, result) => {
@@ -41,7 +43,7 @@ router.get('/member/:id', (req, res) => {
 });
 
 router.get('/users', (req, res) => {
-    Users.find({ },
+    Users.find({},
         (err, result) => {
             if (err) {
                 console.log(err);

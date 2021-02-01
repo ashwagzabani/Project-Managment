@@ -66,9 +66,6 @@ export default class CreateNewproject extends Component {
         })
     }
 
-
-
-
     render() {
         return (
             <div>
