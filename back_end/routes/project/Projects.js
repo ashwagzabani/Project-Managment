@@ -1,7 +1,7 @@
 // Require necessary NPM packages
 const express = require("express");
-const projects = require("../models/Projects.js");
-const Users = require("../models/Users.js");
+const projects = require("../../models/Projects.js");
+const Users = require("../../models/Users.js");
 
 // Instantiate a Router (mini app that only handles routes)
 const router = express.Router();
@@ -15,12 +15,11 @@ const userId = "6012b20254cb2f31685b14a4";
  * URI:         /projects
  * Description: Get the user's projects as manager or member
  */
-router.get("/projects", (req, res) => {
+router.get("/projects/:id", (req, res) => {
   projects.find(
     {
       //get user's projects
-        //  "members.userId": userId
-        // members: { $elemMatch: { userId: userId } },
+      "members.userId": req.params.id,
     },
     (err, result) => {
       if (err) {
@@ -32,14 +31,13 @@ router.get("/projects", (req, res) => {
   );
 });
 
-router.get('/projects/:id/:role', (req, res) => {
-    projects.find({
-        //get user's projects
-        // { "members.userId": userId },
-
-        //get user's projects with role === '...'
-        members: { $elemMatch: { userId: req.params.id, role: "manager" } }},
-        // members: { $elemMatch: { userId: userId } }
+router.get("/projects/:id/:role", (req, res) => {
+  projects.find(
+    {
+      //get user's projects with role === '...'
+      members: { $elemMatch: { userId: req.params.id, role: "manager" } },
+    },
+    // members: { $elemMatch: { userId: userId } }
     (err, result) => {
       if (err) {
         console.log(err);

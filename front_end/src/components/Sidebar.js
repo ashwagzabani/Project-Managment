@@ -5,7 +5,7 @@ import ProjectsList from "./project/ProjectsList";
 import UpdateProject from "./project/UpdateProject";
 import SignUp from "./SignUp.js";
 import Login from "./Login.js";
-import CreateNewproject from './project/CreateNewproject'
+import CreateNewproject from "./project/CreateNewproject";
 import Members from "./Member/Members";
 import DeleteProject from "./project/DeletProject";
 import ProjectDetails from "./project/ProjectDetails";
@@ -13,7 +13,6 @@ import ProjectDetails from "./project/ProjectDetails";
 export default class Sidebar extends Component {
   
   render() {
-
     // <div class="dropdown-container">
     //   <a href="#">Link 1</a>
     //   <a href="#">Link 2</a>
@@ -43,7 +42,7 @@ export default class Sidebar extends Component {
         path: "/project/list",
         exact: true,
         sidebar: () => <div></div>,
-        main: () => <DeleteProject />,
+        main: () => <ProjectsList />,
       },
       // ,{
       //   path: "/project/new",
@@ -55,25 +54,36 @@ export default class Sidebar extends Component {
         path: "/signup",
         exact: true,
         sidebar: () => <div></div>,
-        main: () => <SignUp changeEmail={this.props.changeEmail} changepassword={this.props.changepassword} changeUserName={this.props.changeUserName} onSubmit={this.props.onSubmit}
-          userName={this.props.userName} passwprd={this.props.password} email={this.props.email} />,
+        main: () => (
+          <SignUp
+            changeEmail={this.props.changeEmail}
+            changepassword={this.props.changepassword}
+            changeUserName={this.props.changeUserName}
+            onSubmit={this.props.onSubmit}
+            userName={this.props.userName}
+            passwprd={this.props.password}
+            email={this.props.email}
+          />
+        ),
       },
       {
         path: "/login",
         exact: true,
         sidebar: () => <div></div>,
-        main: () => <Login/>,
-      }, {
+        main: () => <Login loginHandler={this.props.loginHandler} />,
+      },
+      {
         path: "/members",
         exact: true,
         sidebar: () => <div></div>,
         main: () => <Members />,
-      }, {
+      },
+      {
         path: "/project/details",
         exact: true,
         sidebar: () => <div></div>,
         main: (props) => <ProjectDetails {...props} />,
-      }
+      },
     ];
 
     return (
