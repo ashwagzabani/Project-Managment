@@ -43,13 +43,13 @@ mongoose.connection.once("open", () => {
   //     console.log(result);
   //   }
   // });
-  users.insertMany(user, (err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(result);
-    }
-  });
+  // users.insertMany(user, (err, result) => {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     console.log(result);
+  //   }
+  // });
   // console.log(projectsData[0].members);
 });
 // Instantiate Express Application Object

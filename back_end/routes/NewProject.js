@@ -7,7 +7,7 @@ const users = require('../models/Users');
 // Instantiate a Router (mini app that only handles routes)
 const router = express.Router();
 
-/**
+/*
  * Action:      CREATE
  * Method:      POST
  * URI:         /project/new

@@ -8,7 +8,7 @@ router.post("/signUp", async (req, res) => {
   const signedUpUser = new users({
     //cheack in post man ---DONE
     //userName field grap the user name from the body request which  mean the user name that write it by user in input form
-    userName: req.registered.userName,
+    userName: req.body.userName,
     //grap the email that user enter in body req (when the user enter into submit)
     email: req.body.email,
     //grap the email that user enter in body req (when the user enter into submit)

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import API_URL from "../../apiConfig";
+import API_URL from "../../ApiConfig";
 import axios from "axios";
 export default class DeletProject extends Component {
   deleteProjectByID = (id) => {

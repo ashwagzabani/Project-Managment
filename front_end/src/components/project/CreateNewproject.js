@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Sidebar from "../Sidebar.js";
-import Apiconfig from '../../Apiconfig'
+import Apiconfig from '../../ApiConfig'
 export default class CreateNewproject extends Component {
     constructor() {
         super();
@@ -22,7 +22,7 @@ export default class CreateNewproject extends Component {
     }
     //after user Submit the data
     onSubmit = (e) => {
-        /*The Event interface's preventDefault() method tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be. The event continues to propagate as usual, unless one of its event listeners calls stopPropagation() or stopImmediatePropagation(), either of which terminates propagation at once.*/
+        //The Event interface's preventDefault() method tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be. The event continues to propagate as usual, unless one of its event listeners calls stopPropagation() or stopImmediatePropagation(), either of which terminates propagation at once.*/
         e.preventDefault();
 
         //do not need to refresh the page after user submit it must be forward into home page    event.preventDefault()
@@ -43,7 +43,7 @@ export default class CreateNewproject extends Component {
     }
     //Add user into Project
     AddUser = (e) => {
-        /*The Event interface's preventDefault() method tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be. The event continues to propagate as usual, unless one of its event listeners calls stopPropagation() or stopImmediatePropagation(), either of which terminates propagation at once.*/
+        //The Event interface's preventDefault() method tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be. The event continues to propagate as usual, unless one of its event listeners calls stopPropagation() or stopImmediatePropagation(), either of which terminates propagation at once.*/
         e.preventDefault()
         let copyMembers = [...this.state.members]
         axios.post(`${Apiconfig}/users`, this.state.userEmail).then((res) => {
