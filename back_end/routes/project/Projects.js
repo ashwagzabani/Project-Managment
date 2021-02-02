@@ -33,23 +33,39 @@ router.get('/projects/:id', (req, res) => {
       console.log(result)
     });
 });
-router.get("/projects", (req, res) => {
-  router.get("/projects/:id", (req, res) => {
-    projects.find(
-      {
-        //get user's projects
-        "members.userId": req.params.id,
-      },
-      (err, result) => {
-        if (err) {
-          console.log(err);
-        }
-        res.json(result);
-        console.log(result);
+// router.get("/projects", (req, res) => {
+router.get("/project/:id", (req, res) => {
+  projects.findById(
+    {
+      //get user's projects
+      _id: req.params.id,
+    },
+    (err, result) => {
+      if (err) {
+        console.log(err);
       }
-    );
-  });
+      res.json(result);
+      console.log(result);
+    }
+  );
 });
+
+router.get("/projects", (req, res) => {
+  projects.find(
+    {
+      //get user's projects
+
+    },
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      }
+      res.json(result);
+      console.log(result);
+    }
+  );
+});
+// });
 router.get('/projects/:id/:role', (req, res) => {
   projects.find({
     //get user's projects

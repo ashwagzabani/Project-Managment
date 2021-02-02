@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import API_URL from "../../ApiConfig";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link, Redirect } from "react-router-dom";
 
 class UpdateProject extends Component {
     constructor(props) {
@@ -10,7 +10,9 @@ class UpdateProject extends Component {
             projectid: props.location.state.id,
             projectTitle: props.location.state.title,
             projectStartDate: props.location.state.startDate,
-            projectEndDate: props.location.state.endDate
+            projectEndDate: props.location.state.endDate,
+            newData: {},
+            redirect: false
         }
     }
 
@@ -32,6 +34,11 @@ class UpdateProject extends Component {
         axios.patch(`${API_URL}/project/${this.state.projectid}`, newData)
             .then(res => {
                 console.log('Response Data:', res.data)
+                this.setState({
+                    newData: res.data,
+                    redirect: true
+                })
+
             })
             .catch(error => {
                 console.log("ERROR:", error);
@@ -39,6 +46,13 @@ class UpdateProject extends Component {
     }
 
     render() {
+        if (this.state.redirect) {
+            return <Redirect to={{
+                pathname: `/project/details/${this.state.projectid}`
+                , state: { projectDetils: this.state.newData }
+            }
+            } />;
+        }
         console.log(this.state.projectEndDate);
         return (
             <div className="UpdateProject">
@@ -58,7 +72,10 @@ class UpdateProject extends Component {
                             <input type="date" class="form-control" name="projectEndDate" defaultValue={this.state.projectEndDate} onChange={this.getChangeData} />
                         </div>
                         <Link to="/" className="btn btn-default">Cancel</Link>
+                        {/* <Link to={{ pathname: `/project/details/${this.state.projectid}`, state: { projectDetils: this.state.newData } }} className="btn btn-success" >Save</Link> */}
+                        {/* <Link to={{ pathname: `/project/details/${this.state.projectid}`, state: { projectDetils: this.state.newData } }} className="btn btn-success" >Save</Link> */}
                         <button type="submit" className="btn btn-success" >Save</button>
+
                     </fieldset>
                 </form>
             </div >

@@ -39,7 +39,7 @@ class ProjectsList extends Component {
       console.log(projects._id);
       return (
         <div className='projectList'>
-          <p><Link to={{ pathname: `/project/details/`, state: { projectDetils: projects } }} onClick={() => this.getProjectDetails(projects._id)} >{projects.title}</Link></p>
+          <p><Link to={{ pathname: `/project/details/${projects._id}`, state: { projectDetils: projects } }} onClick={() => this.getProjectDetails(projects._id)} >{projects.title}</Link></p>
           {/* <p >{projects.title}</p> */}
           {/* <p>member: {projects.members.length}</p> */}
           {/* <p>{ task}</p> */}

@@ -37,7 +37,7 @@ export default class Sidebar extends Component {
         path: "/project/update",
         exact: true,
         sidebar: () => <div></div>,
-        main: () => <UpdateProject />,
+        main: (props) => <UpdateProject {...props} />,
       },
       {
         path: "/project/list",
@@ -87,7 +87,7 @@ export default class Sidebar extends Component {
         main: () => <Members />,
       },
       {
-        path: "/project/details",
+        path: "/project/details/:id",
         exact: true,
         sidebar: () => <div></div>,
         main: (props) => <ProjectDetails {...props} />,
