@@ -170,7 +170,7 @@ export default class CreateNewproject extends Component {
         return (
             <div>
                 <div className="card">
-                    <h4 className="card-header">New Project</h4>
+                    <h3 className="card-header">New Project</h3>
                     <div className="card-body">
                         <form onSubmit={this.onSubmit}>
 
@@ -215,7 +215,7 @@ export default class CreateNewproject extends Component {
                                 <form >
                                     <h4>Add Project Team</h4>
 
-                                    <label for="addUser">User Email</label>
+                                    <label for="addUser">User Name</label>
                                     <div className="form-inline mx-sm-3 mb-2">
                                         <input type="text" onChange={(e) => {
                                             this.setState({

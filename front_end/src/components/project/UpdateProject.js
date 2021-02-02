@@ -55,29 +55,33 @@ class UpdateProject extends Component {
         }
         console.log(this.state.projectEndDate);
         return (
-            <div className="UpdateProject">
-                <form onSubmit={this.saveChnages}>
-                    <fieldset>
-                        <label>Update Project Details</label>
-                        <div class="form-group">
-                            <label>Project title</label>
-                            <input type="text" name="projectTitle" class="form-control" defaultValue={this.state.projectTitle} onChange={this.getChangeData} />
-                        </div>
-                        <div class="form-group">
-                            <label>Start Date</label>
-                            <input type="date" name="projectStartDate" class="form-control" defaultValue={this.state.projectStartDate} onChange={this.getChangeData} />
-                        </div>
-                        <div class="form-group">
-                            <label>End Date</label>
-                            <input type="date" class="form-control" name="projectEndDate" defaultValue={this.state.projectEndDate} onChange={this.getChangeData} />
-                        </div>
-                        <Link to="/" className="btn btn-default">Cancel</Link>
-                        {/* <Link to={{ pathname: `/project/details/${this.state.projectid}`, state: { projectDetils: this.state.newData } }} className="btn btn-success" >Save</Link> */}
-                        {/* <Link to={{ pathname: `/project/details/${this.state.projectid}`, state: { projectDetils: this.state.newData } }} className="btn btn-success" >Save</Link> */}
-                        <button type="submit" className="btn btn-success" >Save</button>
+            <div className="card">
+                <h3 className="card-header">Update Project Details</h3>
+                <div className="card-body">
+                    <form onSubmit={this.saveChnages}>
+                        <fieldset>
+                            <div class="form-group">
+                                <label>Project title</label>
+                                <input type="text" name="projectTitle" class="form-control" defaultValue={this.state.projectTitle} onChange={this.getChangeData} />
+                            </div>
+                            <div class="form-group">
+                                <label>Start Date</label>
+                                <input type="date" name="projectStartDate" class="form-control" defaultValue={this.state.projectStartDate} onChange={this.getChangeData} />
+                            </div>
+                            <div class="form-group">
+                                <label>End Date</label>
+                                <input type="date" class="form-control" name="projectEndDate" defaultValue={this.state.projectEndDate} onChange={this.getChangeData} />
+                            </div>
 
-                    </fieldset>
-                </form>
+                            <div className="card-footer">
+                                <Link to="/" className="btn btn-default">Cancel</Link>
+                                {/* <Link to={{ pathname: `/project/details/${this.state.projectid}`, state: { projectDetils: this.state.newData } }} className="btn btn-success" >Save</Link> */}
+                                {/* <Link to={{ pathname: `/project/details/${this.state.projectid}`, state: { projectDetils: this.state.newData } }} className="btn btn-success" >Save</Link> */}
+                                <button type="submit" className="btn btn-danger" >Save</button>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
             </div >
         );
     }
