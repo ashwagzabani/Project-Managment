@@ -30,7 +30,6 @@ const deleteTaskRouter = require("./routes/task/DeleteTasks");
 
 // Establish Database Connection
 mongoose.connect(db_url, { useNewUrlParser: true, useUnifiedTopology: true });
-
 // Instantiate Express Application Object
 const app = express();
 app.get("/", (req, res) => {
@@ -62,10 +61,10 @@ app.use(loginRouter);
 app.use(newProjectRouter);
 app.use(membersInProjectRouter);
 app.use(projectRouter);
+app.use(signUpRouter);
 app.use(updateProjectRouter);
 app.use(deleteProjectRouter);
 app.use(addNewMember);
-app.use(signUpRouter);
 //Task imorted routers
 app.use(NewTaskRouter);
 app.use(TasksRouter);

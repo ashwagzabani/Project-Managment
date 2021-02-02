@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -6,7 +7,7 @@ import Form from './components/Forms'
 // import "./form.css";
 import CreateNewTask from "./components/Task/CreateNewTask";
 export default class App extends Component {
-  constructor() {
+constructor() {
     super();
     //signUp faild
     this.state = {
@@ -40,6 +41,7 @@ export default class App extends Component {
           />
         </div>
       </div>
+
     );
   }
 }

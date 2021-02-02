@@ -23,9 +23,7 @@ router.post("/login", async (req, res) => {
       let isPasswordCorrect =
         loginInfo.password === user.password ? true : false;
       if (isPasswordCorrect) {
-        res.json(user);
-        console.log(user);
-        throw "Login successful!";
+        throw res.json(user);
       } else {
         throw "Password is not correct";
       }
