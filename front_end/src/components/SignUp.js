@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
-import API_URL from "../apiConfig";
+import API_URL from "../ApiConfig";
 import Sidebar from "./Sidebar";
 export default class SignUp extends Component {
   constructor(props) {

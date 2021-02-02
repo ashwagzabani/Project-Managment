@@ -9,7 +9,7 @@ import { Redirect } from "react-router-dom";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import CreateNewTask from "./components/Task/CreateNewTask";
 export default class App extends Component {
-constructor() {
+  constructor() {
     super();
     //signUp faild
     this.state = {
@@ -41,7 +41,6 @@ constructor() {
             loginHandler={this.loginHandler}
             userId={this.state.userId}
           />
-          <CreateNewTask />
         </div>
       </div>
 

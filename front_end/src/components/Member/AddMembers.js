@@ -2,14 +2,14 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Sidebar from "../Sidebar.js";
-import Apiconfig from '../../apiConfig'
+import Apiconfig from '../../ApiConfig'
 export default class AddMembers extends Component {
     constructor() {
         super();
         this.state = {
             userEmail: '',
             members: [],
-            projectName:''
+            projectName: ''
         }
     }
     //Add user into Project
@@ -45,7 +45,7 @@ export default class AddMembers extends Component {
             <div>
                 <form onSubmit={this.AddUser}>
 
-                  <h2>Project</h2>
+                    <h2>Project</h2>
 
 
                     <h4>Add Project Team</h4>
@@ -53,7 +53,7 @@ export default class AddMembers extends Component {
                     <label for="ProjectName">Project Name:</label>
                     <input type="text" onChange={(e) => {
                         this.setState({
-                           projectName: e.target.value,
+                            projectName: e.target.value,
                         });
                     }} value={this.state.projectName} />
 

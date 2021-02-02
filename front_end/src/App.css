@@ -97,8 +97,15 @@ li:hover {
   margin: 10px;
 }
 
-.card-header {
+.card-header{
   display: inline-flex;
   justify-content: space-between;
 }
+.memberList{
+  display: inline-flex !important;
+  justify-content: space-between;
+}
 
+.fa-trash, .fa-edit{
+  padding-top: 10px;
+}

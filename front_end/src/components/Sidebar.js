@@ -9,10 +9,10 @@ import CreateNewproject from "./project/CreateNewproject";
 import Members from "./Member/Members";
 import DeleteProject from "./project/DeletProject";
 import ProjectDetails from "./project/ProjectDetails";
-import AddMembers from './project/AddMembers'
+import AddMembers from './Member/AddMembers'
 
 export default class Sidebar extends Component {
-  
+
   render() {
     // <div class="dropdown-container">
     //   <a href="#">Link 1</a>
@@ -25,10 +25,10 @@ export default class Sidebar extends Component {
         path: "/",
         exact: true,
         sidebar: () => <div></div>,
-        main: (props)=> <Home username={this.props.username} isAuthed={true} />,
+        main: (props) => <Home username={this.props.username} isAuthed={true} />,
       },
       {
-        path: "/NewProject",
+        path: "/newProject",
         exact: true,
         sidebar: () => <div></div>,
         main: () => <CreateNewproject username={this.props.username} />,
@@ -37,7 +37,13 @@ export default class Sidebar extends Component {
         path: "/project/update",
         exact: true,
         sidebar: () => <div></div>,
-        main: () => <UpdateProject />,
+        main: (props) => <UpdateProject {...props} />,
+      },
+      {
+        path: "/project/list",
+        exact: true,
+        sidebar: () => <div></div>,
+        main: () => <DeleteProject />,
       }
       ,
       {
@@ -81,12 +87,12 @@ export default class Sidebar extends Component {
         main: () => <Members />,
       },
       {
-        path: "/project/details",
+        path: "/project/details/:id",
         exact: true,
         sidebar: () => <div></div>,
         main: (props) => <ProjectDetails {...props} />,
       }
-,
+      ,
       {
         path: "/AddMember",
         exact: true,
@@ -118,7 +124,7 @@ export default class Sidebar extends Component {
                 <Link to="/AddMember">Add Member</Link>
               </li>
 
-              
+
               <li className="fas fa-home">
                 <Link to="/members">Members</Link>
               </li>
