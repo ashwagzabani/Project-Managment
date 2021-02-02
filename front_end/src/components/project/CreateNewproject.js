@@ -60,15 +60,22 @@ export default class CreateNewproject extends Component {
         if (memberUserName.userName === '') {
             alert('No member Selected')
         } else {
+
+
+
             // let copyMembers = [...this.state.members]
             axios.get(`${Apiconfig}/userrrrrr/${this.state.userName}`, memberUserName).then((res) => {
                 if (res.data.responseMessage === 'The user is there') {
                     console.log('The user data', res.data.userDetails)
-                    this.setState({
-                        member: res.data.userDetails,
-                        temporaryMembersList: this.state.temporaryMembersList.concat(res.data.userDetails,)
+                    const temporaryMembersListForDb = this.state.temporaryMembersListForDb.slice();
+                    const membersIndex = temporaryMembersListForDb.findIndex(item => item.userId === res.data.userDetails._id);
+                    console.log(membersIndex);
+                    membersIndex > -1 ? alert("the user already added") : (
+                        this.setState({
+                            member: res.data.userDetails,
+                            temporaryMembersList: this.state.temporaryMembersList.concat(res.data.userDetails,)
 
-                    })
+                        }))
                     // alert(this.state.userName + 'added successfully')
                     // copyMembers.push(this.state.userName)
                     // this.setState({ members: copyMembers })
@@ -86,7 +93,9 @@ export default class CreateNewproject extends Component {
 
             }).catch((error) => {
                 console.log(error);
-            });
+
+            })
+
         }
     }
 
@@ -104,7 +113,6 @@ export default class CreateNewproject extends Component {
         };
         console.log("memebr", memebr);
         const temporaryMembersListForDb = this.state.temporaryMembersListForDb.slice();
-        // console.log(typeof memebr);
         const membersIndex = temporaryMembersListForDb.findIndex(item => item.userId === memebr.userId);
         console.log(membersIndex);
         membersIndex === -1 ? temporaryMembersListForDb.push(memebr) : console.log("the user already added");
@@ -122,37 +130,27 @@ export default class CreateNewproject extends Component {
     }
 
     removeMember = (member) => {
-        console.log(member);
+        // console.log(member);
         const temporaryMembersList = this.state.temporaryMembersList.slice();
-        console.log(temporaryMembersList);
+        // console.log(temporaryMembersList);
         const membersIndex = temporaryMembersList.findIndex(item => item.userName === member.userName);
-        console.log("index:", membersIndex)
+        // console.log("index:", membersIndex)
         membersIndex > -1 ? temporaryMembersList.splice(membersIndex, 1) : console.log("not there");
-        console.log(temporaryMembersList);
+        // console.log(temporaryMembersList);
 
         const temporaryMembersListForDb = this.state.temporaryMembersListForDb.slice();
         // console.log(typeof memebr);
         const memberIndex = temporaryMembersListForDb.findIndex(item => item.userId === member._id);
-        console.log("memberIndex", memberIndex);
+        // console.log("memberIndex", memberIndex);
         memberIndex > -1 ? temporaryMembersListForDb.splice(membersIndex, 1) : console.log("the user already added");
         this.setState({
             temporaryMembersList,
             temporaryMembersListForDb
         });
-        console.log(temporaryMembersListForDb);
-        console.log(temporaryMembersList);
+        // console.log(temporaryMembersListForDb);
+        // console.log(temporaryMembersList);
     }
-    /*
-    removeMember = (index) => {
-        console.log(index);
-        const membersList = this.state.temporaryMembersList.slice();
-        // console.log(typeof memebr);
-        const membersIndex = membersList.indexOf(index);
-        console.log(membersIndex);
-        membersIndex === -1 ? membersList.splice(index, 1) : console.log("the user already added");
-        this.setState({ membersList });
-    }
-    */
+
 
     render() {
         if (this.state.redirect) {
@@ -168,7 +166,7 @@ export default class CreateNewproject extends Component {
                 </div>
             )
         }) : "No members";
-        console.log(this.state.temporaryMembersList);
+        // console.log(this.state.temporaryMembersList);
         return (
             <div>
                 <div className="card">
