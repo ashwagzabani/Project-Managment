@@ -17,9 +17,9 @@ class ProjectDetails extends Component {
     };
   }
 
-  deleteMember = (index) => {
+  deleteMember = (id) => {
     console.log("delete btn clicked");
-    <DeletProject />
+    <DeletProject id={id} />
   }
   updateMember = (index) => {
     console.log("update btn clicked");
@@ -43,7 +43,7 @@ class ProjectDetails extends Component {
           <td><Members userId={member.userId} /></td>
           <td><Tasks userId={member.userId} projectId={this.state.projecsDetails._id} /></td>
           { isUserLoggedInManager ? (<td ><a href="#" onClick={() => this.deleteMember(member.userId)}><i className="fa fa-trash"></i></a></td>) : <td></td>}
-          { isUserLoggedInManager ? (<td ><a href="#" onClick={() => this.updateMember(member.userId)}><i className="fa fa-edit"></i></a></td>) : <td></td>}
+          { isUserLoggedInManager ? (<td ><a href="#" onClick={() => this.updateMember(this.state.projecsDetails._id)}><i className="fa fa-edit"></i></a></td>) : <td></td>}
         </tr >
       );
     }) : "" : "";

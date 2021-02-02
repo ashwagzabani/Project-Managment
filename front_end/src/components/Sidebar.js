@@ -40,7 +40,7 @@ export default class Sidebar extends Component {
         main: (props) => <UpdateProject {...props} />,
       },
       {
-        path: "/project/list",
+        path: "/project/delete",
         exact: true,
         sidebar: () => <div></div>,
         main: () => <DeleteProject />,
