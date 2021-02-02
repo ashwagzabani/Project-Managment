@@ -110,8 +110,9 @@ li:hover {
   padding-top: 10px;
 }
 
-.details{
+.details, .head{
   display: flex !important;
   justify-content: space-between;
 }
+
 

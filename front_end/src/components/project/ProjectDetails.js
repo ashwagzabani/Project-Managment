@@ -25,8 +25,8 @@ class ProjectDetails extends Component {
     console.log("update btn clicked");
   }
 
-  showAddMemberForm = () => {
-    this.setState({ showAddMemberForm: true })
+  showAddMemberForm = (show) => {
+    this.setState({ showAddMemberForm: show })
     console.log(this.state.showAddMemberForm);
   }
   render() {
@@ -108,9 +108,9 @@ class ProjectDetails extends Component {
 
 
             {this.state.showAddMemberForm ? '' :
-              <button className="btn btn-primary" onClick={() => this.showAddMemberForm()}>Add Member</button>
+              <button className="btn btn-danger" onClick={() => this.showAddMemberForm(true)}>Add Member</button>
             }
-            {this.state.showAddMemberForm ? <AddMembers /> : ""}
+            {this.state.showAddMemberForm ? <AddMembers projectId={this.state.projecsDetails._id} showAddMemberForm={this.showAddMemberForm}/> : ""}
             <table className="table">
               <tr>
                 <th>Team Members</th>
