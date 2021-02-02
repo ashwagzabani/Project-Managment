@@ -1,21 +1,21 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
-import Apiconfig from '../Apiconfig'
+import API_URL from "../ApiConfig";
+import Sidebar from "./Sidebar";
 export default class SignUp extends Component {
-    constructor(props){
-      super(props);
-      this.state={
-        userName: "",
-        email: "",
-        password: "",
-      }
-      this.changeUserName = this.changeUserName.bind(this);
-      this.changeEmail = this.changeEmail.bind(this);
-      this.changepassword = this.changepassword.bind(this);
-      this.onSubmit = this.onSubmit.bind(this);
+  constructor(props) {
+    super(props);
+    this.state = {
+      userName: "",
+      email: "",
+      password: "",
     }
-
+    this.changeUserName = this.changeUserName.bind(this);
+    this.changeEmail = this.changeEmail.bind(this);
+    this.changepassword = this.changepassword.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
   changeUserName = (event) => {
     //change userName by user name that write it by user
     this.setState({
@@ -47,17 +47,15 @@ export default class SignUp extends Component {
     };
     //we need to post that data into server
     //post registered to this endPoint which back end (Schema) - to MongoDB
-    axios.post(`${Apiconfig}/signUp`, registered).then((res) => {
-
+    axios.post(`${API_URL}/signUp`, registered).then((res) => {
       console.log("Response Data:", res.data);
       if (res.data === "Already Exist") {
-        alert('You Already have account please login')
+        alert("You Already have account please login");
       }
-      if (res.data._message === 'User validation failed') {
-        alert('Error!!')
-      }
-      else {
-        alert('Welcome')
+      if (res.data._message === "User validation failed") {
+        alert("Error!!");
+      } else {
+        alert("Welcome");
         console.log("User Data", registered);
       }
     });
@@ -66,8 +64,10 @@ export default class SignUp extends Component {
     return (
       <div>
         <div className="container">
-          <div className="form-div">
-            <form onSubmit={this.onSubmit}>
+          <form onSubmit={this.onSubmit}>
+            <h3>Sign Up</h3>
+            <div className="form-group">
+              <label>User Name</label>
               <input
                 type="text"
                 placeholder="User Name "
@@ -77,8 +77,11 @@ export default class SignUp extends Component {
                 value={this.state.userName}
                 className="form-control-from-group"
               />
+            </div>
+            <div className="form-group">
+              <label>Email address</label>
               <input
-                type="text"
+                type="email"
                 placeholder="Email "
                 onChange={(e) => {
                   this.changeEmail(e);
@@ -86,6 +89,9 @@ export default class SignUp extends Component {
                 value={this.state.email}
                 className="form-control-from-group"
               />
+            </div>
+            <div className="form-group">
+              <label>Password</label>
               <input
                 type="password"
                 placeholder="Password "
@@ -95,18 +101,15 @@ export default class SignUp extends Component {
                 value={this.state.password}
                 className="form-control-from-group"
               />
-              <input
-                type="submit"
-                className="btn btn-danger btn-black"
-                value="Sign Up"
-              />
-            </form>
-          </div>
+            </div>
+            <input
+              type="submit"
+              className="btn btn-danger btn-black"
+              value="Sign Up"
+            />
+          </form>
         </div>
       </div>
     );
   }
 }
-
-
-

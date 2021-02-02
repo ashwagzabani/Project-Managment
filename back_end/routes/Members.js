@@ -14,25 +14,10 @@ const projectId = '6011b5dcd2af381b2c6a09b6';
  * Action:      INDEX
  * Method:      GET
  * URI:         /members
- * Description: Get all members in specific project with role = 'manager'
+ * Description: Get all members in specific project 
  */
-router.get('/members', (req, res) => {
-    projects.findOne({
-        members: { $elemMatch: { userId: userId, role: 'manager' } },
-        _id: projectId
-    },
-        (err, result) => {
-            if (err) {
-                console.log(err);
-            }
-            res.json(result);
-            console.log(result)
-        });
-})
-/* Description: Get all members in specific project 
-*/
-router.get('/member/:id', (req, res) => {
-    Users.findOne({ _id: req.params.id },
+router.get('/members/:id', (req, res) => {
+    projects.findOne({ _id: req.params.id },
         (err, result) => {
             if (err) {
                 console.log(err);
@@ -63,6 +48,29 @@ router.get('/users', (req, res) => {
 //         res.json(result);
 //     })
 // });
+
+/*
+---------*Deleting a team member*-----------
+Acess the project first 
+access the members of the project 
+access the certain member
+delete that member 
+*/
+router.patch('/projects/:_id/:userId',(req,res)=>{
+projects.findByIdAndUpdate(
+    {_id: req.params._id},
+    {$pull:{ members: {$each: req.params.userId }}},(err, result) => {
+        if (err) {
+            console.log(err);
+        }
+        res.json(result);
+        console.log(result)
+    }
+);
+        
+});
+
+
 
 // Export the Router so we can use it in the server.js file
 module.exports = router;

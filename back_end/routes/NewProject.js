@@ -1,13 +1,12 @@
 // Require necessary NPM packages
 const express = require('express');
 const projects = require('../models/Projects.js')
-const { verifyUser } = require('./SignUp')
 const users = require('../models/Users');
-
+const { verifyUser } = require('./SignUp')
 // Instantiate a Router (mini app that only handles routes)
 const router = express.Router();
 
-/**
+/*
  * Action:      CREATE
  * Method:      POST
  * URI:         /project/new
@@ -23,7 +22,12 @@ router.post('/project/new', (req, res) => {
             res.json("error :(")
         }
         res.json(result);
+        console.log(result)
     });
+});
+// READ by ID
+// bring the detail for specific user id
+router.post('/userss', (req, res) => {
     console.log("result");
     verifyUser();
 });
@@ -37,12 +41,13 @@ router.post('/users', (req, res) => {
             res.send(err);
         } else {
             res.send('Already Exist')
+            res.json(result)
         }
     });
 });
 router.put('/addMembers/:id', (req, res) => {
     console.log('/addMembers/:id', req.params.id)
-    projects.findOneAndUpdate(req.params.id, req.body ,function (err, result) {
+    projects.findOneAndUpdate(req.params.id, { $push: { members: req.body } }, function (err, result) {
         if (err) {
             res.send(err);
         } else {
@@ -50,12 +55,6 @@ router.put('/addMembers/:id', (req, res) => {
         }
     })
 });
-
-
-
-
-
-
 
 // Export the Router so we can use it in the server.js file
 module.exports = router;

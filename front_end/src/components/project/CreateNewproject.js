@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Sidebar from "../Sidebar.js";
-import Apiconfig from '../../Apiconfig'
-export default class CreateNewproject extends Component {
+import Apiconfig from '../../ApiConfig'
+export default class CreateNewProject extends Component {
     constructor() {
         super();
         //projects
@@ -15,14 +15,29 @@ export default class CreateNewproject extends Component {
             endDate: '',
             status: '',
             userEmail: '',
-            members: []
+            members: [],
+            projecs_list: []
+
 
         };
 
     }
+
+
+    componentDidMount = () => {
+        axios.get('http://localhost:5000/projects')
+            .then(res => {
+                console.log('Response Data:', res.data)
+                this.setState({ projecs_list: res.data })
+            })
+            .catch(error => {
+                console.log("ERROR:", error);
+            })
+    }
+
     //after user Submit the data
     onSubmit = (e) => {
-        /*The Event interface's preventDefault() method tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be. The event continues to propagate as usual, unless one of its event listeners calls stopPropagation() or stopImmediatePropagation(), either of which terminates propagation at once.*/
+        //The Event interface's preventDefault() method tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be. The event continues to propagate as usual, unless one of its event listeners calls stopPropagation() or stopImmediatePropagation(), either of which terminates propagation at once.*/
         e.preventDefault();
 
         //do not need to refresh the page after user submit it must be forward into home page    event.preventDefault()
@@ -39,34 +54,36 @@ export default class CreateNewproject extends Component {
             console.log("Project Data:", newProject);
         });
 
-
     }
     //Add user into Project
-    AddUser = (e) => {
-        /*The Event interface's preventDefault() method tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be. The event continues to propagate as usual, unless one of its event listeners calls stopPropagation() or stopImmediatePropagation(), either of which terminates propagation at once.*/
-        e.preventDefault()
-        let copyMembers = [...this.state.members]
-        axios.post(`${Apiconfig}/users`, this.state.userEmail).then((res) => {
-            if (res.data === 'Already Exist') {
-                console.log('Email:', this.state.userEmail)
-                alert(this.state.userEmail + 'added successfully')
-                copyMembers.push(this.state.userEmail)
-                this.setState({members:copyMembers})
-            }
-            else {
-                alert(this.state.userEmail + ' Error! invalid emai')
-            }
-        });
-    }
+    // AddUser = (e) => {
+    //     /*The Event interface's preventDefault() method tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be. The event continues to propagate as usual, unless one of its event listeners calls stopPropagation() or stopImmediatePropagation(), either of which terminates propagation at once.*/
+    //     e.preventDefault()
+    //     let copyMembers = [...this.state.members]
+    //     axios.post(`${Apiconfig}/users`, this.state.userEmail).then((res) => {
+    //         if (res.data === 'Already Exist') {
+    //             console.log('Email:', this.state.userEmail)
+    //             alert(this.state.userEmail + 'added successfully')
+    //             copyMembers.push(this.state.userEmail)
+    //             this.setState({ members: copyMembers })
+    //         }
+    //         else {
+    //             alert(this.state.userEmail + ' Error! invalid emai')
+    //         }
+    //     });
+    // }
 
-    //updateProject
-    updateProject = () => {
-        axios.put(`${Apiconfig}/addMembers/${this.state.title}`, {members:this.state.members}).then((res) => {
-            console.log(res)
-        })
-    }
+    // //updateProject
+    // updateProject = () => {
+    //     axios.put(`${Apiconfig}/addMembers/${this.state.title}`, { members: this.state.members }).then((res) => {
+    //         console.log(res)
+    //     })
+    // }
 
     render() {
+        const showAllProjectsList = this.state.projecs_list.map(projects => {
+            <li>projects</li>
+        })
         return (
             <div>
                 <div className="container">
@@ -105,30 +122,8 @@ export default class CreateNewproject extends Component {
                             value="Submit"
                         />
                     </form>
-                    <form onSubmit={this.AddUser}>
-                        <h4>Add Project Team</h4>
-
-                        <label for="addUser">User Email:</label>
-                        <input type="email" onChange={(e) => {
-                            this.setState({
-                                userEmail: e.target.value,
-                            });
-                        }} value={this.state.userEmail} />
-                        <input
-                            type="submit"
-                            className="btn btn-danger btn-black"
-                            value="Add"
-                        />
-
-
-
-                    </form>
-                    <input
-                        type="submit"
-                        className="btn btn-danger btn-black"
-                        value="Update Project" onClick={this.updateProject}
-                    />
-                </div>            </div>
+                   
+                   </div></div>
 
 
         )

@@ -9,8 +9,10 @@ import CreateNewproject from "./project/CreateNewproject";
 import Members from "./Member/Members";
 import DeleteProject from "./project/DeletProject";
 import ProjectDetails from "./project/ProjectDetails";
+import AddMembers from './project/AddMembers'
 
 export default class Sidebar extends Component {
+  
   render() {
     // <div class="dropdown-container">
     //   <a href="#">Link 1</a>
@@ -23,7 +25,7 @@ export default class Sidebar extends Component {
         path: "/",
         exact: true,
         sidebar: () => <div></div>,
-        main: () => <Home username={this.props.username} isAuthed={true} />,
+        main: (props)=> <Home username={this.props.username} isAuthed={true} />,
       },
       {
         path: "/NewProject",
@@ -35,8 +37,9 @@ export default class Sidebar extends Component {
         path: "/project/update",
         exact: true,
         sidebar: () => <div></div>,
-        main: (props) => <UpdateProject {...props} />,
-      },
+        main: () => <UpdateProject />,
+      }
+      ,
       {
         path: "/project/list",
         exact: true,
@@ -82,7 +85,14 @@ export default class Sidebar extends Component {
         exact: true,
         sidebar: () => <div></div>,
         main: (props) => <ProjectDetails {...props} />,
-      },
+      }
+,
+      {
+        path: "/AddMember",
+        exact: true,
+        sidebar: () => <div></div>,
+        main: () => <AddMembers />,
+      }
     ];
 
     return (
@@ -103,6 +113,12 @@ export default class Sidebar extends Component {
               <li className="fas fa-home">
                 <Link to="/login">Log In</Link>
               </li>
+
+              <li className="fas fa-home">
+                <Link to="/AddMember">Add Member</Link>
+              </li>
+
+              
               <li className="fas fa-home">
                 <Link to="/members">Members</Link>
               </li>
