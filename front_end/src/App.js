@@ -2,10 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Sidebar from "./components/Sidebar";
+import Form from './components/Forms'
 // import "./form.css";
-import Form from "./components/Forms";
-import { Redirect } from "react-router-dom";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import CreateNewTask from "./components/Task/CreateNewTask";
 export default class App extends Component {
   constructor() {
@@ -32,7 +30,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <div>{/* <Form loginHandler={this.loginHandler} /> */}</div>
+        <div><Form loginHandler={this.loginHandler} /></div>
         <div>
           <Sidebar
             userId={this.state.userId}
@@ -40,7 +38,6 @@ export default class App extends Component {
             loginHandler={this.loginHandler}
             userId={this.state.userId}
           />
-          <CreateNewTask />
         </div>
       </div>
     );

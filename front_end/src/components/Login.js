@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Apiconfig from "../ApiConfig";
-import { Redirect} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 
 export default class Login extends Component {
   constructor(props) {
@@ -24,9 +24,9 @@ export default class Login extends Component {
       email: this.state.email,
       password: this.state.password,
     };
-    axios.post("Apiconfig", loginInfo).then((res) => {
-      console.log("Response Data:", res.data);
-      if (res.data === "Login successful!") {
+    axios.post(`${Apiconfig}/login`, loginInfo).then((res) => {
+      console.log("Response Data:", res.data, res.data._id);
+      if (res.data !== "") {
         alert("Correct email and password");
         this.setState({ userId: res.data._id });
         this.setState({ isLogged: true });
@@ -38,6 +38,7 @@ export default class Login extends Component {
         alert("Email does not exist");
       }
     });
+    // this.getData();
   };
   getEmail = (event) => {
     this.setState({
@@ -51,11 +52,11 @@ export default class Login extends Component {
     });
     console.log(this.state.password);
   };
-  getData = (e) => {
-    e.stopPropagation();
+  getData = () => {
     this.props.loginHandler(this.state.userId);
     console.log(this.props.loginHandler(this.state.email));
   };
+  
   render() {
     return (
       <>
@@ -95,7 +96,7 @@ export default class Login extends Component {
               type="submit"
               className="btn btn-danger btn-black"
               value="Log in"
-              onClick={(e) => this.getData(e)}
+              // onClick={(e) => this.getData(e)}
             />
           </form>
         </div>
