@@ -46,6 +46,7 @@ export default class CreateNewproject extends Component {
         axios.post(`${Apiconfig}/project/new`, newProject).then((res) => {
             alert('Project added successfully')
             console.log("Project Data:", newProject);
+            this.setState({ redirect: true })
         });
 
 
@@ -55,33 +56,38 @@ export default class CreateNewproject extends Component {
         /*The Event interface's preventDefault() method tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be. The event continues to propagate as usual, unless one of its event listeners calls stopPropagation() or stopImmediatePropagation(), either of which terminates propagation at once.*/
         e.preventDefault()
         const memberUserName = { userName: this.state.userName };
-        // let copyMembers = [...this.state.members]
-        axios.get(`${Apiconfig}/userrrrrr/${this.state.userName}`, memberUserName).then((res) => {
-            if (res.data.responseMessage === 'The user is there') {
-                console.log('The user data', res.data.userDetails)
-                this.setState({
-                    member: res.data.userDetails,
-                    temporaryMembersList: this.state.temporaryMembersList.concat(res.data.userDetails,),
-                    redirect: true
-                })
-                // alert(this.state.userName + 'added successfully')
-                // copyMembers.push(this.state.userName)
-                // this.setState({ members: copyMembers })
-                console.log(res.data.userDetails._id);
-                // this.state.members.map(m =>{
-                //     console.log(m);
+        //check if input feild empty 
+        if (memberUserName.userName === '') {
+            alert('No member Selected')
+        } else {
+            // let copyMembers = [...this.state.members]
+            axios.get(`${Apiconfig}/userrrrrr/${this.state.userName}`, memberUserName).then((res) => {
+                if (res.data.responseMessage === 'The user is there') {
+                    console.log('The user data', res.data.userDetails)
+                    this.setState({
+                        member: res.data.userDetails,
+                        temporaryMembersList: this.state.temporaryMembersList.concat(res.data.userDetails,)
 
-                // })
-                this.AddMember();
-            }
-            else {
-                alert(res.data)
-            }
-            console.log(res.data)
+                    })
+                    // alert(this.state.userName + 'added successfully')
+                    // copyMembers.push(this.state.userName)
+                    // this.setState({ members: copyMembers })
+                    console.log(res.data.userDetails._id);
+                    // this.state.members.map(m =>{
+                    //     console.log(m);
 
-        }).catch((error) => {
-            console.log(error);
-        });
+                    // })
+                    this.AddMember();
+                }
+                else {
+                    alert(res.data)
+                }
+                console.log(res.data)
+
+            }).catch((error) => {
+                console.log(error);
+            });
+        }
     }
 
     //updateProject
@@ -123,7 +129,18 @@ export default class CreateNewproject extends Component {
         console.log("index:", membersIndex)
         membersIndex > -1 ? temporaryMembersList.splice(membersIndex, 1) : console.log("not there");
         console.log(temporaryMembersList);
-        this.setState({ temporaryMembersList });
+
+        const temporaryMembersListForDb = this.state.temporaryMembersListForDb.slice();
+        // console.log(typeof memebr);
+        const memberIndex = temporaryMembersListForDb.findIndex(item => item.userId === member._id);
+        console.log("memberIndex", memberIndex);
+        memberIndex > -1 ? temporaryMembersListForDb.splice(membersIndex, 1) : console.log("the user already added");
+        this.setState({
+            temporaryMembersList,
+            temporaryMembersListForDb
+        });
+        console.log(temporaryMembersListForDb);
+        console.log(temporaryMembersList);
     }
     /*
     removeMember = (index) => {
