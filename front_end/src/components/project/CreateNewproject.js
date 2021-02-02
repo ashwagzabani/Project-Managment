@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Sidebar from "../Sidebar.js";
-import Apiconfig from '../../apiConfig'
+import Apiconfig from '../../ApiConfig'
 export default class CreateNewProject extends Component {
     constructor() {
         super();
