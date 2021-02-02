@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import API_URL from "../../ApiConfig";
-import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Members from '../Member/Members';
 import "font-awesome/css/font-awesome.min.css";
@@ -42,11 +40,11 @@ class ProjectDetails extends Component {
       }
       return (
         <tr>
-          <Members userId={member.userId} />
+          <td><Members userId={member.userId} /></td>
           <td><Tasks userId={member.userId} projectId={this.state.projecsDetails._id} /></td>
-          {isUserLoggedInManager ? (<td ><a href="#" onClick={() => this.deleteMember(member.userId)}><i className="fa fa-trash"></i></a></td>) : null}
-          {isUserLoggedInManager ? (<td ><a href="#" onClick={() => this.updateMember(member.userId)}><i className="fa fa-edit"></i></a></td>) : null}
-        </tr>
+          { isUserLoggedInManager ? (<td ><a href="#" onClick={() => this.deleteMember(member.userId)}><i className="fa fa-trash"></i></a></td>) : <td></td>}
+          { isUserLoggedInManager ? (<td ><a href="#" onClick={() => this.updateMember(member.userId)}><i className="fa fa-edit"></i></a></td>) : <td></td>}
+        </tr >
       );
     }) : "" : "";
 
@@ -68,7 +66,7 @@ class ProjectDetails extends Component {
       <div className="container">
         <div className="card">
           <div className="card-header">
-            <span>{this.state.projecsDetails.title}</span>
+            <h3>{this.state.projecsDetails.title}</h3>
             {isUserLoggedInManager ? (
               <div><Link to={{
                 pathname: "/project/update", state: {
@@ -102,9 +100,12 @@ class ProjectDetails extends Component {
           </div>
           <div className="card-body">
             {/* <p>{this.state.projecsDetails.startDate}</p> */}
-            <p>Start Date: {startDate}</p>
-            <p>End Date: {endtDate}</p>
-            <p>Manager: {managerName}</p>
+            <div className="details">
+              <p>Start Date: {startDate}</p>
+              <p>End Date: {endtDate}</p>
+              <p>Manager: {managerName}</p>
+            </div>
+
 
             {this.state.showAddMemberForm ? '' :
               <button className="btn btn-primary" onClick={() => this.showAddMemberForm()}>Add Member</button>

@@ -101,7 +101,7 @@ li:hover {
   display: inline-flex;
   justify-content: space-between;
 }
-.memberList{
+.memberList {
   display: inline-flex !important;
   justify-content: space-between;
 }
@@ -109,3 +109,9 @@ li:hover {
 .fa-trash, .fa-edit{
   padding-top: 10px;
 }
+
+.details{
+  display: flex !important;
+  justify-content: space-between;
+}
+
