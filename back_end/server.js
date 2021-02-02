@@ -15,6 +15,7 @@ const updateProjectRouter = require("./routes/project/UpdateProject");
 const membersInProjectRouter = require("./routes/project/Members");
 const deleteProjectRouter = require("./routes/project/DeleteProject");
 const addNewMember = require("./routes/project/AddNewMember");
+const userRouter = require("./routes/user/users");
 
 const loginRouter = require("./routes/login");
 const signUpRouter = require("./routes/SignUp");
@@ -70,6 +71,7 @@ app.use(NewTaskRouter);
 app.use(TasksRouter);
 app.use(updateTasksRouter);
 app.use(deleteTaskRouter);
+app.use(userRouter);
 
 /*** Routes ***/
 // Define PORT for the API to run on

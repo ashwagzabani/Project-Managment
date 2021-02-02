@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
-import API_URL from "../apiConfig";
+import API_URL from "../ApiConfig";
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -58,7 +58,8 @@ export default class Login extends Component {
     return (
       <>
       {this.state.isLogged ? (
-        <Redirect to="/" />
+        // <Redirect to="/" />
+        ''
       ) : (
       <div>
         <div className="form-div">
