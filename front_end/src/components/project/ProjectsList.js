@@ -3,13 +3,14 @@ import API_URL from "../../ApiConfig";
 import axios from "axios";
 import { BrowserRouter as Router, Route, Swich, Link } from "react-router-dom";
 import ProjectDetails from "./ProjectDetails";
+import TaskProgressBar from "../Task/TaskProgressBar";
 
 class ProjectsList extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
       projecs_list: [],
-      userId: "60115b690ba0311c388c9aa5"
+      userId: props.userId,
     };
 
     // this.getProjectDetails = this.getProjectDetails.bind(this)
@@ -18,12 +19,10 @@ class ProjectsList extends Component {
     this.getAllProject();
   };
   getAllProject = () => {
-    console.log(";;;))))");
     axios
-      .get(`${API_URL}/user/project/${this.state.userId}`)
+      .get(`${API_URL}/projects/${this.state.userId}`)
       .then((res) => {
         this.setState({ projecs_list: res.data });
-        console.log("project list", res);
       })
       .catch((error) => {
         console.log("ERROR:", error);
@@ -31,22 +30,40 @@ class ProjectsList extends Component {
   };
 
   getProjectDetails = (projectId) => {
-    return (
-      <ProjectDetails projectId={projectId} />
-    )
-  }
+    return <ProjectDetails projectId={projectId} />;
+  };
   render() {
-    console.log(this.state.projecs_list, 'llll');
+    // console.log(this.state.projecs_list);
     const showAllProjectsList = this.state.projecs_list.map((projects) => {
       console.log(projects._id);
       return (
-        <div className='projectList'>
-          <p><Link to={{ pathname: `/project/details/${projects._id}`, state: { projectDetils: projects } }} onClick={() => this.getProjectDetails(projects._id)} >{projects.title}
-          </Link></p>
-          {/* <p >{projects.title}</p> */}
-          {/* <p>member: {projects.members.length}</p> */}
-          {/* <p>{ task}</p> */}
-          {/* {proresspar} */}
+        <div  >
+          <p>
+            {" "}
+            <Link
+              to={{
+                pathname: `/project/details/${projects._id}`,
+                state: {
+                  projectDetils: projects,
+                  userLoggedInId: this.state.userId,
+                },
+              }}
+              className="projectList cardlist"
+              onClick={() => this.getProjectDetails(projects._id)}
+            >
+              {" "}
+              <p className="title">{projects.title}</p>
+              <div class="bar">
+                <div class="emptybar"></div>
+                <div class="filledbar"></div>
+              </div>{" "}
+              {/* <div class="circle">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+                  <circle class="stroke" cx="60" cy="60" r="50" />
+                </svg>
+              </div> */}
+            </Link>
+          </p>
         </div>
       );
     });
