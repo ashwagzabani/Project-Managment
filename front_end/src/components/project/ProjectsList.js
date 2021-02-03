@@ -22,6 +22,7 @@ class ProjectsList extends Component {
       .get(`${API_URL}/projects/${this.state.userId}`)
       .then((res) => {
         this.setState({ projecs_list: res.data });
+        console.log("project list", res.data);
       })
       .catch((error) => {
         console.log("ERROR:", error);
