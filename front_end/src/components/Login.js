@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import axios from 'axios';
-import API_URL from "../ApiConfig";
+import axios from "axios";
+import Apiconfig from "../ApiConfig";
+import {Redirect} from "react-router-dom";
+
 export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
       password: "",
-      isLogged: false,
-      userId: "",
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.getEmail = this.getEmail.bind(this);
@@ -22,20 +22,21 @@ export default class Login extends Component {
       email: this.state.email,
       password: this.state.password,
     };
-    axios.post(`${API_URL}/login`,loginInfo).then((res) => {
-      console.log("Response Data:", res.data);
-      if (res.data === "Login successful!") {
-        alert("Correct email and password");
-        this.setState({ userId: res.data._id });
-        this.setState({ isLogged: true });
+    axios.post(`${Apiconfig}/login`, loginInfo).then((res) => {
+      console.log("Response Data:", res.data, res.data._id);
+      if (typeof res.data === 'object') {
+        // this.setState({ userId: res.data._id, isLogged:true });
+        this.props.loginHandler(res.data);
+        console.log("Correct email and password");
       }
       if (res.data === "Password is not correct") {
-        alert("Wrong Password");
+        console.log("Wrong Password");
       }
       if (res.data === "Email does not exist") {
-        alert("Email does not exist");
+        console.log("Email does not exist");
       }
     });
+   
   };
   getEmail = (event) => {
     this.setState({
@@ -49,17 +50,12 @@ export default class Login extends Component {
     });
     console.log(this.state.password);
   };
-  getData = (e) => {
-    e.stopPropagation();
-    this.props.loginHandler(this.state.userId);
-    console.log(this.props.loginHandler(this.state.email));
-  };
+  
   render() {
     return (
       <>
-      {this.state.isLogged ? (
-        // <Redirect to="/" />
-        ''
+      {this.props.isLogged ? (
+        <Redirect to="/"/>
       ) : (
       <div>
         <div className="form-div">
@@ -73,7 +69,7 @@ export default class Login extends Component {
               onChange={(e) => {
                 this.getEmail(e);
               }}
-              value={this.email}
+              value={this.state.email}
               className="form-control-from-group"
             />
             <br />
@@ -85,7 +81,7 @@ export default class Login extends Component {
               onChange={(e) => {
                 this.getPassword(e);
               }}
-              value={this.password}
+              value={this.state.password}
               className="form-control-from-group"
             />
             <br />
@@ -94,7 +90,6 @@ export default class Login extends Component {
               type="submit"
               className="btn btn-danger btn-black"
               value="Log in"
-              onClick={(e) => this.getData(e)}
             />
           </form>
         </div>
