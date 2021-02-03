@@ -13,19 +13,19 @@ const router = express.Router();
  * URI:         /project/new
  * Description: Insert new project
  */
-router.post("/project/new", (req, res) => {
+router.post('/project/new', (req, res) => {
   //Miss some steps
   //1. get manager id ==> user id
   //2. set the manager role
-  //3. create new project
+  //3. create new project 
   projects.create(req.body, (err, result) => {
     if (err) {
-      res.json("error :(");
+      res.json("error :(")
     }
     res.json(result);
   });
   console.log("result");
-  verifyUser();
+  // verifyUser();
 });
 // READ by ID
 // bring the detail for specific user id

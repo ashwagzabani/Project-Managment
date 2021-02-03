@@ -22,14 +22,28 @@
 ## ERD
 
 ### Technologies
-- React
+- ReactJs
 - JavaScript 
 - Html
 - Css
 - Express
 - MongoDb
 - Bootstrap
+- Node
 
+## API Endpoints
+
+| #  |  Action  |  Method |  URL  |  Description  |
+| :------------ | :------------ | :------------ | :------------ | :------------ |
+|  1|  create |post  |   /login |  ........................|
+|   2|  create | post  |/signUp   | To create new account|
+|   3|   create |post  |/project/new   | To create new project |
+|   4|    |   |   | |
+|   5|    |   |   | |
+|   6|    |   |   | |
+|   7|    |   |   | |
+|   8|    |   |   | |
+|  9|    |   |   | |
 
 ## Feature Work
 ## Installation and Setup Instructions

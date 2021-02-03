@@ -10,8 +10,6 @@ export default class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      isLogged: false,
-      userId: "",
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.getEmail = this.getEmail.bind(this);
@@ -26,19 +24,19 @@ export default class Login extends Component {
     };
     axios.post(`${Apiconfig}/login`, loginInfo).then((res) => {
       console.log("Response Data:", res.data, res.data._id);
-      if (res.data !== "") {
-        alert("Correct email and password");
-        this.setState({ userId: res.data._id });
-        this.setState({ isLogged: true });
+      if (typeof res.data === 'object') {
+        // this.setState({ userId: res.data._id, isLogged:true });
+        this.props.loginHandler(res.data);
+        console.log("Correct email and password");
       }
       if (res.data === "Password is not correct") {
-        alert("Wrong Password");
+        console.log("Wrong Password");
       }
       if (res.data === "Email does not exist") {
-        alert("Email does not exist");
+        console.log("Email does not exist");
       }
     });
-    // this.getData();
+   
   };
   getEmail = (event) => {
     this.setState({
@@ -52,16 +50,12 @@ export default class Login extends Component {
     });
     console.log(this.state.password);
   };
-  getData = () => {
-    this.props.loginHandler(this.state.userId);
-    console.log(this.props.loginHandler(this.state.email));
-  };
   
   render() {
     return (
       <>
-      {this.state.isLogged ? (
-        <Redirect to="/" />
+      {this.props.isLogged ? (
+        <Redirect to="/"/>
       ) : (
       <div>
         <div className="form-div">
@@ -75,7 +69,7 @@ export default class Login extends Component {
               onChange={(e) => {
                 this.getEmail(e);
               }}
-              value={this.email}
+              value={this.state.email}
               className="form-control-from-group"
             />
             <br />
@@ -87,7 +81,7 @@ export default class Login extends Component {
               onChange={(e) => {
                 this.getPassword(e);
               }}
-              value={this.password}
+              value={this.state.password}
               className="form-control-from-group"
             />
             <br />
@@ -96,7 +90,6 @@ export default class Login extends Component {
               type="submit"
               className="btn btn-danger btn-black"
               value="Log in"
-              // onClick={(e) => this.getData(e)}
             />
           </form>
         </div>
