@@ -22,7 +22,7 @@ router.get('/projects/:id', (req, res) => {
 
     //get user's projects with role === '...'
     //        members: { $elemMatch: { userId: userId, role: 'manager' } }},
-    members: { $elemMatch: { userId: userId } }
+    members: { $elemMatch: { userId: req.params.id } }
   },
     // user.findById({ "_id": userId },
     (err, result) => {
