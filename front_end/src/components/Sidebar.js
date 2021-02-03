@@ -62,13 +62,7 @@ export default class Sidebar extends Component {
         sidebar: () => <div></div>,
         main: () => (
           <SignUp
-            changeEmail={this.props.changeEmail}
-            changepassword={this.props.changepassword}
-            changeUserName={this.props.changeUserName}
-            onSubmit={this.props.onSubmit}
-            userName={this.props.userName}
-            passwprd={this.props.password}
-            email={this.props.email}
+           loginHandler={this.props.loginHandler} 
           />
         ),
       },

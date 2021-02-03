@@ -20,7 +20,7 @@ class ProjectsList extends Component {
   };
   getAllProject = () => {
     axios
-      .get(`${API_URL}/projects/${this.state.userId}`)
+      .get(`${API_URL}/user/projects/${this.state.userId}`)
       .then((res) => {
         this.setState({ projecs_list: res.data });
         console.log(res);

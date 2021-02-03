@@ -57,6 +57,7 @@ export default class SignUp extends Component {
       if (res.data._message === "User validation failed") {
         alert("Error!!");
       } else {
+        this.props.loginHandler(res.data);
         alert("Welcome");
         console.log("User Data", registered);
       }
