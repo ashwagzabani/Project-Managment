@@ -18,10 +18,12 @@ class ProjectsList extends Component {
     this.getAllProject();
   };
   getAllProject = () => {
+    console.log(";;;))))");
     axios
-      .get(`${API_URL}/user/projects/${this.state.userId}`)
+      .get(`${API_URL}/user/project/${this.state.userId}`)
       .then((res) => {
         this.setState({ projecs_list: res.data });
+        console.log("project list", res);
       })
       .catch((error) => {
         console.log("ERROR:", error);
@@ -34,12 +36,13 @@ class ProjectsList extends Component {
     )
   }
   render() {
-    console.log(this.state.projecs_list);
+    console.log(this.state.projecs_list, 'llll');
     const showAllProjectsList = this.state.projecs_list.map((projects) => {
       console.log(projects._id);
       return (
         <div className='projectList'>
-          <p><Link to={{ pathname: `/project/details/`, state: { projectDetils: projects } }} onClick={() => this.getProjectDetails(projects._id)} >{projects.title}</Link></p>
+          <p><Link to={{ pathname: `/project/details/${projects._id}`, state: { projectDetils: projects } }} onClick={() => this.getProjectDetails(projects._id)} >{projects.title}
+          </Link></p>
           {/* <p >{projects.title}</p> */}
           {/* <p>member: {projects.members.length}</p> */}
           {/* <p>{ task}</p> */}
