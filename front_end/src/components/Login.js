@@ -69,7 +69,7 @@ export default class Login extends Component {
                     this.getEmail(e);
                   }}
                   value={this.state.email}
-                  className="form-control-from-group"
+                  className="form-control"
                 />
                 <br />
                 <label>Password</label>
@@ -81,7 +81,7 @@ export default class Login extends Component {
                     this.getPassword(e);
                   }}
                   value={this.state.password}
-                  className="form-control-from-group"
+                  className="form-control"
                 />
                 <br />
                 <br />

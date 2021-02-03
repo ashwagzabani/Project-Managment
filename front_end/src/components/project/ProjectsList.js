@@ -23,6 +23,7 @@ class ProjectsList extends Component {
       .get(`${API_URL}/projects/${this.state.userId}`)
       .then((res) => {
         this.setState({ projecs_list: res.data });
+        console.log(res);
       })
       .catch((error) => {
         console.log("ERROR:", error);
@@ -33,7 +34,7 @@ class ProjectsList extends Component {
     return <ProjectDetails projectId={projectId} />;
   };
   render() {
-    // console.log(this.state.projecs_list);
+    console.log(this.state.projecs_list);
     const showAllProjectsList = this.state.projecs_list.map((projects) => {
       console.log(projects._id);
       return (

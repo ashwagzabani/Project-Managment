@@ -81,7 +81,7 @@ export default class SignUp extends Component {
                         this.changeUserName(e);
                       }}
                       value={this.state.userName}
-                      className="form-control-from-group"
+                      className="form-control"
                     />
                   </div>
                   <div className="form-group">
@@ -93,7 +93,7 @@ export default class SignUp extends Component {
                         this.changeEmail(e);
                       }}
                       value={this.state.email}
-                      className="form-control-from-group"
+                      className="form-control"
                     />
                   </div>
                   <div className="form-group">
@@ -105,7 +105,7 @@ export default class SignUp extends Component {
                         this.changepassword(e);
                       }}
                       value={this.state.password}
-                      className="form-control-from-group"
+                      className="form-control"
                     />
                   </div>
                   <input
