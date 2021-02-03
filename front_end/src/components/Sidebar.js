@@ -30,7 +30,7 @@ export default class Sidebar extends Component {
         path: "/newProject",
         exact: true,
         sidebar: () => <div></div>,
-        main: () => <CreateNewproject username={this.props.username} />,
+        main: (props) => <CreateNewproject username={this.props.username} {...props} />,
       },
       {
         path: "/project/update",
@@ -62,7 +62,7 @@ export default class Sidebar extends Component {
         sidebar: () => <div></div>,
         main: () => (
           <SignUp
-           loginHandler={this.props.loginHandler} 
+            loginHandler={this.props.loginHandler}
           />
         ),
       },
