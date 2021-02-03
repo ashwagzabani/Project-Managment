@@ -38,17 +38,17 @@ class Tasks extends Component {
       allProjectTasksDetails.length === 0
         ? ""
         : allProjectTasksDetails.map((task, index) => {
-            if (task.userId === this.state.userId) {
-              console.log(task.title);
-              return <p>{task.title}</p>;
-            }
-          });
+          if (task.userId === this.state.userId) {
+            console.log(task.title);
+            return <p>{task.title}</p>;
+          }
+        });
 
     const retorninfo = this.props.isupdate
-      ? ""
+        ? <UpdateTask taskId = {this.state.allProjectTasksDetails.taskId}/>
       : this.props.isDelete
-      ? ""
-      : { allMemberTasks };
+        ? <DeleteTask taskId = {this.state.allProjectTasksDetails.taskId}/>
+        : { allMemberTasks };
     return (
       <div>
         {/* <p>hello</p> */}
