@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import API_URL from "../../ApiConfig";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 export default class DeletProject extends Component {
   deleteProjectByID = (id) => {
-    return axios.delete(`${API_URL}/project/${id}`);
+    axios.delete(`${API_URL}/project/${id}`);
+    return <Redirect to="/" />
   };
   render() {
-    const id = "601438f5c9ea422b68371d3a";
+    const id = this.props.id;
     return (
       <div>
         <button

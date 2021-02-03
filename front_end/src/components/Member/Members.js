@@ -41,9 +41,9 @@ class Members extends Component {
     render() {
         // console.log(this.state.memberDetails);
         return (
-            <div className="Members">
-                <td>{this.state.memberDetails.userName}</td>
-            </div>
+            <>
+                {this.state.memberDetails.userName}
+            </>
         );
     }
 }
