@@ -1,7 +1,7 @@
 const EXPRESS_PORT = 5000;
 const apiUrls = {
   development: `http://localhost:${EXPRESS_PORT}`,
-  production: `api`,
+  production: `/api`,
 };
 const API_URL =
   window.location.hostname === "localhost"
