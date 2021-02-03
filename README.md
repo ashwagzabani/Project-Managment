@@ -1,4 +1,7 @@
 ## Project Managment
+Project management software is a centralized hub for your work, task management and project planning. 
+It allows you to keep an accurate project schedule and delegate tasks to the right people.
+
 ## User story
 - As a User, I should be able to see my own task
 - As a User, I should be able to create account
@@ -28,8 +31,8 @@
 - Css
 - Express
 - MongoDb
-- Bootstrap
-- Node
+- Bootstrap/ React bootstrap
+- Nodejs
 
 ## API Endpoints
 
@@ -45,7 +48,8 @@
 |   8|    |   |   | |
 |  9|    |   |   | |
 
-## Feature Work
+## Future Features
+- 
 ## Installation and Setup Instructions
 Clone down this repository. You will need `node` and `npm` installed globally on your machine.
 

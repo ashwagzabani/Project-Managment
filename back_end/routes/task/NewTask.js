@@ -14,7 +14,7 @@ const router = express.Router();
  * URI:         /project/:id/tasks
  * Description: Get the user's projects as manager or member
  */
-router.post("/tasks/new", (req, res) => {
+router.post("/project/tasks", (req, res) => {
   //Miss some steps
   //1. get project id
   //2. get user id ==> ddl all member
@@ -29,7 +29,7 @@ router.post("/tasks/new", (req, res) => {
   console.log("result");
 });
 
-router.get("/projects/:id/tasks", (req, res) => {
+router.post("/projects/:id/tasks", (req, res) => {
   //Miss some steps
   //1. get project id
   //2. get user id ==> ddl all member

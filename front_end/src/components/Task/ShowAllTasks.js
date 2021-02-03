@@ -2,14 +2,15 @@
 import React, { Component } from 'react';
 import API_URL from "../../ApiConfig";
 import axios from "axios";
-class Tasks extends Component {
+
+class ShowAllTasks extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
             projectId: props.projectId,
             userId: props.userId,
-            allProjectTasksDetails: []
+            allTasks:''
         }
     }
     componentDidMount = () => {
@@ -18,10 +19,10 @@ class Tasks extends Component {
 
     getAllProjectTasks = () => {
         axios
-            .get(`${API_URL}/tasks/project/${this.state.projectId}`)
+            .get(`${API_URL}/allTasks/${this.state.userId}`)
             .then((res) => {
                 console.log(res.data);
-                this.setState({ allProjectTasksDetails: res.data });
+                this.setState({ allTasks: res.data });
             })
             .catch((error) => {
                 console.log("ERROR:", error);
@@ -29,8 +30,8 @@ class Tasks extends Component {
         // return (<td>this.state.memberDetails.userName</td>)
     }
     render() {
-        const allProjectTasksDetails = this.state.allProjectTasksDetails;
-        const allMemberTasks = allProjectTasksDetails.length === 0 ? '' : (allProjectTasksDetails.map((task, index) => {
+        const allTasks = this.state.allTasks;
+        const allMemberTasks = allTasks.length === 0 ? '' : (allTasks.map((task, index) => {
             if (task.userId === this.state.userId) {
                 console.log(task.title);
                 return (
@@ -41,11 +42,10 @@ class Tasks extends Component {
         }));
         return (
             <div>
-                {/* <p>hello</p> */}
                 {allMemberTasks}
             </div>
         );
     }
 }
 
-export default Tasks;
+export default ShowAllTasks;

@@ -8,7 +8,7 @@ export default class Home extends Component {
       <div>
         <h1>welcome</h1>
         <Link to="/newProject">New Project</Link>
-        <ProjectsList />
+        <ProjectsList userId={this.props.userId}/>
       </div>
 
 

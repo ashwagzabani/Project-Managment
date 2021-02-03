@@ -29,19 +29,19 @@ module.exports = mongoose.connection.once("open", () => {
       console.log(result);
     }
   });
-  //   User.create(usersData, (err, result) => {
-  //     if (err) {
-  //       console.log(err);
-  //     } else {
-  //       console.log(result);
-  //     }
-  //   });
-  //   projects.create(oneProject, (err, result) => {
-  //     if (err) {
-  //       console.log(err);
-  //     } else {
-  //       console.log(result);
-  //     }
-  //   });
-  //   console.log(projectsData[0].members);
+    // User.create(usersData, (err, result) => {
+    //   if (err) {
+    //     console.log(err);
+    //   } else {
+    //     console.log(result);
+    //   }
+    // });
+    // projects.create(oneProject, (err, result) => {
+    //   if (err) {
+    //     console.log(err);
+    //   } else {
+    //     console.log(result);
+    //   }
+    // });
+    // console.log(projectsData[0].members);
 });

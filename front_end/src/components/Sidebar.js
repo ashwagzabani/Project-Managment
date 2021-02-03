@@ -9,7 +9,8 @@ import CreateNewproject from "./project/CreateNewproject";
 import Members from "./Member/Members";
 import DeleteProject from "./project/DeletProject";
 import ProjectDetails from "./project/ProjectDetails";
-import AddMembers from './Member/AddMembers'
+import AddMembers from './Member/AddMembers';
+import ShowAllTasks from './Task/ShowAllTasks'
 
 export default class Sidebar extends Component {
 
@@ -25,7 +26,7 @@ export default class Sidebar extends Component {
         path: "/",
         exact: true,
         sidebar: () => <div></div>,
-        main: (props) => <Home username={this.props.username} isAuthed={true} />,
+        main: (props) => <Home userId={this.props.userId} isAuthed={true} />,
       },
       {
         path: "/newProject",
@@ -98,6 +99,12 @@ export default class Sidebar extends Component {
         exact: true,
         sidebar: () => <div></div>,
         main: () => <AddMembers />,
+      },
+      {
+        path: "/ShowAllTasks",
+        exact: true,
+        sidebar: () => <div></div>,
+        main: () => <ShowAllTasks userId={this.props.userId}/>,
       }
     ];
 
@@ -113,12 +120,6 @@ export default class Sidebar extends Component {
               <li className="fas fa-home">
                 <Link to="/project/update">Update Project</Link>
               </li>
-              <li className="fas fa-home">
-                <Link to="/signup">Sign Up</Link>
-              </li>
-              <li className="fas fa-home">
-                <Link to="/login">Log In</Link>
-              </li>
 
               <li className="fas fa-home">
                 <Link to="/AddMember">Add Member</Link>
@@ -130,6 +131,12 @@ export default class Sidebar extends Component {
               </li>
               <li className="">
                 <Link to="/project/list">Projects list</Link>
+              </li>
+              <li className="">
+                <Link to="/ShowAllTasks">My Tasks</Link>
+              </li>
+              <li className="">
+                <Link to="/" onClick={this.props.logOut}>Log Out</Link>
               </li>
             </ul>
 
