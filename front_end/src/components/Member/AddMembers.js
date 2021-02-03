@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import Sidebar from "../Sidebar.js";
 import Apiconfig from '../../ApiConfig'
 export default class AddMembers extends Component {
     constructor(props) {
@@ -28,10 +27,11 @@ export default class AddMembers extends Component {
                 alert(this.state.userName + ' Error! invalid emai')
             }
         });
+        
     }
     //updateProject
     updateProject = () => {
-        axios.put(`${Apiconfig}/addMembers/${this.state.title}`, { members: this.state.members }).then((res) => {
+        axios.patch(`${Apiconfig}/members/new/${this.state.projectId}`, { members: this.state.members, userName: this.state.userName }).then((res) => {
             console.log(res)
             console.log(res.body)
         })

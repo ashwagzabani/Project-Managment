@@ -13,7 +13,8 @@ class ProjectDetails extends Component {
     this.state = {
       projecsDetails: props.location.state.projectDetils,
       userLoggedInId: '60115b690ba0311c388c9aa8',
-      showAddMemberForm: false
+      showAddMemberForm: false,
+      showAddTaskForm: false
     };
   }
 
@@ -29,6 +30,11 @@ class ProjectDetails extends Component {
     this.setState({ showAddMemberForm: show })
     console.log(this.state.showAddMemberForm);
   }
+
+  showAddTaskForm = () => {
+    this.setState({ showAddTaskForm: true })
+  }
+
   render() {
     let isUserLoggedInManager = false;
     let managerName = '';
@@ -110,7 +116,15 @@ class ProjectDetails extends Component {
             {this.state.showAddMemberForm ? '' :
               <button className="btn btn-danger" onClick={() => this.showAddMemberForm(true)}>Add Member</button>
             }
-            {this.state.showAddMemberForm ? <AddMembers projectId={this.state.projecsDetails._id} showAddMemberForm={this.showAddMemberForm}/> : ""}
+            {this.state.showAddMemberForm ? <AddMembers projectId={this.state.projecsDetails._id} showAddMemberForm={this.showAddMemberForm} /> : ""}
+
+            <button
+              className="btn btn-primary"
+              onClick={() => this.showAddTaskForm()}
+            >
+              Add Task
+                </button>
+
             <table className="table">
               <tr>
                 <th>Team Members</th>

@@ -9,7 +9,7 @@ class Members extends Component {
         this.state = {
             userId: props.userId,
             memberDetails: {},
-            managerId : ''
+            managerId: ''
         }
     }
 
@@ -39,11 +39,23 @@ class Members extends Component {
     // }
 
     render() {
+        const isOption = this.props.option ? (
+            <option value={this.props.userId} className="Members">
+                {this.state.memberDetails.userName}
+            </option>
+        ) : (
+                <>
+                    {this.state.memberDetails.userName}
+                </>
+            );
+
         // console.log(this.state.memberDetails);
         return (
             <>
-                {this.state.memberDetails.userName}
+                {/* {this.state.memberDetails.userName} */}
+                { isOption}
             </>
+
         );
     }
 }

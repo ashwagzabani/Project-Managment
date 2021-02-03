@@ -88,7 +88,6 @@ export default class Sidebar extends Component {
       },
       {
         path: "/project/details/:id",
-        exact: true,
         sidebar: () => <div></div>,
         main: (props) => <ProjectDetails {...props} />,
       }

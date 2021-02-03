@@ -60,11 +60,8 @@ export default class CreateNewproject extends Component {
         if (memberUserName.userName === '') {
             alert('No member Selected')
         } else {
-
-
-
             // let copyMembers = [...this.state.members]
-            axios.get(`${Apiconfig}/userrrrrr/${this.state.userName}`, memberUserName).then((res) => {
+            axios.get(`${Apiconfig}/user/check/${this.state.userName}`, memberUserName).then((res) => {
                 if (res.data.responseMessage === 'The user is there') {
                     console.log('The user data', res.data.userDetails)
                     const temporaryMembersListForDb = this.state.temporaryMembersListForDb.slice();
