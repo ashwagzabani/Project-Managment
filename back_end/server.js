@@ -51,7 +51,7 @@ app.use(cors(corsOptions));
 
 
 // Establish Database Connection
-mongoose.connect(db_url, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MongoDBURL, { useNewUrlParser: true, useUnifiedTopology: true });
 // Instantiate Express Application Object
 
 
