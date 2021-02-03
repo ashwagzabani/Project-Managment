@@ -51,7 +51,6 @@ class Tasks extends Component {
         : { allMemberTasks };
     return (
       <div>
-        {/* <p>hello</p> */}
         {allMemberTasks}
       </div>
     );

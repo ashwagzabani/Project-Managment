@@ -12,8 +12,8 @@ import {
   Redirect,
 } from "react-router-dom";
 export default class CreateNewproject extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     //projects
     this.state = {
       title: "",
@@ -24,7 +24,7 @@ export default class CreateNewproject extends Component {
       userName: "",
       temporaryMembersListForDb: [
         {
-          userId: "60168e71bff7b6488838bb04",
+          userId: props.location.state.userId,
           role: "manager",
         },
       ],
@@ -76,11 +76,11 @@ export default class CreateNewproject extends Component {
             membersIndex > -1
               ? alert("the user already added")
               : this.setState({
-                  member: res.data.userDetails,
-                  temporaryMembersList: this.state.temporaryMembersList.concat(
-                    res.data.userDetails
-                  ),
-                });
+                member: res.data.userDetails,
+                temporaryMembersList: this.state.temporaryMembersList.concat(
+                  res.data.userDetails
+                ),
+              });
             // alert(this.state.userName + 'added successfully')
             // copyMembers.push(this.state.userName)
             // this.setState({ members: copyMembers })
@@ -172,18 +172,18 @@ export default class CreateNewproject extends Component {
     const showList =
       membersList.length !== 0
         ? membersList.map((member, index) => {
-            return (
-              <div className="memberList list-group-item">
-                <p>{member.userName}</p>
-                <a href="#">
-                  <i
-                    class="fa fa-trash"
-                    onClick={() => this.removeMember(member)}
-                  ></i>
-                </a>
-              </div>
-            );
-          })
+          return (
+            <div className="memberList list-group-item">
+              <p>{member.userName}</p>
+              <a href="#">
+                <i
+                  class="fa fa-trash"
+                  onClick={() => this.removeMember(member)}
+                ></i>
+              </a>
+            </div>
+          );
+        })
         : "No members";
     // console.log(this.state.temporaryMembersList);
     return (
