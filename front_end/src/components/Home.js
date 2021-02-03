@@ -7,7 +7,7 @@ export default class Home extends Component {
     return (
       <div>
         <h1>welcome</h1>{" "}
-         {/* <Link
+        {/* <Link
           className="fa fa-file-text-o icon-wrapper project-name items"
           to={{
             pathname: "/newProject",
@@ -19,7 +19,12 @@ export default class Home extends Component {
         </Link>
         <p className="line">My Project</p> */}
         <Link
-          to={{}}
+          to={{
+            pathname: "/newProject",
+            state: {
+              userId: this.props.userId,
+            },
+          }}
         // className="fa fa-file-text-o icon-wrapper project-name items"
         >
           <p className="pragraphNewProject">New Project</p>

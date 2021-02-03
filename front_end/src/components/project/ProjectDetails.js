@@ -20,7 +20,6 @@ class ProjectDetails extends Component {
       isUpdate:false
     };
   }
-
   deleteMember = (index) => {
     console.log("delete btn clicked");
     <DeletProject projectId={this.state.projecsDetails._id} />;
