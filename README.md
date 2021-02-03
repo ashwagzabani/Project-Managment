@@ -1,4 +1,8 @@
 ## Project Managment
+Project management software is a centralized hub for your work, task management and project planning. 
+It allows you to keep an accurate project schedule and delegate tasks to the right people.
+
+
 ## User story
 - As a User, I should be able to see my own task
 - As a User, I should be able to create account
@@ -41,7 +45,7 @@
 |   6|    |   |   | |
 |   7|    |   |   | |
 |   8|    |   |   | |
-|  9|    |   |   | |
+|  9|    |   |    | |
 
 ## Feature Work
 - dashborad to follow up on workflow
