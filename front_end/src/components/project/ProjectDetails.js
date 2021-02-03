@@ -17,6 +17,7 @@ class ProjectDetails extends Component {
       userLoggedInId: props.location.state.userLoggedInId,
       showAddMemberForm: false,
       showAddTaskForm: false,
+      isUpdate:false
     };
   }
 
@@ -43,55 +44,55 @@ class ProjectDetails extends Component {
       getDetails !== undefined
         ? getDetails.length !== 0
           ? getDetails.map((member) => {
-              if (
-                member.userId === this.state.userLoggedInId &&
-                member.role === "manager"
-              ) {
-                isUserLoggedInManager = true;
-                managerName = <Members userId={member.userId} />;
-              }
-              // this.state.isupdate ? "" : "";
+            if (
+              member.userId === this.state.userLoggedInId &&
+              member.role === "manager"
+            ) {
+              isUserLoggedInManager = true;
+              managerName = <Members userId={member.userId} />;
+            }
+            // this.state.isupdate ? "" : "";
 
-              return (
-                <tr>
+            return (
+              <tr>
+                <td>
+                  <Members userId={member.userId} />
+                </td>
+                <td>
+                  <Tasks
+                    userId={member.userId}
+                    projectId={this.state.projecsDetails._id}
+                  />
+                </td>
+                {isUserLoggedInManager ? (
                   <td>
-                    <Members userId={member.userId} />
+                    <a
+                      href="#"
+                      onClick={() => this.deleteMember()}
+                    >
+                      <i className="fa fa-trash"></i>
+                    </a>
                   </td>
-                  <td>
-                    <Tasks
-                      userId={member.userId}
-                      projectId={this.state.projecsDetails._id}
-                    />
-                  </td>
-                  {isUserLoggedInManager ? (
-                    <td>
-                      <a
-                        href="#"
-                        onClick={() => this.deleteMember( )}
-                      >
-                        <i className="fa fa-trash"></i>
-                      </a>
-                    </td>
-                  ) : (
+                ) : (
                     <td></td>
                   )}
-                  {isUserLoggedInManager ? (
-                    <td>
-                      <a
-                        href="#"
-                        onClick={() =>
-                          this.updateMember(this.state.projecsDetails._id)
-                        }
-                      >
-                        <i className="fa fa-edit"></i>
-                      </a>
-                    </td>
-                  ) : (
+                {isUserLoggedInManager ? (
+                  <td>
+                    <a
+                      href="#"
+                      onClick={() =>
+                        this.updateMember(this.state.projecsDetails._id)
+                      }
+                    >
+                      <i className="fa fa-edit"></i>
+                    </a>
+                  </td>
+                ) : (
                     <td></td>
                   )}
-                </tr>
-              );
-            })
+              </tr>
+            );
+          })
           : ""
         : "";
 
@@ -157,31 +158,31 @@ class ProjectDetails extends Component {
             {this.state.showAddMemberForm ? (
               ""
             ) : (
-              <button
-                className="btn btn-danger"
-                onClick={() => this.showAddMemberForm(true)}
-              >
-                Add Member
-              </button>
-            )}
+                <button
+                  className="btn btn-danger"
+                  onClick={() => this.showAddMemberForm(true)}
+                >
+                  Add Member
+                </button>
+              )}
             {this.state.showAddTaskForm ? (
               ""
             ) : (
-              <button
-                className="btn btn-primary"
-                onClick={() => this.showAddTaskForm()}
-              >
-                Add Task
-              </button>
-            )}
+                <button
+                  className="btn btn-primary"
+                  onClick={() => this.showAddTaskForm()}
+                >
+                  Add Task
+                </button>
+              )}
             {this.state.showAddMemberForm ? (
               <AddMembers
                 projectId={this.state.projecsDetails._id}
                 showAddMemberForm={this.showAddMemberForm}
               />
             ) : (
-              ""
-            )}{" "}
+                ""
+              )}{" "}
             {this.state.showAddMemberForm ? <AddMembers /> : ""}
             {this.state.showAddTaskForm ? (
               <CreateNewTask
@@ -189,8 +190,8 @@ class ProjectDetails extends Component {
                 projectId={this.state.projecsDetails._id}
               />
             ) : (
-              ""
-            )}
+                ""
+              )}
             <table className="table">
               <tr>
                 <th>Team Members</th>
