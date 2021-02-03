@@ -1,4 +1,5 @@
 // Require necessary NPM packages
+const PORT = process.env.PORT;
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -46,7 +47,6 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 //must change your port to this for deployment else it wont work
-const PORT = process.env.PORT;
 
 //serves all our static files from the build directory.
 app.use(express.static(path.join(__dirname, "build")));
