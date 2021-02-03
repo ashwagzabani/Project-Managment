@@ -48,8 +48,6 @@ app.use(cors(corsOptions));
 //must change your port to this for deployment else it wont work
 const PORT = process.env.PORT;
 
-//Install path, then write this at the top of your NodeJS entry app file, the
-
 //serves all our static files from the build directory.
 app.use(express.static(path.join(__dirname, "build")));
 
@@ -59,10 +57,7 @@ app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
-app.listen(PORT);
 
-// const addNewMember = require("./routes/AddNewMember");
-//mongoose.connect(mongoConnectionString, {useNewUrlParser: true, useUnifiedTopology: true});
 
 // Establish Database Connection
 mongoose.connect(db_url, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -77,18 +72,15 @@ app.get("/", (req, res) => {
   // res.json('result');
 });
 
-/*** Middleware ***/
-//
-// Add `bodyParser` middleware which will parse JSON requests
-// into JS objects before they reach the route files.
-//
+
 // The method `.use` sets up middleware for the Express application
 app.use(express.json());
 const reactPort = 3000;
+
 // Set CORS headers on response from this API using the `cors` NPM package.
-app.use(
-  cors({ origin: process.env.CLIENT_ORIGIN || `http://localhost:${reactPort}` })
-);
+// app.use(
+//   cors({ origin: process.env.CLIENT_ORIGIN || `http://localhost:${reactPort}` })
+// );
 
 /*** Routes ***/
 // Mount imported Routers
@@ -108,6 +100,7 @@ app.use('/api', updateTasksRouter);
 app.use('/api', deleteTaskRouter);
 app.use('/api', userRouter);
 
+app.listen(PORT);
 /*** Routes ***/
 // Define PORT for the API to run on
 // const PORT = process.env.PORT || 5000;
