@@ -34,7 +34,7 @@ class ProjectsList extends Component {
     )
   }
   render() {
-    // console.log(this.state.projecs_list);
+    console.log(this.state.projecs_list);
     const showAllProjectsList = this.state.projecs_list.map((projects) => {
       console.log(projects._id);
       return (
