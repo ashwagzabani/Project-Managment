@@ -9,7 +9,7 @@ export default class AddMembers extends Component {
         this.state = {
             userEmail: '',
             members: [],
-            projectName: ''
+            projectName:''
         }
     }
     //Add user into Project
@@ -30,7 +30,6 @@ export default class AddMembers extends Component {
         });
     }
     //updateProject
-    // change the title to Id 
     updateProject = () => {
         axios.put(`${Apiconfig}/addMembers/${this.state.title}`, { members: this.state.members }).then((res) => {
             console.log(res)
@@ -46,7 +45,7 @@ export default class AddMembers extends Component {
             <div>
                 <form onSubmit={this.AddUser}>
 
-                    <h2>Project</h2>
+                  <h2>Project</h2>
 
 
                     <h4>Add Project Team</h4>
@@ -54,7 +53,7 @@ export default class AddMembers extends Component {
                     <label for="ProjectName">Project Name:</label>
                     <input type="text" onChange={(e) => {
                         this.setState({
-                            projectName: e.target.value,
+                           projectName: e.target.value,
                         });
                     }} value={this.state.projectName} />
 

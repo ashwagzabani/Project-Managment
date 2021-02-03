@@ -9,10 +9,9 @@ import CreateNewproject from "./project/CreateNewproject";
 import Members from "./Member/Members";
 import DeleteProject from "./project/DeletProject";
 import ProjectDetails from "./project/ProjectDetails";
-import AddMembers from './Member/AddMembers'
+import AddMembers from "./Member/AddMembers";
 
 export default class Sidebar extends Component {
-
   render() {
     // <div class="dropdown-container">
     //   <a href="#">Link 1</a>
@@ -25,7 +24,7 @@ export default class Sidebar extends Component {
         path: "/",
         exact: true,
         sidebar: () => <div></div>,
-        main: (props) => <Home username={this.props.username} isAuthed={true} />,
+        main: (props) => <Home userId={this.props.userId} isAuthed={true} />,
       },
       {
         path: "/newProject",
@@ -44,8 +43,7 @@ export default class Sidebar extends Component {
         exact: true,
         sidebar: () => <div></div>,
         main: () => <DeleteProject />,
-      }
-      ,
+      },
       {
         path: "/project/list",
         exact: true,
@@ -88,16 +86,16 @@ export default class Sidebar extends Component {
       },
       {
         path: "/project/details/:id",
+        exact: true,
         sidebar: () => <div></div>,
         main: (props) => <ProjectDetails {...props} />,
-      }
-      ,
+      },
       {
         path: "/AddMember",
         exact: true,
         sidebar: () => <div></div>,
         main: () => <AddMembers />,
-      }
+      },
     ];
 
     return (
@@ -108,27 +106,6 @@ export default class Sidebar extends Component {
             <ul>
               <li className="fas fa-home">
                 <Link to="/">Home</Link>
-              </li>
-              <li className="fas fa-home">
-                <Link to="/project/update">Update Project</Link>
-              </li>
-              <li className="fas fa-home">
-                <Link to="/signup">Sign Up</Link>
-              </li>
-              <li className="fas fa-home">
-                <Link to="/login">Log In</Link>
-              </li>
-
-              <li className="fas fa-home">
-                <Link to="/AddMember">Add Member</Link>
-              </li>
-
-
-              <li className="fas fa-home">
-                <Link to="/members">Members</Link>
-              </li>
-              <li className="">
-                <Link to="/project/list">Projects list</Link>
               </li>
             </ul>
 
