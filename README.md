@@ -13,9 +13,7 @@
 - As a Manager, I should be able to delete all tasks for spicific member
 - As a Manager, I should be able to remove specific member
 - As a Manager, I should be able to assign the task to a different memebr
-- As a Manager, I should be able to see dashborad to follow up on workflow
 - As a Manager, I should be able to see project details contains of : team member and their tasks
-- As a Team member, I should be able get alert when any update related to my tasks
 
 ## wireframe
 
@@ -46,6 +44,8 @@
 |  9|    |   |   | |
 
 ## Feature Work
+- dashborad to follow up on workflow
+- User get alert when any update related to the user tasks
 ## Installation and Setup Instructions
 Clone down this repository. You will need `node` and `npm` installed globally on your machine.
 
