@@ -1,6 +1,7 @@
 // Require necessary NPM packages
 const PORT = process.env.PORT;
 const express = require("express");
+const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
@@ -48,29 +49,13 @@ app.use(cors(corsOptions));
 
 //must change your port to this for deployment else it wont work
 
-//serves all our static files from the build directory.
-app.use(express.static(path.join(__dirname, "build")));
-
-// After all routes
-// This code essentially serves the index.html file on any unknown routes.
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "server.html"));
-});
 
 
 
 // Establish Database Connection
 mongoose.connect(db_url, { useNewUrlParser: true, useUnifiedTopology: true });
 // Instantiate Express Application Object
-const app = express();
-app.get("/", (req, res) => {
-  console.log("get /");
-  users.find({}, (err, result) => {
-    // console.log(res);
-    res.json(result);
-  });
-  // res.json('result');
-});
+
 
 
 // The method `.use` sets up middleware for the Express application
@@ -99,6 +84,16 @@ app.use('/api', TasksRouter);
 app.use('/api', updateTasksRouter);
 app.use('/api', deleteTaskRouter);
 app.use('/api', userRouter);
+
+
+//serves all our static files from the build directory.
+app.use(express.static(path.join(__dirname, "build")));
+
+// After all routes
+// This code essentially serves the index.html file on any unknown routes.
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "server.html"));
+});
 
 app.listen(PORT);
 /*** Routes ***/
