@@ -9,7 +9,7 @@ export default class Home extends Component {
         <h1>welcome</h1>{" "}
         <Link
           to="/newProject"
-          className="fa fa-file-text-o icon-wrapper project-name items"
+        // className="fa fa-file-text-o icon-wrapper project-name items"
         >
           <p className="pragraphNewProject">New Project</p>
         </Link>
