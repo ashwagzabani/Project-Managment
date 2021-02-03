@@ -15,6 +15,7 @@ const router = express.Router();
  * Description: Get the user's projects as manager or member
  */
 router.get("/projects/:id", (req, res) => {
+  console.log("object");
   projects.find(
     {
       //get user's projects
