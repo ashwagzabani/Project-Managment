@@ -50,8 +50,6 @@ app.use(cors(corsOptions));
 //must change your port to this for deployment else it wont work
 
 
-
-
 // Establish Database Connection
 mongoose.connect(db_url, { useNewUrlParser: true, useUnifiedTopology: true });
 // Instantiate Express Application Object
@@ -92,7 +90,7 @@ app.use(express.static(path.join(__dirname, "build")));
 // After all routes
 // This code essentially serves the index.html file on any unknown routes.
 app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "server.html"));
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 app.listen(PORT);
