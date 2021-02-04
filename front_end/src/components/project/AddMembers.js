@@ -13,23 +13,69 @@ export default class AddMembers extends Component {
         }
     }
     //Add user into Project
+    // AddUser = (e) => {
+    //     /*The Event interface's preventDefault() method tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be. The event continues to propagate as usual, unless one of its event listeners calls stopPropagation() or stopImmediatePropagation(), either of which terminates propagation at once.*/
+    //     // e.preventDefault()
+    //     // let copyMembers = [...this.state.members]
+    //     // axios.post(`${Apiconfig}/userss`, this.state.userName).then((res) => {
+    //     //     if (res.data === 'Already Exist') {
+    //     //         console.log('Email:', this.state.userName)
+    //     //         alert(this.state.userName + 'added successfully')
+    //     //         copyMembers.push(this.state.userName)
+    //     //         this.setState({ members: copyMembers })
+    //     //     }
+    //     //     else {
+    //     //         alert(this.state.userName + ' Error! invalid emai')
+    //     //     }
+    //     // });
+
+    // }
     AddUser = (e) => {
         /*The Event interface's preventDefault() method tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be. The event continues to propagate as usual, unless one of its event listeners calls stopPropagation() or stopImmediatePropagation(), either of which terminates propagation at once.*/
-        // e.preventDefault()
-        // let copyMembers = [...this.state.members]
-        // axios.post(`${Apiconfig}/userss`, this.state.userName).then((res) => {
-        //     if (res.data === 'Already Exist') {
-        //         console.log('Email:', this.state.userName)
-        //         alert(this.state.userName + 'added successfully')
-        //         copyMembers.push(this.state.userName)
-        //         this.setState({ members: copyMembers })
-        //     }
-        //     else {
-        //         alert(this.state.userName + ' Error! invalid emai')
-        //     }
-        // });
-        
-    }
+        e.preventDefault();
+        const memberUserName = { userName: this.state.userName };
+        //check if input feild empty
+        if (memberUserName.userName === "") {
+          alert("No member Selected");
+        } else {
+          // let copyMembers = [...this.state.members]
+          axios
+            .get(`${Apiconfig}/user/check/${this.state.userName}`, memberUserName)
+            .then((res) => {
+              if (res.data.responseMessage === "The user is there") {
+                console.log("The user data", res.data.userDetails);
+                // const temporaryMembersListForDb = this.state.temporaryMembersListForDb.slice();
+                // const membersIndex = temporaryMembersListForDb.findIndex(
+                //   (item) => item.userId === res.data.userDetails._id
+                // );
+                
+                console.log(membersIndex);
+                membersIndex > -1
+                  ? alert("the user already added")
+                  : this.setState({
+                    member: res.data.userDetails,
+                    temporaryMembersList: this.state.temporaryMembersList.concat(
+                      res.data.userDetails
+                    ),
+                  });
+                // alert(this.state.userName + 'added successfully')
+                // copyMembers.push(this.state.userName)
+                // this.setState({ members: copyMembers })
+                console.log(res.data.userDetails._id);
+                // this.state.members.map(m =>{
+                //     console.log(m);
+                // })
+                this.AddMember();
+              } else {
+                alert(res.data);
+              }
+              console.log(res.data);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
+      };
     //updateProject
     updateProject = () => {
         axios.put(`${Apiconfig}/addMembers/${this.state.title}`, { members: this.state.members }).then((res) => {

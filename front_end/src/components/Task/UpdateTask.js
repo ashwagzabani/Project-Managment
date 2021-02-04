@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import API_URL from "../../ApiConfig";
 import Members from "../Member/Members";
+import DeleteAllTasksToUser from "./DeleteAllTasksToUser"
 class UpdateTask extends Component {
   constructor(props) {
     super(props);
@@ -12,8 +13,7 @@ class UpdateTask extends Component {
       projectId: props.projectId,
     };
   }
-  componentDidMount = () => {
-  };
+  componentDidMount = () => {};
   updateTask = (event) => {
     event.preventDefault();
     axios
@@ -25,35 +25,48 @@ class UpdateTask extends Component {
         console.log("ERROR:", error);
       });
   };
-
+  handleChange = (e) => {
+    this.setState({ userId: e.target.value });
+  };
   render() {
     return (
       <div>
         <form onSubmit={this.updateTask}>
-          <input
-            type="text"
-            onChange={(e) => {
-              this.setState({ title: e.target.value });
-            }}
-            value={this.state.title}
-            className="form-control-from-group"
-          />
-          {"  "}
-          <select onChange={this.handleChange}>
-            {this.props.teamMember.map((memberName) => (
-              <Members
-                value={memberName.userId}
-                userId={memberName.userId}
-                option={true}
+          <>
+            <td>
+              <input
+                type="text"
+                onChange={(e) => {
+                  this.setState({ title: e.target.value });
+                }}
+                value={this.state.title}
+                className="form-control-from-group"
+                defaultValue={this.state.title}
               />
-            ))}
-          </select>{" "}
-          {"  "}
-          <input
-            type="submit"
-            className="btn btn-danger btn-black"
-            value="Submit"
-          />
+            </td>
+          </>
+          <>
+            <td>
+              <select onChange={this.handleChange}>
+                {this.props.teamMember.map((memberName) => (
+                  <Members
+                    value={this.state.userId}
+                    userId={memberName.userId}
+                    option={true}
+                  />
+                ))}
+              </select>
+            </td>
+          </>
+          <>
+          <button onClick={<DeleteAllTasksToUser userId={this.state.userId}/>}>delete All</button>
+          <>
+            <input
+              type="submit"
+              className="btn btn-danger btn-black"
+              value="Submit"
+            />
+          </>
         </form>
       </div>
     );

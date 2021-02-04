@@ -32,34 +32,48 @@ const projectId = '6011b5dcd2af381b2c6a09b6';
     ]
  */
 //{ $push: { hates: { $each: ['alarm clocks', 'jackalopes'] } } }
+// router.patch('/members/new/:id', (req, res) => {
+//     Users.findOne({ userName: req.body.userName },
+//         (err, result) => {
+//             if (err) {
+//                 console.log("the user not there ", err);
+//             }
+//             if (result) {
+//                 console.log("the user there ", err);
+
+//                 // console.log("the user is there", result)
+//                 // projects.findByIdAndUpdate({ _id: req.params.id }, { $push: { members: { $each: req.body.members } } },
+//                 //     (err, result) => {
+//                 //         if (err) {
+//                 //             console.log(err);
+//                 //         }
+//                 //         res.json({
+//                 //             responseMessage: "The user is there",
+//                 //             userDetails: result
+//                 //         });
+//                 //     });
+//             } else if (result === null) {
+//                 res.json("The user is not there");
+//             }
+
+//         });
+
+//     // res.json("hii")
+// });
+
+
 router.patch('/members/new/:id', (req, res) => {
-    Users.findOne({ userName: req.body.userName },
+    projects.findByIdAndUpdate({ _id: req.params.id }, { $push: { members: {$each: req.body }} },
         (err, result) => {
             if (err) {
-                console.log("the user not there ", err);
+                console.log(err);
             }
-            if (result) {
-                console.log("the user there ", err);
-
-                // console.log("the user is there", result)
-                // projects.findByIdAndUpdate({ _id: req.params.id }, { $push: { members: { $each: req.body.members } } },
-                //     (err, result) => {
-                //         if (err) {
-                //             console.log(err);
-                //         }
-                //         res.json({
-                //             responseMessage: "The user is there",
-                //             userDetails: result
-                //         });
-                //     });
-            } else if (result === null) {
-                res.json("The user is not there");
-            }
-
+            res.json(result);
+            console.log(result)
         });
-
     // res.json("hii")
 });
+
 
 //User.findOne({'local.rooms': {$elemMatch: {name: req.body.username}}}, function (err, user) {
 
