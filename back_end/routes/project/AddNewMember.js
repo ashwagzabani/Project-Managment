@@ -99,10 +99,10 @@ router.post('/user/check', (req, res) => {
                             });
                         // res.json("hii")
                     });
-                    res.json({
-                        responseMessage: "The user is there",
-                        userDetails: result
-                    });
+                    // res.json({
+                    //     responseMessage: "The user is there",
+                    //     userDetails: result
+                    // });
                     console.log("the user is there", result)
                 } else {
                     res.json({ responseMessage: "The user is already there" });
