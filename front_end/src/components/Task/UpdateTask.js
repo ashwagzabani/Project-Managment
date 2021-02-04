@@ -60,7 +60,8 @@ class UpdateTask extends Component {
           </>
           <>
           <button onClick={<DeleteAllTasksToUser userId={this.state.userId}/>}>delete All</button>
-          <>
+                   </>
+ <>
             <input
               type="submit"
               className="btn btn-danger btn-black"

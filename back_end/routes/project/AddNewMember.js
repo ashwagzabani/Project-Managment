@@ -63,15 +63,15 @@ const projectId = '6011b5dcd2af381b2c6a09b6';
 
 
 router.patch('/members/new/:id', (req, res) => {
-    projects.findByIdAndUpdate({ _id: req.params.id }, { $push: { members: {$each: req.body }} },
-        (err, result) => {
-            if (err) {
-                console.log(err);
-            }
-            res.json(result);
-            console.log(result)
-        });
-    // res.json("hii")
+    // projects.findByIdAndUpdate({ _id: req.params.id }, { $push: { members: {$each: req.body }} },
+    //     (err, result) => {
+    //         if (err) {
+    //             console.log(err);
+    //         }
+    //         res.json(result);
+    //         console.log(result)
+    //     });
+    res.json("hii")
 });
 
 
