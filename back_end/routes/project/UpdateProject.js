@@ -13,7 +13,7 @@ const fakeprojectid = "6011b5dcd2af381b2c6a09b6";
  */
 router.patch('/project/:id', (req, res) => {
 
-  projects.findByIdAndUpdate({ "_id": req.params.id }, req.body, (error, result) => {
+  projects.findByIdAndUpdate({ _id: req.params.id }, req.body, (error, result) => {
     if (error) {
       console.log(error);
       res.json({ error: "(" });
