@@ -28,6 +28,7 @@ const NewTaskRouter = require("./routes/task/NewTask");
 const TasksRouter = require("./routes/task/Tasks");
 const updateTasksRouter = require("./routes/task/UpdateTask");
 const deleteTaskRouter = require("./routes/task/DeleteTasks");
+// const removeMember = require("./routes/project/RemoveMember");
 
 //Make sure to add to your whitelist any website or APIs that connect to your backend.
 var whitelist = [`http://localhost:${PORT}`, "https://project-managment-sei-14.herokuapp.com"];
@@ -83,6 +84,7 @@ app.use('/api', updateTasksRouter);
 app.use('/api', deleteTaskRouter);
 app.use('/api', userRouter);
 
+// app.use('/api',removeMember);
 
 //serves all our static files from the build directory.
 app.use(express.static(path.join(__dirname, "build")));

@@ -91,9 +91,11 @@ router.post('/user/check', (req, res) => {
                             (err, result) => {
                                 if (err) {
                                     console.log(err);
+                                } else {
+                                    res.json({ responseMessage: "SUCCESS", response: result });
+                                    console.log(result)
                                 }
-                                res.json({ responseMessage: "SUCCESS", response: result });
-                                console.log(result)
+
                             });
                         // res.json("hii")
                     });
