@@ -141,11 +141,13 @@ export default class CreateNewproject extends Component {
     const membersIndex = temporaryMembersList.findIndex(
       (item) => item.userName === member.userName
     );
-    // console.log("index:", membersIndex)
+    console.log("index:", membersIndex)
     membersIndex > -1
       ? temporaryMembersList.splice(membersIndex, 1)
       : console.log("not there");
     console.log(temporaryMembersList);
+
+
     const temporaryMembersListForDb = this.state.temporaryMembersListForDb.slice();
     // console.log(typeof memebr);
     const memberIndex = temporaryMembersListForDb.findIndex(
@@ -157,7 +159,7 @@ export default class CreateNewproject extends Component {
       : console.log("the user already added");
     this.setState({
       temporaryMembersList,
-      temporaryMembersListForDb,
+      temporaryMembersListForDb
     });
     console.log(temporaryMembersListForDb);
     console.log(temporaryMembersList);
