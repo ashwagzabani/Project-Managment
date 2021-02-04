@@ -72,7 +72,7 @@ class Tasks extends Component {
               if (task.userId === this.state.userId) {
                 // return <p>{task.title}</p>; <td>{task.userId}</td>
                 return (
-                  <div>
+                  <>
                     <td>
                       <p>{task.title}</p>
                     </td>
@@ -100,7 +100,7 @@ class Tasks extends Component {
                     ) : (
                       <td></td>
                     )}
-                  </div>
+                  </>
                 );
               }
             }

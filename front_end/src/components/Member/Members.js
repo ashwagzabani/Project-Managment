@@ -31,9 +31,7 @@ class Members extends Component {
         {this.state.memberDetails.userName}
       </option>
     ) : (
-        <>
-          {this.state.memberDetails.userName}
-        </>
+        <td>{this.state.memberDetails.userName}</td>
       );
     return <>{isOption} </>;
   }

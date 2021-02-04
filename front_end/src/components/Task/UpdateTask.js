@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 import axios from "axios";
 import API_URL from "../../ApiConfig";
-import Members from '../Member/Members'
+import Members from "../Member/Members";
 class UpdateTask extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      taskId: props.id,
+      taskId: props.taskId,
       title: props.Title,
       userId: props.userId,
-      projectId: props.projectId
+      projectId: props.projectId,
     };
   }
-
+  componentDidMount = () => {
+  };
   updateTask = (event) => {
     event.preventDefault();
     axios
@@ -26,7 +27,6 @@ class UpdateTask extends Component {
   };
 
   render() {
-    console.log(this.state.projectEndDate);
     return (
       <div>
         <form onSubmit={this.updateTask}>
