@@ -112,9 +112,9 @@ router.post('/user/check', (req, res) => {
         });
 });
 
-function checkUser(userId) {
+function checkUser(user_Id) {
     projects.find({
-        members: { $elemMatch: { userId: userId } }
+        members: { $elemMatch: { userId: user_Id } }
     },
         (err, result) => {
             if (err) {
