@@ -111,7 +111,7 @@ export default class Sidebar extends Component {
                 <Link to="/ShowAllTasks">My Tasks</Link>
               </li>
               <li className="">
-                <Link to="/login" onClick={this.props.logOut}>
+                <Link to="/" onClick={this.props.logOut}>
                   Log Out
                 </Link>
               </li>

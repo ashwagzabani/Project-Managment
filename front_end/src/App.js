@@ -1,48 +1,46 @@
 import React, { Component } from "react";
 import "./App.css";
 import Sidebar from "./components/Sidebar";
-import Forms from './components/Forms'
-// import "./form.css";
-import CreateNewTask from "./components/Task/CreateNewTask";
+import Forms from "./components/Forms";
 export default class App extends Component {
-constructor() {
+  constructor() {
     super();
     //signUp faild
     this.state = {
       user: {},
-      projectList: [],
-      isLogged:false,
+      isLogged: false,
     };
-    this.loginHandler = this.loginHandler.bind(this);  
+    this.loginHandler = this.loginHandler.bind(this);
     this.logOut = this.logOut.bind(this);
-
   }
   loginHandler = (userInfo) => {
     // const userId = this.state.userId;
-    this.setState({ user: userInfo, isLogged:true });
+    this.setState({ user: userInfo, isLogged: true });
   };
 
-  logOut =()=>{
-    this.setState({isLogged:false, user:{}, projectList:[] });
-
-  }
+  logOut = () => {
+    this.setState({ isLogged: false, user: {}, projectList: [] });
+  };
   render() {
-    
     return (
       <>
         {this.state.isLogged ? (
-          <div>
+          <div >
             <Sidebar
+            
               userId={this.state.user._id}
+              isLogged={this.props.isLogged}
               userName={this.state.user.userName}
               isLogged={this.state.isLogged}
-              loginHandler={this.loginHandler}
+              logOut={this.logOut}
             />
           </div>
         ) : (
           <div>
             <div>
-              <Forms loginHandler={this.loginHandler} />
+              <div>
+                <Forms loginHandler={this.loginHandler} />
+              </div>
             </div>
           </div>
         )}
