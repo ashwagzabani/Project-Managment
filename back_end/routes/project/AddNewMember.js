@@ -119,12 +119,12 @@ function checkUser(user_Id) {
         (err, result) => {
             if (err) {
                 console.log(err);
-                return false;
+                // return false;
             }
             else {
-                res.json({ message: "SUCCESS", response: result });
+                res.json({ message: "is already there", response: result });
                 console.log(result)
-                return true;
+                // return true;
             }
 
         });
