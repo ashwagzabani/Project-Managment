@@ -28,6 +28,11 @@ class ShowAllTasks extends Component {
         console.log("ERROR:", error);
       });
     // return (<td>this.state.memberDetails.userName</td>)
+  };  status = (task) => {
+    console.log(task);
+    task.status = true;
+    this.setState({ task });
+    <UpdateTaskStatus UpdateTaskStatus={task} />
   };
   render() {
     const allTasks = this.state.allTasks;

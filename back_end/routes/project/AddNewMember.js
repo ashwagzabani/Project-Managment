@@ -86,19 +86,17 @@ router.post('/user/check', (req, res) => {
             }
             if (result) {
                 if (!checkUser(result._id)) {
-                    router.patch('/members/new/:id', (req, res) => {
-                        projects.findByIdAndUpdate({ _id: req.body.id }, { $push: { members: result._id } },
-                            (err, result) => {
-                                if (err) {
-                                    console.log(err);
-                                } else {
-                                    res.json({ responseMessage: "SUCCESS", response: result });
-                                    console.log(result)
-                                }
+                    projects.findByIdAndUpdate({ _id: req.body.id }, { $push: { members: result._id } },
+                        (err, result) => {
+                            if (err) {
+                                console.log(err);
+                            } else {
+                                res.json({ responseMessage: "SUCCESS", response: result });
+                                console.log(result)
+                            }
 
-                            });
-                        // res.json("hii")
-                    });
+                        });
+                    // res.json("hii")
                     // res.json({
                     //     responseMessage: "The user is there",
                     //     userDetails: result
