@@ -85,26 +85,43 @@ router.post('/user/check', (req, res) => {
                 res.json({ responseMessage: "the user not there " })
             }
             if (result) {
-                if (!checkUser(result._id)) {
-                    projects.findByIdAndUpdate({ _id: req.body.id }, { $push: { members: result._id } },
-                        (err, result) => {
-                            if (err) {
-                                console.log(err);
-                            } else {
-                                res.json({ responseMessage: "SUCCESS", response: result });
-                                console.log(result)
-                            }
+                projects.find({
+                    members: { $elemMatch: { userId: user_Id } }
+                },
+                    (err, result) => {
+                        if (err) {
+                            console.log(err);
+                            // return false;
+                            projects.findByIdAndUpdate({ _id: req.body.id }, { $push: { members: result._id } },
+                                (err, result) => {
+                                    if (err) {
+                                        console.log(err);
+                                    } else {
+                                        res.json({ responseMessage: "SUCCESS", response: result });
+                                        console.log(result)
+                                    }
 
-                        });
-                    // res.json("hii")
-                    // res.json({
-                    //     responseMessage: "The user is there",
-                    //     userDetails: result
-                    // });
-                    console.log("the user is there", result)
-                } else {
-                    res.json({ responseMessage: "The user is already there" });
-                }
+                                });
+                        }
+                        else {
+                            res.json({ message: "is already there", response: result });
+                            console.log(result)
+                            // return true;
+                        }
+
+                    });
+
+                // if (!checkUser(result._id)) {
+
+                // res.json("hii")
+                // res.json({
+                //     responseMessage: "The user is there",
+                //     userDetails: result
+                // });
+                console.log("the user is there", result)
+                // } else {
+                //     res.json({ responseMessage: "The user is already there" });
+                // }
             } else if (result === null) {
                 res.json("The user is not there");
             }
@@ -112,24 +129,24 @@ router.post('/user/check', (req, res) => {
         });
 });
 
-function checkUser(user_Id) {
-    projects.find({
-        members: { $elemMatch: { userId: user_Id } }
-    },
-        (err, result) => {
-            if (err) {
-                console.log(err);
-                // return false;
-            }
-            else {
-                res.json({ message: "is already there", response: result });
-                console.log(result)
-                // return true;
-            }
+// function checkUser(user_Id) {
+//     projects.find({
+//         members: { $elemMatch: { userId: user_Id } }
+//     },
+//         (err, result) => {
+//             if (err) {
+//                 console.log(err);
+//                 return false;
+//             }
+//             else {
+//                 res.json({ message: "is already there", response: result });
+//                 console.log(result)
+//                 return true;
+//             }
 
-        });
-    // res.json("hii")
-}
+//         });
+//     // res.json("hii")
+// }
 //User.findOne({'local.rooms': {$elemMatch: {name: req.body.username}}}, function (err, user) {
 
 // router.post('/signIn', (req, res) => {
