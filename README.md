@@ -19,8 +19,6 @@ It allows you to keep an accurate project schedule and delegate tasks to the rig
 - As a Manager, I should be able to assign the task to a different memebr
 - As a Manager, I should be able to see project details contains of : team member and their tasks
 
-## wireframe
-
 ### Technologies
 - ReactJs
 - JavaScript 
