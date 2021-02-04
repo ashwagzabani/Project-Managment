@@ -11,7 +11,7 @@ const router = express.Router();
  * URI:         /project/id/
  * Description: Update an esisting project status, Date and/or title
  */
-router.patch('/project/update/:id', (req, res) => {
+router.put('/project/update/:id', (req, res) => {
 
   projects.findByIdAndUpdate({ "_id": req.params.id }, req.body, (error, result) => {
     if (error) {
