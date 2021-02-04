@@ -40,7 +40,7 @@ export default class AddMembers extends Component {
         } else {
           // let copyMembers = [...this.state.members]
           axios
-            .get(`${Apiconfig}/user/check/${this.state.userName}`, memberUserName)
+            .post(`${Apiconfig}/user/check/${this.state.userName}`, memberUserName)
             .then((res) => {
               if (res.data.responseMessage === "The user is there") {
                 console.log("The user data", res.data.userDetails);
@@ -48,7 +48,7 @@ export default class AddMembers extends Component {
                 // const membersIndex = temporaryMembersListForDb.findIndex(
                 //   (item) => item.userId === res.data.userDetails._id
                 // );
-                
+
                 console.log(membersIndex);
                 membersIndex > -1
                   ? alert("the user already added")

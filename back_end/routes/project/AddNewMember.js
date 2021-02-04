@@ -82,18 +82,17 @@ router.post('/user/check', (req, res) => {
         (err, result) => {
             if (err) {
                 console.log("the user not there ", err);
+                res.json({ responseMessage: "the user not there " })
             }
             if (result) {
                 if (!checkUser(result._id)) {
-
-
                     router.patch('/members/new/:id', (req, res) => {
                         projects.findByIdAndUpdate({ _id: req.body.id }, { $push: { members: result._id } },
                             (err, result) => {
                                 if (err) {
                                     console.log(err);
                                 }
-                                res.json({ message: "SUCCESS", response: result });
+                                res.json({ responseMessage: "SUCCESS", response: result });
                                 console.log(result)
                             });
                         // res.json("hii")
@@ -103,8 +102,8 @@ router.post('/user/check', (req, res) => {
                         userDetails: result
                     });
                     console.log("the user is there", result)
-                }else{
-                    res.json("The user is already there");
+                } else {
+                    res.json({ responseMessage: "The user is already there" });
                 }
             } else if (result === null) {
                 res.json("The user is not there");
