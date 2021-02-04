@@ -7,27 +7,28 @@ export default class AddMembers extends Component {
     constructor() {
         super();
         this.state = {
-            userEmail: '',
-            members: [],
+            userName: '',
+            member: {},
             projectName:''
         }
     }
     //Add user into Project
     AddUser = (e) => {
         /*The Event interface's preventDefault() method tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be. The event continues to propagate as usual, unless one of its event listeners calls stopPropagation() or stopImmediatePropagation(), either of which terminates propagation at once.*/
-        e.preventDefault()
-        let copyMembers = [...this.state.members]
-        axios.post(`${Apiconfig}/userss`, this.state.userEmail).then((res) => {
-            if (res.data === 'Already Exist') {
-                console.log('Email:', this.state.userEmail)
-                alert(this.state.userEmail + 'added successfully')
-                copyMembers.push(this.state.userEmail)
-                this.setState({ members: copyMembers })
-            }
-            else {
-                alert(this.state.userEmail + ' Error! invalid emai')
-            }
-        });
+        // e.preventDefault()
+        // let copyMembers = [...this.state.members]
+        // axios.post(`${Apiconfig}/userss`, this.state.userName).then((res) => {
+        //     if (res.data === 'Already Exist') {
+        //         console.log('Email:', this.state.userName)
+        //         alert(this.state.userName + 'added successfully')
+        //         copyMembers.push(this.state.userName)
+        //         this.setState({ members: copyMembers })
+        //     }
+        //     else {
+        //         alert(this.state.userName + ' Error! invalid emai')
+        //     }
+        // });
+        
     }
     //updateProject
     updateProject = () => {
@@ -61,9 +62,9 @@ export default class AddMembers extends Component {
                     <label for="addUser">User Email:</label>
                     <input type="email" onChange={(e) => {
                         this.setState({
-                            userEmail: e.target.value,
+                            userName: e.target.value,
                         });
-                    }} value={this.state.userEmail} />
+                    }} value={this.state.userName} />
 
                     <input
                         type="submit"

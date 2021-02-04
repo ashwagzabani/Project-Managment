@@ -46,7 +46,7 @@ class Tasks extends Component {
     console.log(task);
     task.status = true;
     this.setState({ task });
-    <UpdateTaskStatus UpdateTaskStatus={task}/>
+    <UpdateTaskStatus UpdateTaskStatus={task} />
   };
   render() {
     const allProjectTasksDetails = this.state.allProjectTasksDetails;
@@ -86,28 +86,35 @@ class Tasks extends Component {
                     ><i className="fa fa-check-square"></i></div></td>
                   </>
                   {this.props.isUserLoggedInManager ? (
-                    <td>
-                      <div
-                        className="memberList"
-                        onClick={() => this.delete(task)}
-                      >
-                        <i className="fa fa-trash"></i>
-                      </div>
-                    </td>
+                    <>
+                      <td>
+                        <div
+                          className="memberList"
+                          onClick={() => this.delete(task)}
+                        >
+                          <i className="fa fa-trash"></i>
+                        </div>
+                      </td>
+                    </>
+
                   ) : (
-                      <td></td>
+                      <><td></td></>
                     )}
                   {this.props.isUserLoggedInManager ? (
-                    <td>
-                      <div
-                        className="memberList"
-                        onClick={() => this.update(task)}
-                      >
-                        <i className="fa fa-edit"></i>
-                      </div>
-                    </td>
+                    <>
+                      <td>
+                        <div
+                          className="memberList"
+                          onClick={() => this.update(task)}
+                        >
+                          <i className="fa fa-edit"></i>
+                        </div>
+                      </td>
+                    </>
                   ) : (
-                      <td></td>
+                      <>
+                        <td></td>
+                      </>
                     )}
                 </>
               );

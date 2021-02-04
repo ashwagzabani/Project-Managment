@@ -9,6 +9,7 @@ export default class TaskProgressBar extends Component {
         complete: props.complete,
     };
   }
+
   render() {
     const progress = (this.state.complete / this.state.allTask) * 100;
     // const progress = (this.state.complete.length / this.state.allTask.length) * 100;
