@@ -92,16 +92,16 @@ router.post('/user/check', (req, res) => {
                         if (err) {
                             console.log(err);
                             // return false;
-                            projects.findByIdAndUpdate({ _id: req.body.id }, { $push: { members: result._id } },
-                                (err, result) => {
-                                    if (err) {
-                                        console.log(err);
-                                    } else {
-                                        res.json({ responseMessage: "SUCCESS", response: result });
-                                        console.log(result)
-                                    }
+                            // projects.findByIdAndUpdate({ _id: req.body.id }, { $push: { members: result._id } },
+                            //     (err, result) => {
+                            //         if (err) {
+                            //             console.log(err);
+                            //         } else {
+                            //             res.json({ responseMessage: "SUCCESS", response: result });
+                            //             console.log(result)
+                            //         }
 
-                                });
+                            //     });
                         }
                         else {
                             res.json({ message: "is already there", response: result });
