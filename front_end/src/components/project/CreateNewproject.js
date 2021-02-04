@@ -131,6 +131,7 @@ export default class CreateNewproject extends Component {
     //     member: ''
     // })
     console.log(this.state.temporaryMembersListForDb);
+    console.log(this.state.temporaryMembersList);
     // const membersList = this.state.temporaryMembersList;
     // console.log(membersList);
   };
