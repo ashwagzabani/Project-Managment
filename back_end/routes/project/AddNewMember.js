@@ -85,17 +85,17 @@ router.post('/user/check/:userName', (req, res) => {
             }
 
             if (result) {
-                router.patch('/members/new/:id', (req, res) => {
-                    projects.findByIdAndUpdate({ _id: req.body.id }, { $push: { members: result._id } },
-                        (err, result) => {
-                            if (err) {
-                                console.log(err);
-                            }
-                            res.json(result);
-                            console.log(result)
-                        });
-                    // res.json("hii")
-                });
+                // router.patch('/members/new/:id', (req, res) => {
+                //     projects.findByIdAndUpdate({ _id: req.body.id }, { $push: { members: result._id } },
+                //         (err, result) => {
+                //             if (err) {
+                //                 console.log(err);
+                //             }
+                //             res.json(result);
+                //             console.log(result)
+                //         });
+                //     // res.json("hii")
+                // });
                 res.json({
                     responseMessage: "The user is there",
                     userDetails: result
