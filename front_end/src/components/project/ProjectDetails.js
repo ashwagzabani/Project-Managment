@@ -121,74 +121,75 @@ class ProjectDetails extends Component {
                     id: this.state.projecsDetails._id,
                     title: this.state.projecsDetails.title,
                     startDate: startDate,
-                    endDate: endtDate
+                    endDate: endtDate,
+                    userLoggedInId: this.state.userLoggedInId
                   }
                 }}>
                   <i className="fa fa-trash">
                   </i>
                 </Link> {" "}
-            {isUserLoggedInManager ? (
-              <Link
-                to={{
-                  pathname: "/project/update",
-                  state: {
-                    id: this.state.projecsDetails._id,
-                    title: this.state.projecsDetails.title,
-                    startDate: startDate,
-                    endDate: endtDate,
-                  },
-                }}
-              >
-                <i className="fa fa-edit"></i>
-              </Link>
+                {isUserLoggedInManager ? (
+                  <Link
+                    to={{
+                      pathname: "/project/update",
+                      state: {
+                        id: this.state.projecsDetails._id,
+                        title: this.state.projecsDetails.title,
+                        startDate: startDate,
+                        endDate: endtDate,
+                      },
+                    }}
+                  >
+                    <i className="fa fa-edit"></i>
+                  </Link>
+                ) : null}
+              </div>
             ) : null}
           </div>
-            ) : null}
+          <div className="card-body">
+            {/* <p>{this.state.projecsDetails.startDate}</p> */}
+            <div className="details">
+              <p>Start Date: {startDate}</p>
+              <p>End Date: {endtDate}</p>
+              <p>Manager: {managerName}</p>
+            </div>
+            {this.state.showAddMemberForm ? (
+              <AddMembers
+                projectId={this.state.projecsDetails._id}
+                showAddMemberForm={this.showAddMemberForm}
+              />
+            ) : (
+                <button
+                  className="btn btn-danger"
+                  onClick={() => this.showAddMemberForm(true)}
+                >
+                  Add Member
+                </button>
+              )}
+            {this.state.showAddTaskForm ? (
+              <CreateNewTask
+                teamMember={this.state.projecsDetails.members}
+                projectId={this.state.projecsDetails._id}
+              />
+            ) : (
+                <button
+                  className="btn btn-primary"
+                  onClick={() => this.showAddTaskForm()}
+                >
+                  Add Task
+                </button>
+              )}
+            <table className="table">
+              <tr>
+                <th>Team Members</th>
+                <th>Tasks</th>
+                <th></th>
+                <th></th>
+              </tr>
+              {showAllProjectsDetails}
+            </table>
           </div>
-        <div className="card-body">
-          {/* <p>{this.state.projecsDetails.startDate}</p> */}
-          <div className="details">
-            <p>Start Date: {startDate}</p>
-            <p>End Date: {endtDate}</p>
-            <p>Manager: {managerName}</p>
-          </div>
-          {this.state.showAddMemberForm ? (
-            <AddMembers
-              projectId={this.state.projecsDetails._id}
-              showAddMemberForm={this.showAddMemberForm}
-            />
-          ) : (
-              <button
-                className="btn btn-danger"
-                onClick={() => this.showAddMemberForm(true)}
-              >
-                Add Member
-              </button>
-            )}
-          {this.state.showAddTaskForm ? (
-            <CreateNewTask
-              teamMember={this.state.projecsDetails.members}
-              projectId={this.state.projecsDetails._id}
-            />
-          ) : (
-              <button
-                className="btn btn-primary"
-                onClick={() => this.showAddTaskForm()}
-              >
-                Add Task
-              </button>
-            )}
-          <table className="table">
-            <tr>
-              <th>Team Members</th>
-              <th>Tasks</th>
-              <th></th>
-              <th></th>
-            </tr>
-            {showAllProjectsDetails}
-          </table>
         </div>
-      </div>
       </div >
     );
   }
