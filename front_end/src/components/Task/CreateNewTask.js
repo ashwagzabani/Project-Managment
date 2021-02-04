@@ -14,7 +14,7 @@ export default class CreateNewTask extends Component {
       projectId: props.projectId,
       userId: props.teamMember[0].userId,
       status: false,
-      redirect: false,
+      // redirect: false,
     };
   }
   componentDidMount = () => {

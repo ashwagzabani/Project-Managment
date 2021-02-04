@@ -35,6 +35,14 @@ router.get("/tasks/project/:id", (req, res) => {
     console.log(result);
   });
 });
-
+router.get("/allTasks/:id", (req, res) => {
+  Tasks.find({ userId: req.params.id }, (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+    res.json(result);
+    console.log(result);
+  });
+});
 // Export the Router so we can use it in the server.js file
 module.exports = router;
