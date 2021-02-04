@@ -75,6 +75,39 @@ router.patch('/members/new/:id', (req, res) => {
 });
 
 
+router.post('/user/check/:userName', (req, res) => {
+    // console.log(req.body);
+    console.log(req.params.userName);
+    User.findOne({ userName: req.params.userName },
+        (err, result) => {
+            if (err) {
+                console.log("the user not there ", err);
+            }
+
+            if (result) {
+                router.patch('/members/new/:id', (req, res) => {
+                    projects.findByIdAndUpdate({ _id: req.body.id }, { $push: { members: result.userId } },
+                        (err, result) => {
+                            if (err) {
+                                console.log(err);
+                            }
+                            res.json(result);
+                            console.log(result)
+                        });
+                    // res.json("hii")
+                });
+                res.json({
+                    responseMessage: "The user is there",
+                    userDetails: result
+                });
+                console.log("the user is there", result)
+            } else if (result === null) {
+                res.json("The user is not there");
+            }
+
+        });
+});
+
 //User.findOne({'local.rooms': {$elemMatch: {name: req.body.username}}}, function (err, user) {
 
 // router.post('/signIn', (req, res) => {
