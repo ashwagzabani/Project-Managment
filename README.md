@@ -2,6 +2,7 @@
 Project management software is a centralized hub for your work, task management and project planning. 
 It allows you to keep an accurate project schedule and delegate tasks to the right people.
 
+
 ## User story
 - As a User, I should be able to see my own task
 - As a User, I should be able to create account
@@ -16,13 +17,15 @@ It allows you to keep an accurate project schedule and delegate tasks to the rig
 - As a Manager, I should be able to delete all tasks for spicific member
 - As a Manager, I should be able to remove specific member
 - As a Manager, I should be able to assign the task to a different memebr
-- As a Manager, I should be able to see dashborad to follow up on workflow
 - As a Manager, I should be able to see project details contains of : team member and their tasks
-- As a Team member, I should be able get alert when any update related to my tasks
 
 ## wireframe
+![image](imgs/addProject.png)
+![image](imgs/Home.png)
+![image](tasks/wireframe.png)
 
 ## ERD
+![image](imgs/ERD.png)
 
 ### Technologies
 - ReactJs
@@ -31,8 +34,8 @@ It allows you to keep an accurate project schedule and delegate tasks to the rig
 - Css
 - Express
 - MongoDb
-- Bootstrap/ React bootstrap
-- Nodejs
+- Bootstrap
+- Node
 
 ## API Endpoints
 
@@ -41,15 +44,16 @@ It allows you to keep an accurate project schedule and delegate tasks to the rig
 |  1|  create |post  |   /login |  ........................|
 |   2|  create | post  |/signUp   | To create new account|
 |   3|   create |post  |/project/new   | To create new project |
-|   4|    |   |   | |
-|   5|    |   |   | |
-|   6|    |   |   | |
-|   7|    |   |   | |
+|   4|   Add | patch  | /members/new/:id  |To Add a new member to the project |
+|   5|   delete | delete  |  /project/:id | To delete a project|
+|   6|   Remove |patch   |/members/remove/:id   | To remove a member from a project|
+|   7|    Update|patch   |/project/:id   |To edit(add/delete tasks) the project |
 |   8|    |   |   | |
-|  9|    |   |   | |
+|  9|    |   |    | |
 
-## Future Features
-- 
+## Feature Work
+- dashborad to follow up on workflow
+- User get alert when any update related to the user tasks
 ## Installation and Setup Instructions
 Clone down this repository. You will need `node` and `npm` installed globally on your machine.
 
