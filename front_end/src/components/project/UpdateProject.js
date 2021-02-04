@@ -31,7 +31,7 @@ class UpdateProject extends Component {
             "startDate": this.state.projectStartDate,
             "endDate": this.state.projectEndDate
         };
-        axios.patch(`${API_URL}/project/${this.state.projectid}`, newData)
+        axios.patch(`${API_URL}/project/update/${this.state.projectid}`, newData)
             .then(res => {
                 console.log('Response Data:', res.data)
                 this.setState({

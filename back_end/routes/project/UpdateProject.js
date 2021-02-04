@@ -11,7 +11,7 @@ const fakeprojectid = "6011b5dcd2af381b2c6a09b6";
  * URI:         /project/id/
  * Description: Update an esisting project status, Date and/or title
  */
-router.patch('/project/:id', (req, res) => {
+router.patch('/project/update/:id', (req, res) => {
 
   projects.findByIdAndUpdate({ _id: req.params.id }, req.body, (error, result) => {
     if (error) {
