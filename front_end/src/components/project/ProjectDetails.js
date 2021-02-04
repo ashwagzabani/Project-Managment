@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Members from "../Member/Members";
 import "font-awesome/css/font-awesome.min.css";
 import "../../App.css";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
 import Tasks from "../Task/Tasks";
 import AddMembers from "../Member/AddMembers";
 import DeletProject from "./DeletProject";
@@ -17,7 +17,8 @@ class ProjectDetails extends Component {
       userLoggedInId: props.location.state.userLoggedInId,
       showAddMemberForm: false,
       showAddTaskForm: false,
-      isUpdate: false
+      isUserLoggedInManager: true,
+      isUpdate: false,
     };
   }
   deleteMember = (index) => {
@@ -36,7 +37,6 @@ class ProjectDetails extends Component {
     this.setState({ showAddTaskForm: true });
   };
   render() {
-    let isUserLoggedInManager = false;
     let managerName = "";
     const getDetails = this.state.projecsDetails.members;
     const showAllProjectsDetails =
@@ -47,48 +47,21 @@ class ProjectDetails extends Component {
               member.userId === this.state.userLoggedInId &&
               member.role === "manager"
             ) {
-              isUserLoggedInManager = true;
+              // this.setState({ isUserLoggedInManager : true});
               managerName = <Members userId={member.userId} />;
             }
             // this.state.isupdate ? "" : "";
 
             return (
               <tr>
-                <td>
-                  <Members userId={member.userId} />
-                </td>
-                <td>
-                  <Tasks
-                    userId={member.userId}
-                    projectId={this.state.projecsDetails._id}
-                  />
-                </td>
-                {isUserLoggedInManager ? (
-                  <td>
-                    <a
-                      href="#"
-                      onClick={() => this.deleteMember()}
-                    >
-                      <i className="fa fa-trash"></i>
-                    </a>
-                  </td>
-                ) : (
-                    <td></td>
-                  )}
-                {isUserLoggedInManager ? (
-                  <td>
-                    <a
-                      href="#"
-                      onClick={() =>
-                        this.updateMember(this.state.projecsDetails._id)
-                      }
-                    >
-                      <i className="fa fa-edit"></i>
-                    </a>
-                  </td>
-                ) : (
-                    <td></td>
-                  )}
+                <Members userId={member.userId} />
+                <Tasks
+                  userId={member.userId}
+                  projectId={this.state.projecsDetails._id}
+                  isDelete={false}
+                  teamMember={this.state.projecsDetails.members}
+                  isUserLoggedInManager={this.state.isUserLoggedInManager}
+                />
               </tr>
             );
           })
@@ -108,27 +81,28 @@ class ProjectDetails extends Component {
     var yyyy = endtDate.getFullYear();
 
     endtDate = yyyy + "-" + mm + "-" + dd;
-    console.log(this.state.userLoggedInId);
+
     return (
       <div className="container">
         <div className="card">
           <div className="card-header">
             <h3>{this.state.projecsDetails.title}</h3>
-            {isUserLoggedInManager ? (
+            {this.state.isUserLoggedInManager ? (
               <div>
-                <Link to={{
-                  pathname: "/project/update", state: {
-                    id: this.state.projecsDetails._id,
-                    title: this.state.projecsDetails.title,
-                    startDate: startDate,
-                    endDate: endtDate,
-                    userLoggedInId: this.props.location.state.userLoggedInId
-                  }
-                }}>
-                  <i className="fa fa-trash">
-                  </i>
-                </Link> {" "}
-                {isUserLoggedInManager ? (
+                <Link
+                  to={{
+                    pathname: "/project/update",
+                    state: {
+                      id: this.state.projecsDetails._id,
+                      title: this.state.projecsDetails.title,
+                      startDate: startDate,
+                      endDate: endtDate,
+                    },
+                  }}
+                >
+                  <i className="fa fa-trash"></i>
+                </Link>{" "}
+                {this.state.isUserLoggedInManager ? (
                   <Link
                     to={{
                       pathname: "/project/update",
@@ -137,6 +111,7 @@ class ProjectDetails extends Component {
                         title: this.state.projecsDetails.title,
                         startDate: startDate,
                         endDate: endtDate,
+                        userLoggedInId: this.state.userLoggedInId
                       },
                     }}
                   >
@@ -179,6 +154,7 @@ class ProjectDetails extends Component {
                   Add Task
                 </button>
               )}
+
             <table className="table">
               <tr>
                 <th>Team Members</th>
@@ -190,7 +166,7 @@ class ProjectDetails extends Component {
             </table>
           </div>
         </div>
-      </div >
+      </div>
     );
   }
 }

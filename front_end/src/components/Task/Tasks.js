@@ -16,46 +16,96 @@ class Tasks extends Component {
   componentDidMount = () => {
     this.getAllProjectTasks();
   };
-  toUpdate = (update) => {
-    const allTasks = update.map((update) => {
+  toUpdate = (updates) => {
+    const allTasks = updates.map((update) => {
       const allProjectTasksDetails = this.state.allProjectTasksDetails;
-      update.isUpdate = true;
+      update.isUpdate = false;
+      update.isDelete = false;
       allProjectTasksDetails.push(update);
       this.setState({ allProjectTasksDetails });
     });
-    console.log(this.state.allProjectTasksDetails);
   };
   getAllProjectTasks = () => {
     axios
       .get(`${API_URL}/tasks/project/${this.state.projectId}`)
       .then((res) => {
-        // this.toUpdate(res.data);
-        // console.log(res.data);
-        // this.setState({ allProjectTasksDetails: res.data });
-      })
-      .catch((error) => {
-        console.log("ERROR:", error);
+        this.toUpdate(res.data);
       });
-    // return (<td>this.state.memberDetails.userName</td>)
+  };
+  update = (task) => {
+    // const allTasks = this.state.allProjectTasksDetails.slice();
+    // const index = allTasks.indexOf(task);
+    // allTasks[index].isUpdate = true;
+    task.isUpdate = true;
+    this.setState({ task });
+  };
+  delete = (task) => {
+    console.log(task);
+    // const allTasks = this.state.allProjectTasksDetails.slice();
+    // const index = allTasks.indexOf(task);
+    // allTasks[index].isDelete = true;
+    task.isDelete = true;
+    this.setState({ task });
   };
   render() {
     const allProjectTasksDetails = this.state.allProjectTasksDetails;
-    const allMemberTasks = "";
+    const retorninfo =
+      allProjectTasksDetails.length === 0
+        ? ""
+        : allProjectTasksDetails.map((task, index) => {
+            console.log(task);
+            if (task.isUpdate === true) {
+              return (
+                <UpdateTask
+                  taskId={task._id}
+                  teamMember={this.props.teamMember}
+                  userId={task.userId}
+                  title={task.title}
+                  projectId={task.projectId}
+                  status={task.status}
+                />
+              );
+            } else if (task.isDelete === true) {
+              return <DeleteTask taskId={task._id} />;
+            } else {
+              <td>{this.props.memberName}</td>;
+              if (task.userId === this.state.userId) {
+                // return <p>{task.title}</p>; <td>{task.userId}</td>
+                return (
+                  <div>
+                    <td>
+                      <p>{task.title}</p>
+                    </td>
+                    {this.props.isUserLoggedInManager ? (
+                      <td>
+                        <div
+                          className="memberList"
+                          onClick={() => this.delete(task)}
+                        >
+                          <i className="fa fa-trash"></i>
+                        </div>
+                      </td>
+                    ) : (
+                      <td></td>
+                    )}
+                    {this.props.isUserLoggedInManager ? (
+                      <td>
+                        <div
+                          className="memberList"
+                          onClick={() => this.update(task)}
+                        >
+                          <i className="fa fa-edit"></i>
+                        </div>
+                      </td>
+                    ) : (
+                      <td></td>
+                    )}
+                  </div>
+                );
+              }
+            }
+          });
 
-    const retorninfo = this.props.isDelete ? (
-      <DeleteTask taskId={this.state.allProjectTasksDetails.taskId} />
-    ) : allProjectTasksDetails.length === 0 ? (
-      ""
-    ) : (
-      this.state.allProjectTasksDetails.map((task, index) => {
-        if (task.isUpdate === true) {
-          <UpdateTask taskId={this.state.allProjectTasksDetails.taskId} />;
-        } else if (task.userId === this.state.userId) {
-          console.log(task.title);
-          return <p>{task.title}</p>;
-        }
-      })
-    );
     return <div>{retorninfo}</div>;
   }
 }
