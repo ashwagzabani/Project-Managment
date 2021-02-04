@@ -47,10 +47,15 @@ class UpdateProject extends Component {
     }
 
     render() {
+        console.log(this.state.userLoggedInId);
         if (this.state.redirect) {
             return <Redirect to={{
                 pathname: `/project/details/${this.state.projectid}`
-                , state: { projectDetils: this.state.newData, userLoggedInId: this.state.userLoggedInId }
+                , state:
+                {
+                    projectDetils: this.state.newData,
+                    userLoggedInId: this.state.userLoggedInId
+                }
             }
             } />;
         }
