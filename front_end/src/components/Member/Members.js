@@ -31,10 +31,10 @@ class Members extends Component {
         {this.state.memberDetails.userName}
       </option>
     ) : (
-      <div className="Members">
-        <td>{this.state.memberDetails.userName}</td>
-      </div>
-    );
+        <>
+          {this.state.memberDetails.userName}
+        </>
+      );
     return <>{isOption} </>;
   }
 }
