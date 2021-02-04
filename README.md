@@ -21,8 +21,6 @@ It allows you to keep an accurate project schedule and delegate tasks to the rig
 
 ## wireframe
 
-## ERD
-
 ### Technologies
 - ReactJs
 - JavaScript 
