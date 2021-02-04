@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import API_URL from "../../ApiConfig";
 import axios from "axios";
-import UpdateTaskStatus from "./UpdateTaskStatus"
 import { Table, Form} from "react-bootstrap";
 
 class ShowAllTasks extends Component {
@@ -29,11 +28,6 @@ class ShowAllTasks extends Component {
         console.log("ERROR:", error);
       });
     // return (<td>this.state.memberDetails.userName</td>)
-  };  status = (task) => {
-    console.log(task);
-    task.status = true;
-    this.setState({ task });
-    <UpdateTaskStatus UpdateTaskStatus={task} />
   };
   render() {
     const allTasks = this.state.allTasks;
@@ -46,7 +40,7 @@ class ShowAllTasks extends Component {
               return (
                 <tr>
                   <td>
-                  <Form.Check type="checkbox" onClick={() => this.status(task)}/>
+                  <Form.Check type="checkbox"  />
                   </td>
                   <td>{task.title}</td>
                 </tr>

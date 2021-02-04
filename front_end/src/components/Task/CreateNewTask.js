@@ -40,6 +40,9 @@ export default class CreateNewTask extends Component {
         console.log("Task Data:", this.state);
       });
     }
+    if (window.confirm(`update this Task?`)) {
+      this.deleteTaskByID(this.state.taskId);
+    }
   };
   loginHandler = (userInfo) => {
     // const userId = this.state.userId;

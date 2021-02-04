@@ -85,7 +85,7 @@ class ProjectDetails extends Component {
             <h3>{this.state.projecsDetails.title}</h3>
             {isUserLoggedInManager ? (
               <div>
-                <Link to={{
+                {/* <Link to={{
                   pathname: "/project/update", state: {
                     id: this.state.projecsDetails._id,
                     title: this.state.projecsDetails.title,
@@ -95,7 +95,7 @@ class ProjectDetails extends Component {
                 }}>
                   <i className="fa fa-trash">
                   </i>
-                </Link> {" "}
+                </Link> {" "} */}
                 {isUserLoggedInManager ? (
                   <Link
                     to={{

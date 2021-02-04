@@ -13,7 +13,7 @@ class UpdateTask extends Component {
       projectId: props.projectId,
     };
   }
-  componentDidMount = () => {};
+  componentDidMount = () => { };
   updateTask = (event) => {
     event.preventDefault();
     axios
@@ -24,6 +24,9 @@ class UpdateTask extends Component {
       .catch((error) => {
         console.log("ERROR:", error);
       });
+    if (window.confirm(`update this Task?`)) {
+      this.deleteTaskByID(this.state.taskId);
+    }
   };
   handleChange = (e) => {
     this.setState({ userId: e.target.value });
@@ -59,9 +62,9 @@ class UpdateTask extends Component {
             </td>
           </>
           <>
-          <button onClick={<DeleteAllTasksToUser userId={this.state.userId}/>}>delete All</button>
-                   </>
- <>
+            <button onClick={<DeleteAllTasksToUser userId={this.state.userId} />}>delete All</button>
+          </>
+          <>
             <input
               type="submit"
               className="btn btn-danger btn-black"
