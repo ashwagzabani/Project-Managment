@@ -75,7 +75,7 @@ router.patch('/members/new/:id', (req, res) => {
 });
 
 
-router.get('/user/check/:userName', (req, res) => {
+router.post('/user/check/:userName', (req, res) => {
     // console.log(req.body);
     console.log(req.params.userName);
     User.findOne({ userName: req.params.userName },
