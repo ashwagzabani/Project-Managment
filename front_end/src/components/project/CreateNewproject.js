@@ -42,8 +42,7 @@ export default class CreateNewproject extends Component {
       title: this.state.title,
       startDate: this.state.startDate,
       endDate: this.state.endDate,
-      members: this.state.temporaryMembersListForDb,
-      redirect: false,
+      members: this.state.temporaryMembersListForDb
     };
     //we need to post that data into server
     //post registered to this endPoint which back end (Schema) - to MongoDB
