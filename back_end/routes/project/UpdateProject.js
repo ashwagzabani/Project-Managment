@@ -19,21 +19,22 @@ router.patch('/project/update/:id', (req, res) => {
       res.json({ error: "(" });
     }
     else {
-      projects.findById(
-        {
-          //get user's projects
-          _id: req.params.id,
-        },
-        (err, result) => {
-          if (err) {
-            console.log(err);
-          } else {
-            res.json(result);
-            console.log("this from back end:", result);
-          }
+      res.json(result)
+      // projects.findById(
+      //   {
+      //     //get user's projects
+      //     _id: req.params.id,
+      //   },
+      //   (err, result) => {
+      //     if (err) {
+      //       console.log(err);
+      //     } else {
+      //       res.json(result);
+      //       console.log("this from back end:", result);
+      //     }
 
-        }
-      );
+      //   }
+      // );
     }
     // console.log(req.body);
     // res.json(result); 
