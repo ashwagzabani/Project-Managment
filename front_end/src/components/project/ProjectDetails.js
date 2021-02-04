@@ -137,8 +137,7 @@ class ProjectDetails extends Component {
                 </button>
               )} */}
             {isUserLoggedInManager ? (
-              {
-                this.state.showAddTaskForm ? (
+              this.state.showAddTaskForm ? (
                   <CreateNewTask
                     teamMember={this.state.projecsDetails.members}
                     projectId={this.state.projecsDetails._id}
@@ -151,7 +150,7 @@ class ProjectDetails extends Component {
                       Add Task
                     </button>
                   )
-              }) : ''}
+              ) : ''}
             <table className="table">
               <tr>
                 <th>Team Members</th>
