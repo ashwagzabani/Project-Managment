@@ -156,7 +156,7 @@ export default class CreateNewproject extends Component {
     );
     console.log("memberIndex", memberIndex);
     memberIndex > -1
-      ? temporaryMembersListForDb.splice(membersIndex, 1)
+      ? temporaryMembersListForDb.splice(memberIndex, 1)
       : console.log("the user already added");
     this.setState({
       temporaryMembersList,
