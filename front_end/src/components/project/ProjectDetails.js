@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Members from "../Member/Members";
 import "font-awesome/css/font-awesome.min.css";
 import "../../App.css";
-import { BrowserRouter as Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Tasks from "../Task/Tasks";
 import AddMembers from "../Member/AddMembers";
 import DeletProject from "./DeletProject";
