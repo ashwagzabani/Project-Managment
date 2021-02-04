@@ -12,6 +12,7 @@ class UpdateProject extends Component {
             projectStartDate: props.location.state.startDate,
             projectEndDate: props.location.state.endDate,
             newData: {},
+            userLoggedInId: props.location.state.userLoggedInId,
             redirect: false
         }
     }
@@ -49,7 +50,7 @@ class UpdateProject extends Component {
         if (this.state.redirect) {
             return <Redirect to={{
                 pathname: `/project/details/${this.state.projectid}`
-                , state: { projectDetils: this.state.newData, userLoggedInId: this.props.location.state.userLoggedInId }
+                , state: { projectDetils: this.state.newData, userLoggedInId: this.state.userLoggedInId }
             }
             } />;
         }
