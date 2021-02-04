@@ -16,19 +16,20 @@ export default class CreateNewproject extends Component {
     super(props);
     //projects
     this.state = {
-      title: '',
-      role: '',
-      startDate: '',
-      endDate: '',
-      status: '',
-      userName: '',
-      temporaryMembersListForDb: [{
-        userId: "60168e71bff7b6488838bb04",
-        role: "manager"
-      }],
+      title: "",
+      role: "",
+      startDate: "",
+      endDate: "",
+      status: "",
+      userName: "",
+      temporaryMembersListForDb: [
+        {
+          userId: props.location.state.userId,
+          role: "manager",
+        },
+      ],
       temporaryMembersList: [],
-      member: ''
-
+      member: "",
     };
   }
   //after user Submit the data
