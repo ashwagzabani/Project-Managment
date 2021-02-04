@@ -1,4 +1,4 @@
-## Project Managment
+# Project Managment
 Project management software is a centralized hub for your work, task management and project planning. 
 It allows you to keep an accurate project schedule and delegate tasks to the right people.
 
@@ -22,7 +22,7 @@ It allows you to keep an accurate project schedule and delegate tasks to the rig
 ## wireframe
 ![image](imgs/addProject.png)
 ![image](imgs/Home.png)
-![image](tasks/wireframe.png)
+![image](imgs/tasks.png)
 
 ## ERD
 ![image](imgs/ERD.png)
