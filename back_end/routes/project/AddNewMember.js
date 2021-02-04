@@ -83,7 +83,7 @@ router.post('/user/check', (req, res) => {
             if (err) {
                 console.log("the user not there ", err);
             }
-
+            
             if (result) {
                 router.patch('/members/new/:id', (req, res) => {
                     projects.findByIdAndUpdate({ _id: req.body.id }, { $push: { members: result._id } },
