@@ -75,10 +75,10 @@ router.patch('/members/new/:id', (req, res) => {
 });
 
 
-router.post('/user/check/:userName', (req, res) => {
+router.post('/user/check', (req, res) => {
     // console.log(req.body);
-    console.log(req.params.userName);
-    Users.findOne({ userName: req.params.userName },
+    // console.log(req.params.userName);
+    Users.findOne({ userName: req.body.userName },
         (err, result) => {
             if (err) {
                 console.log("the user not there ", err);
