@@ -42,7 +42,7 @@ These are some of the EndPoints we used in this project
 
 | #  |  Action  |  Method |  URL  |  Description  |
 | :------------ | :------------ | :------------ | :------------ | :------------ |
-|  1|  create |post  |   /login |  to check if user there to allow to log in|
+|  1|  create |post  |   /login |  to check if user there to allow the user to log in|
 |   2|  create | post  |/signUp   | To create new account|
 |   3|   create |post  |/project/new   | To create new project |
 |   4|   Add | patch  | /members/new/:id  |To Add a new member to the project |
