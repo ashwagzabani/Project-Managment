@@ -83,24 +83,29 @@ router.post('/user/check', (req, res) => {
             if (err) {
                 console.log("the user not there ", err);
             }
-            
             if (result) {
-                router.patch('/members/new/:id', (req, res) => {
-                    projects.findByIdAndUpdate({ _id: req.body.id }, { $push: { members: result._id } },
-                        (err, result) => {
-                            if (err) {
-                                console.log(err);
-                            }
-                            res.json({ message: "SUCCESS", response: result });
-                            console.log(result)
-                        });
-                    // res.json("hii")
-                });
-                res.json({
-                    responseMessage: "The user is there",
-                    userDetails: result
-                });
-                console.log("the user is there", result)
+                if (!checkUser(result._id)) {
+
+
+                    router.patch('/members/new/:id', (req, res) => {
+                        projects.findByIdAndUpdate({ _id: req.body.id }, { $push: { members: result._id } },
+                            (err, result) => {
+                                if (err) {
+                                    console.log(err);
+                                }
+                                res.json({ message: "SUCCESS", response: result });
+                                console.log(result)
+                            });
+                        // res.json("hii")
+                    });
+                    res.json({
+                        responseMessage: "The user is there",
+                        userDetails: result
+                    });
+                    console.log("the user is there", result)
+                }else{
+                    res.json("The user is already there");
+                }
             } else if (result === null) {
                 res.json("The user is not there");
             }
@@ -108,6 +113,27 @@ router.post('/user/check', (req, res) => {
         });
 });
 
+checkUser = (userId) => {
+    //members: { $elemMatch: { userId: userId, role: "manager" } },
+    router.patch('/members/new/:id', (req, res) => {
+        projects.findById({
+            members: { $elemMatch: { userId: userId, } }
+        },
+            (err, result) => {
+                if (err) {
+                    console.log(err);
+                    return false;
+                }
+                else {
+                    res.json({ message: "SUCCESS", response: result });
+                    console.log(result)
+                    return true;
+                }
+
+            });
+        // res.json("hii")
+    });
+}
 //User.findOne({'local.rooms': {$elemMatch: {name: req.body.username}}}, function (err, user) {
 
 // router.post('/signIn', (req, res) => {
