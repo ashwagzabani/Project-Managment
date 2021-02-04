@@ -45,7 +45,7 @@ class ShowAllTasks extends Component {
               return (
                 <tr>
                   <td>
-                  <Form.Check type="checkbox"  />
+                  <Form.Check type="checkbox"  onClick={}/>
                   </td>
                   <td>{task.title}</td>
                 </tr>

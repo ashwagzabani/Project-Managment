@@ -114,7 +114,6 @@ router.post('/user/check', (req, res) => {
 
 checkUser = (userId) => {
     //members: { $elemMatch: { userId: userId, role: "manager" } },
-    router.patch('/members/new/:id', (req, res) => {
         projects.findById({
             members: { $elemMatch: { userId: userId, } }
         },
@@ -131,7 +130,6 @@ checkUser = (userId) => {
 
             });
         // res.json("hii")
-    });
 }
 //User.findOne({'local.rooms': {$elemMatch: {name: req.body.username}}}, function (err, user) {
 
