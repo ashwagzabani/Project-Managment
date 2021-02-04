@@ -20,13 +20,14 @@ class UpdateTask extends Component {
       .patch(`${API_URL}/tasks/${this.state.taskId}`, this.state)
       .then((res) => {
         console.log("Response Data:", res.data);
+        if (window.confirm(`update this Task?`)) {
+          this.deleteTaskByID(this.state.taskId);
+        }
       })
       .catch((error) => {
         console.log("ERROR:", error);
       });
-    if (window.confirm(`update this Task?`)) {
-      this.deleteTaskByID(this.state.taskId);
-    }
+
   };
   handleChange = (e) => {
     this.setState({ userId: e.target.value });
@@ -47,7 +48,7 @@ class UpdateTask extends Component {
                 defaultValue={this.state.title}
               />
             </td>
-         
+
             <td>
               <select onChange={this.handleChange}>
                 {this.props.teamMember.map((memberName) => (
@@ -59,9 +60,9 @@ class UpdateTask extends Component {
                 ))}
               </select>
             </td>
-       
+
             {/* <button onClick={<DeleteAllTasksToUser userId={this.state.userId} />}>delete All</button> */}
-         
+
             <input
               type="submit"
               className="btn btn-danger btn-black"
