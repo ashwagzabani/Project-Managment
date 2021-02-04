@@ -78,7 +78,7 @@ router.patch('/members/new/:id', (req, res) => {
 router.post('/user/check', (req, res) => {
     // console.log(req.body);
     console.log(req.params.userName);
-    User.findOne({ userName: req.params.userName },
+    Users.findOne({ userName: req.params.userName },
         (err, result) => {
             if (err) {
                 console.log("the user not there ", err);
@@ -91,7 +91,7 @@ router.post('/user/check', (req, res) => {
                             if (err) {
                                 console.log(err);
                             }
-                            res.json(result);
+                            res.json({ message: "SUCCESS", response: result });
                             console.log(result)
                         });
                     // res.json("hii")
