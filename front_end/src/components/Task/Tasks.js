@@ -74,19 +74,18 @@ class Tasks extends Component {
               // return <p>{task.title}</p>; <td>{task.userId}</td>
               return (
                 <>
-                  <>
+                  
                     <td>
                       <p>{task.title}</p>
                     </td>
-                  </>
-                  <>
+                 
                     <td><div
                       className="memberList"
                       onClick={() => this.status(task)}
                     ><i className="fa fa-check-square"></i></div></td>
-                  </>
+                 
                   {this.props.isUserLoggedInManager ? (
-                    <>
+                    
                       <td>
                         <div
                           className="memberList"
@@ -95,13 +94,13 @@ class Tasks extends Component {
                           <i className="fa fa-trash"></i>
                         </div>
                       </td>
-                    </>
+                    
 
                   ) : (
-                      <><td></td></>
+                      <td></td>
                     )}
                   {this.props.isUserLoggedInManager ? (
-                    <>
+                   
                       <td>
                         <div
                           className="memberList"
@@ -110,11 +109,11 @@ class Tasks extends Component {
                           <i className="fa fa-edit"></i>
                         </div>
                       </td>
-                    </>
+                   
                   ) : (
-                      <>
+                      
                         <td></td>
-                      </>
+                      
                     )}
                 </>
               );
