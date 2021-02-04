@@ -131,39 +131,36 @@ export default class CreateNewproject extends Component {
     //     member: ''
     // })
     console.log(this.state.temporaryMembersListForDb);
-    console.log(this.state.temporaryMembersList);
     // const membersList = this.state.temporaryMembersList;
     // console.log(membersList);
   };
   removeMember = (member) => {
     // console.log(member);
     const temporaryMembersList = this.state.temporaryMembersList.slice();
-    console.log(temporaryMembersList);
+    // console.log(temporaryMembersList);
     const membersIndex = temporaryMembersList.findIndex(
       (item) => item.userName === member.userName
     );
-    console.log("index:", membersIndex)
+    // console.log("index:", membersIndex)
     membersIndex > -1
       ? temporaryMembersList.splice(membersIndex, 1)
       : console.log("not there");
-    console.log(temporaryMembersList);
-
-
+    // console.log(temporaryMembersList);
     const temporaryMembersListForDb = this.state.temporaryMembersListForDb.slice();
     // console.log(typeof memebr);
     const memberIndex = temporaryMembersListForDb.findIndex(
       (item) => item.userId === member._id
     );
-    console.log("memberIndex", memberIndex);
+    // console.log("memberIndex", memberIndex);
     memberIndex > -1
       ? temporaryMembersListForDb.splice(memberIndex, 1)
       : console.log("the user already added");
     this.setState({
       temporaryMembersList,
-      temporaryMembersListForDb
+      temporaryMembersListForDb,
     });
-    console.log(temporaryMembersListForDb);
-    console.log(temporaryMembersList);
+    // console.log(temporaryMembersListForDb);
+    // console.log(temporaryMembersList);
   };
   render() {
     if (this.state.redirect) {

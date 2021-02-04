@@ -16,13 +16,22 @@ class Tasks extends Component {
   componentDidMount = () => {
     this.getAllProjectTasks();
   };
-
+  toUpdate = (update) => {
+    const allTasks = update.map((update) => {
+      const allProjectTasksDetails = this.state.allProjectTasksDetails;
+      update.isUpdate = true;
+      allProjectTasksDetails.push(update);
+      this.setState({ allProjectTasksDetails });
+    });
+    console.log(this.state.allProjectTasksDetails);
+  };
   getAllProjectTasks = () => {
     axios
       .get(`${API_URL}/tasks/project/${this.state.projectId}`)
       .then((res) => {
-        console.log(res.data);
-        this.setState({ allProjectTasksDetails: res.data });
+        // this.toUpdate(res.data);
+        // console.log(res.data);
+        // this.setState({ allProjectTasksDetails: res.data });
       })
       .catch((error) => {
         console.log("ERROR:", error);
@@ -30,30 +39,24 @@ class Tasks extends Component {
     // return (<td>this.state.memberDetails.userName</td>)
   };
   render() {
-    const toupdate = <UpdateTask />;
-    const todelete = <DeleteTask />;
-
     const allProjectTasksDetails = this.state.allProjectTasksDetails;
-    const allMemberTasks =
-      allProjectTasksDetails.length === 0
-        ? ""
-        : allProjectTasksDetails.map((task, index) => {
-          if (task.userId === this.state.userId) {
-            console.log(task.title);
-            return <p>{task.title}</p>;
-          }
-        });
+    const allMemberTasks = "";
 
-    const retorninfo = this.props.isupdate
-        ? <UpdateTask taskId = {this.state.allProjectTasksDetails.taskId}/>
-      : this.props.isDelete
-        ? <DeleteTask taskId = {this.state.allProjectTasksDetails.taskId}/>
-        : { allMemberTasks };
-    return (
-      <div>
-        {allMemberTasks}
-      </div>
+    const retorninfo = this.props.isDelete ? (
+      <DeleteTask taskId={this.state.allProjectTasksDetails.taskId} />
+    ) : allProjectTasksDetails.length === 0 ? (
+      ""
+    ) : (
+      this.state.allProjectTasksDetails.map((task, index) => {
+        if (task.isUpdate === true) {
+          <UpdateTask taskId={this.state.allProjectTasksDetails.taskId} />;
+        } else if (task.userId === this.state.userId) {
+          console.log(task.title);
+          return <p>{task.title}</p>;
+        }
+      })
     );
+    return <div>{retorninfo}</div>;
   }
 }
 
