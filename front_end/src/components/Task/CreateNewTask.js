@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Apiconfig from "../../ApiConfig";
 import Members from "../Member/Members";
+import Alert from "react-bootstrap/Alert";
 
 export default class CreateNewTask extends Component {
   constructor(props) {
@@ -16,21 +17,33 @@ export default class CreateNewTask extends Component {
       redirect: false,
     };
   }
-  componentDidMount = () => {};
+  componentDidMount = () => {
+    <Alert color="danger">This is a danger alert — check it out!</Alert>;
+  };
   //create new task
   newTask = () => {
+    <Alert variant="danger" dismissible>
+      <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+    </Alert>;
     // e.preventDefault();
-    if (this.state.title === "") {
-      return <label className="err">please inpute the Task </label>;
+    if (this.state.title == "") {
+      console.log("empty");
+
+      <Alert variant="danger" dismissible>
+        <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+      </Alert>;
     }
-    // if (this.state.userId === "") {
-    //   return <label className="err">please select the member </label>;
-    // }else
-    {
+    if (this.state.userId === "") {
+      return <label className="err">please select the member </label>;
+    } else {
       axios.post(`${Apiconfig}/project/tasks`, this.state).then((res) => {
         console.log("Task Data:", this.state);
       });
     }
+  };
+  loginHandler = (userInfo) => {
+    // const userId = this.state.userId;
+    this.setState({ user: userInfo, isLogged: true });
   };
   handleChange = (e) => {
     this.setState({ userId: e.target.value });
@@ -47,7 +60,6 @@ export default class CreateNewTask extends Component {
     //     />
     //   );
     // }
-
 
     console.log(this.props.teamMember);
     return (
