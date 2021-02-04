@@ -76,6 +76,11 @@ class Tasks extends Component {
                     <td>
                       <p>{task.title}</p>
                     </td>
+                    <td> <input
+            name="status"
+            type="checkbox"
+            checked={this.state.isGoing}
+            onChange={this.handleInputChange} /></td>
                     {this.props.isUserLoggedInManager ? (
                       <td>
                         <div
