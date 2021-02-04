@@ -1,23 +1,31 @@
-## Project Managment
+# Project Managment
 Project management software is a centralized hub for your work, task management and project planning. 
 It allows you to keep an accurate project schedule and delegate tasks to the right people.
 
 
 ## User story
-- As a User, I should be able to see my own task
 - As a User, I should be able to create account
 - As a User, I should be able to log in
 - As a User, I should be able to log out
+- As a User, I should be able to see my own task
 - As a Manager, I should be able to create a new project
-- As a Manager, I should be able to add team member to exsist project
+- As a Manager, I should be able to add a team member to an exsisting project
 - As a Manager, I should be able to add new tasks to specific member
-- As a Manager, I should be able to delete any task in exsist project
-- As a Manager, I should be able to update any task in exsist project
-- As a Manager, I should be able to delete all tasks in the project
-- As a Manager, I should be able to delete all tasks for spicific member
-- As a Manager, I should be able to remove specific member
+- As a Manager, I should be able to delete any task to an exsisting project
+- As a Manager, I should be able to update any task in an exsisting project
+- As a Manager, I should be able to delete all tasks from a project
+- As a Manager, I should be able to delete all tasks for a spicific member
+- As a Manager, I should be able to remove specific member from a project
 - As a Manager, I should be able to assign the task to a different memebr
-- As a Manager, I should be able to see project details contains of : team member and their tasks
+- As a Manager, I should be able to see project details consisting of : team members and their tasks
+
+## wireframe
+![image](imgs/addProject.png)
+![image](imgs/Home.png)
+![image](imgs/tasks.png)
+
+## ERD
+![image](imgs/ERD.png)
 
 ### Technologies
 - ReactJs
@@ -30,6 +38,7 @@ It allows you to keep an accurate project schedule and delegate tasks to the rig
 - Node
 
 ## API Endpoints
+These are some of the EndPoints we used in this project
 
 | #  |  Action  |  Method |  URL  |  Description  |
 | :------------ | :------------ | :------------ | :------------ | :------------ |
