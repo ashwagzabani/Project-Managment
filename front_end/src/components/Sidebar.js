@@ -61,9 +61,9 @@ export default class Sidebar extends Component {
         path: "/signup",
         exact: true,
         sidebar: () => <div></div>,
-        main: () => (
+        main: (props) => (
           <SignUp
-            loginHandler={this.props.loginHandler}
+            loginHandler={this.props.loginHandler}{...props} 
           />
         ),
       },
