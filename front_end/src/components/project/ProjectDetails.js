@@ -122,7 +122,7 @@ class ProjectDetails extends Component {
                     title: this.state.projecsDetails.title,
                     startDate: startDate,
                     endDate: endtDate,
-                    userLoggedInId: this.state.userLoggedInId
+                    userLoggedInId: this.props.location.state.userLoggedInId
                   }
                 }}>
                   <i className="fa fa-trash">
