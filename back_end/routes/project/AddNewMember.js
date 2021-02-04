@@ -7,8 +7,8 @@ const Users = require('../../models/Users.js')
 const router = express.Router();
 
 //this user has two project: one as team member and another as manager his name: 'Najed'
-const userId = '60115b690ba0311c388c9aa8';
-const projectId = '6011b5dcd2af381b2c6a09b6';
+// const userId = '60115b690ba0311c388c9aa8';
+// const projectId = '6011b5dcd2af381b2c6a09b6';
 
 /**
  * Action:      INDEX
@@ -112,24 +112,23 @@ router.post('/user/check', (req, res) => {
         });
 });
 
-checkUser = (userId) => {
-    //members: { $elemMatch: { userId: userId, role: "manager" } },
-        projects.findById({
-            members: { $elemMatch: { userId: userId, } }
-        },
-            (err, result) => {
-                if (err) {
-                    console.log(err);
-                    return false;
-                }
-                else {
-                    res.json({ message: "SUCCESS", response: result });
-                    console.log(result)
-                    return true;
-                }
+function checkUser(userId) {
+    projects.find({
+        members: { $elemMatch: { userId: userId } }
+    },
+        (err, result) => {
+            if (err) {
+                console.log(err);
+                return false;
+            }
+            else {
+                res.json({ message: "SUCCESS", response: result });
+                console.log(result)
+                return true;
+            }
 
-            });
-        // res.json("hii")
+        });
+    // res.json("hii")
 }
 //User.findOne({'local.rooms': {$elemMatch: {name: req.body.username}}}, function (err, user) {
 
