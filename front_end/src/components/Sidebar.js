@@ -52,7 +52,8 @@ export default class Sidebar extends Component {
         path: "/ShowAllTasks",
         exact: true,
         sidebar: () => <div></div>,
-        main: () => <ShowAllTasks userId={this.props.userId}/>},
+        main: (props) => <ShowAllTasks userId={this.props.userId} {...props} />
+      },
       {
         path: "/project/list",
         exact: true,
@@ -100,7 +101,7 @@ export default class Sidebar extends Component {
     return (
       <Router>
         <div style={{ display: "flex" }}>
-          <div className="nav">
+          <div className="navbar">
             <header>project managment</header>
             <ul>
               <li className="fas fa-home">

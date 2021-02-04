@@ -50,16 +50,16 @@ class ProjectDetails extends Component {
               managerName = <Members userId={member.userId} />;
             }
             return (
-               <tr>
-                    <Members userId={member.userId} />
-                  <Tasks
-                    userId={member.userId}
-                    projectId={this.state.projecsDetails._id}
-                    isDelete={false}
-                    teamMember={this.state.projecsDetails.members}
-                    isUserLoggedInManager={isUserLoggedInManager}
-                  />
-                </tr>)
+              <tr>
+                <Members userId={member.userId} />
+                <Tasks
+                  userId={member.userId}
+                  projectId={this.state.projecsDetails._id}
+                  isDelete={false}
+                  teamMember={this.state.projecsDetails.members}
+                  isUserLoggedInManager={isUserLoggedInManager}
+                />
+              </tr>)
           })
           : ""
         : "";
@@ -123,11 +123,11 @@ class ProjectDetails extends Component {
               <p>End Date: {endtDate}</p>
               <p>Manager: {managerName}</p>
             </div>
-            {this.state.showAddMemberForm ? (
-              <AddMembers
-                projectId={this.state.projecsDetails._id}
-                showAddMemberForm={this.showAddMemberForm}
-              />
+            {/* {this.state.showAddMemberForm ? (<></>
+              // <AddMembers
+              //   projectId={this.state.projecsDetails._id}
+              //   showAddMemberForm={this.showAddMemberForm}
+              // />
             ) : (
                 <button
                   className="btn btn-danger"
@@ -135,7 +135,7 @@ class ProjectDetails extends Component {
                 >
                   Add Member
                 </button>
-              )}
+              )} */}
             {this.state.showAddTaskForm ? (
               <CreateNewTask
                 teamMember={this.state.projecsDetails.members}

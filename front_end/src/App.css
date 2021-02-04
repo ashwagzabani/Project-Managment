@@ -2,7 +2,7 @@
   text-align: center;
 }
 
-.nav {
+.navbar {
   background-color: #084e6e5d;
   position: fixed;
   display: flex;
@@ -11,14 +11,14 @@
   font-size: 26px;
   height: 100%;
 }
-.nav header {
+.navbar header {
   font-size: 22px;
   color: white;
   line-height: 70px;
   user-select: none;
   text-align: center;
 }
-.nav ul {
+.navbar ul {
   display: block;
   height: 100%;
   width: 100%;
