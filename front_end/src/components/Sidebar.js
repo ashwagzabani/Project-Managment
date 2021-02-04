@@ -10,6 +10,7 @@ import Members from "./Member/Members";
 import DeleteProject from "./project/DeletProject";
 import ProjectDetails from "./project/ProjectDetails";
 import AddMembers from "./Member/AddMembers";
+import "../App.css";
 
 export default class Sidebar extends Component {
   render() {

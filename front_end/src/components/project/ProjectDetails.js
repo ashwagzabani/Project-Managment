@@ -155,42 +155,31 @@ class ProjectDetails extends Component {
               <p>Manager: {managerName}</p>
             </div>
             {this.state.showAddMemberForm ? (
-              ""
-            ) : (
-                <button
-                  className="btn btn-danger"
-                  onClick={() => this.showAddMemberForm(true)}
-                >
-                  Add Member
-                </button>
-              )}
-            {this.state.showAddTaskForm ? (
-              ""
-            ) : (
-                <button
-                  className="btn btn-primary"
-                  onClick={() => this.showAddTaskForm()}
-                >
-                  Add Task
-                </button>
-              )}
-            {this.state.showAddMemberForm ? (
               <AddMembers
                 projectId={this.state.projecsDetails._id}
                 showAddMemberForm={this.showAddMemberForm}
               />
             ) : (
-                ""
-              )}{" "}
-            {this.state.showAddMemberForm ? <AddMembers /> : ""}
+              <button
+                className="btn btn-danger"
+                onClick={() => this.showAddMemberForm(true)}
+              >
+                Add Member
+              </button>
+            )}
             {this.state.showAddTaskForm ? (
               <CreateNewTask
                 teamMember={this.state.projecsDetails.members}
                 projectId={this.state.projecsDetails._id}
               />
             ) : (
-                ""
-              )}
+              <button
+                className="btn btn-primary"
+                onClick={() => this.showAddTaskForm()}
+              >
+                Add Task
+              </button>
+            )}
             <table className="table">
               <tr>
                 <th>Team Members</th>
