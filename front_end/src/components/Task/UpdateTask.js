@@ -47,8 +47,7 @@ class UpdateTask extends Component {
                 defaultValue={this.state.title}
               />
             </td>
-          </>
-          <>
+         
             <td>
               <select onChange={this.handleChange}>
                 {this.props.teamMember.map((memberName) => (
@@ -60,11 +59,9 @@ class UpdateTask extends Component {
                 ))}
               </select>
             </td>
-          </>
-          <>
+       
             <button onClick={<DeleteAllTasksToUser userId={this.state.userId} />}>delete All</button>
-          </>
-          <>
+         
             <input
               type="submit"
               className="btn btn-danger btn-black"

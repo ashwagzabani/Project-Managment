@@ -291,3 +291,7 @@ svg {
 .line {
   margin-top: 80px;
 }
+
+.cardlist{
+  display: inline-flex !important;
+}

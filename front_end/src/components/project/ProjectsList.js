@@ -4,6 +4,7 @@ import axios from "axios";
 import { BrowserRouter as Router, Route, Swich, Link } from "react-router-dom";
 import ProjectDetails from "./ProjectDetails";
 import TaskProgressBar from "../Task/TaskProgressBar";
+import "../../App.css";
 
 class ProjectsList extends Component {
   constructor(props) {
@@ -55,11 +56,11 @@ class ProjectsList extends Component {
             >
               {" "}
               <p className="title">{projects.title}</p>
-              <div class="bar"><TaskProgressBar/>
+              <div class="bar"><TaskProgressBar />
                 {/* <div class="emptybar"></div>
                 <div class="filledbar"></div> */}
               </div>{" "}
-        
+
             </Link>
           </p>
         </div>
