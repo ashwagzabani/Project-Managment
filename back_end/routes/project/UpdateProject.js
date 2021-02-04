@@ -13,11 +13,12 @@ const router = express.Router();
  */
 router.patch('/project/update/:id', (req, res) => {
   res.send(req.body)
-  // projects.findByIdAndUpdate({ "_id": req.params.id }, req.body, (error, result) => {
-  //   if (error) {
-  //     console.log(error);
-  //     res.json({ error: "(" });
-  //   }
+  projects.findByIdAndUpdate({ "_id": req.params.id }, req.body, (error, result) => {
+    if (error) {
+      console.log(error);
+      res.json({ error: "(" });
+    }
+    res.send(result)
   //   else {
   //     projects.findById(
   //       {
@@ -37,7 +38,7 @@ router.patch('/project/update/:id', (req, res) => {
   //   }
   //   // console.log(req.body);
   //   // res.json(result); 
-  // })
+  })
 });
 
 // Export the Router so we can use it in the server.js file
