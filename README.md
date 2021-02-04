@@ -44,8 +44,7 @@ It allows you to keep an accurate project schedule and delegate tasks to the rig
 |   5|   delete | delete  |  /project/:id | To delete a project|
 |   6|   Remove |patch   |/members/remove/:id   | To remove a member from a project|
 |   7|    Update|patch   |/project/:id   |To edit(add/delete tasks) the project |
-|   8|    |   |   | |
-|  9|    |   |    | |
+
 
 ## Feature Work
 - dashborad to follow up on workflow
