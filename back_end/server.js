@@ -25,6 +25,7 @@ const NewTaskRouter = require("./routes/task/NewTask");
 const TasksRouter = require("./routes/task/Tasks");
 const updateTasksRouter = require("./routes/task/UpdateTask");
 const deleteTaskRouter = require("./routes/task/DeleteTasks");
+const removeMember = require("./routes/project/RemoveMember");
 
 // const addNewMember = require("./routes/AddNewMember");
 //mongoose.connect(mongoConnectionString, {useNewUrlParser: true, useUnifiedTopology: true});
@@ -72,6 +73,7 @@ app.use(TasksRouter);
 app.use(updateTasksRouter);
 app.use(deleteTaskRouter);
 app.use(userRouter);
+app.use(removeMember);
 
 /*** Routes ***/
 // Define PORT for the API to run on

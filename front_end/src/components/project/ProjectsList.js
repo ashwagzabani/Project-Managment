@@ -5,11 +5,11 @@ import { BrowserRouter as Router, Route, Swich, Link } from "react-router-dom";
 import ProjectDetails from "./ProjectDetails";
 
 class ProjectsList extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       projecs_list: [],
-      userId: "60115b690ba0311c388c9aa5"
+      userId: props.userId
     };
 
     // this.getProjectDetails = this.getProjectDetails.bind(this)
@@ -39,7 +39,7 @@ class ProjectsList extends Component {
       console.log(projects._id);
       return (
         <div className='projectList'>
-          <p><Link to={{ pathname: `/project/details/${projects._id}`, state: { projectDetils: projects } }} onClick={() => this.getProjectDetails(projects._id)} >{projects.title}</Link></p>
+          <p><Link to={{ pathname: `/project/details/${projects._id}`, state: { projectDetils: projects, userId:this.state.userId} }} onClick={() => this.getProjectDetails(projects._id)} >{projects.title}</Link></p>
           {/* <p >{projects.title}</p> */}
           {/* <p>member: {projects.members.length}</p> */}
           {/* <p>{ task}</p> */}

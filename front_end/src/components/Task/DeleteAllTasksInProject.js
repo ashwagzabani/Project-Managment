@@ -1,22 +1,22 @@
 import React, { Component } from "react";
 import API_URL from "../../ApiConfig";
 import axios from "axios";
-export default class DeletProject extends Component {
-  deleteProjectByID = (id) => {
-    return axios.delete(`${API_URL}/project/${id}`);
+
+export default class DeleeAllTasksInProjet extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      projectId: props.projectId,
+    };
+  }
+  componentDidMount = () => {
+    this.deleteAllTask(this.state.projectId);
+  };
+
+  deleteAllTask = (id) => {
+    return axios.delete(`${API_URL}project/${id}/tasks`);
   };
   render() {
-    const id = "601438f5c9ea422b68371d3a";
-    return (
-      <div>
-        <button
-          onClick={() => {
-            this.deleteProjectByID(id);
-          }}
-        >
-          delete
-        </button>
-      </div>
-    );
+    return <div></div>;
   }
 }

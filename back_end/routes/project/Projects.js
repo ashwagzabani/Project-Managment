@@ -8,7 +8,6 @@ const Users = require("../../models/Users.js");
 const router = express.Router();
 
 //this user has two project: one as team member and another as manager his name: 'Najed'
-const userId = '60115b690ba0311c388c9aa8';
 /**
  * Action:      INDEX
  * Method:      GET
@@ -22,7 +21,7 @@ router.get('/projects/:id', (req, res) => {
 
     //get user's projects with role === '...'
     //        members: { $elemMatch: { userId: userId, role: 'manager' } }},
-    members: { $elemMatch: { userId: userId } }
+    members: { $elemMatch: { userId: req.params.id } }
   },
     // user.findById({ "_id": userId },
     (err, result) => {

@@ -33,7 +33,7 @@ const projectId = '6011b5dcd2af381b2c6a09b6';
  */
 //{ $push: { hates: { $each: ['alarm clocks', 'jackalopes'] } } }
 router.patch('/members/new/:id', (req, res) => {
-    projects.findByIdAndUpdate({ _id: req.params.id }, { $push: { members: {$each: req.body }} },
+    projects.Update({ _id: req.params.id }, { $push: { members: {$each: req.body }} },
         (err, result) => {
             if (err) {
                 console.log(err);
