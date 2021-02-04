@@ -10,6 +10,7 @@ import Members from "./Member/Members";
 import DeleteProject from "./project/DeletProject";
 import ProjectDetails from "./project/ProjectDetails";
 import AddMembers from "./Member/AddMembers";
+import ShowAllTasks from "./Task/ShowAllTasks";
 import "../App.css";
 
 export default class Sidebar extends Component {
@@ -31,7 +32,9 @@ export default class Sidebar extends Component {
         path: "/newProject",
         exact: true,
         sidebar: () => <div></div>,
-        main: (props) => <CreateNewproject username={this.props.username} {...props} />,
+        main: (props) => (
+          <CreateNewproject username={this.props.username} {...props} />
+        ),
       },
       {
         path: "/project/update",
@@ -45,6 +48,11 @@ export default class Sidebar extends Component {
         sidebar: () => <div></div>,
         main: () => <DeleteProject />,
       },
+      {
+        path: "/ShowAllTasks",
+        exact: true,
+        sidebar: () => <div></div>,
+        main: () => <ShowAllTasks userId={this.props.userId}/>},
       {
         path: "/project/list",
         exact: true,
@@ -61,11 +69,7 @@ export default class Sidebar extends Component {
         path: "/signup",
         exact: true,
         sidebar: () => <div></div>,
-        main: (props) => (
-          <SignUp
-            loginHandler={this.props.loginHandler}{...props} 
-          />
-        ),
+        main: () => <SignUp loginHandler={this.props.loginHandler} />,
       },
       {
         path: "/login",
@@ -101,6 +105,14 @@ export default class Sidebar extends Component {
             <ul>
               <li className="fas fa-home">
                 <Link to="/">Home</Link>
+              </li>
+              <li className="">
+                <Link to="/ShowAllTasks">My Tasks</Link>
+              </li>
+              <li className="">
+                <Link to="/" onClick={this.props.logOut}>
+                  Log Out
+                </Link>
               </li>
             </ul>
 

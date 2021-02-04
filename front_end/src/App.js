@@ -13,7 +13,9 @@ constructor() {
       projectList: [],
       isLogged:false,
     };
-    this.loginHandler = this.loginHandler.bind(this);
+    this.loginHandler = this.loginHandler.bind(this);  
+    this.logOut = this.logOut.bind(this);
+
   }
   loginHandler = (userInfo) => {
     // const userId = this.state.userId;
