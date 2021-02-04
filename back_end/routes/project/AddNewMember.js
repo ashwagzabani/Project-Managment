@@ -75,7 +75,7 @@ router.patch('/members/new/:id', (req, res) => {
 });
 
 
-router.post('/user/check/:userName', (req, res) => {
+router.post('/user/check', (req, res) => {
     // console.log(req.body);
     console.log(req.params.userName);
     User.findOne({ userName: req.params.userName },
@@ -86,7 +86,7 @@ router.post('/user/check/:userName', (req, res) => {
 
             if (result) {
                 router.patch('/members/new/:id', (req, res) => {
-                    projects.findByIdAndUpdate({ _id: req.params.id }, { $push: { members: result._id } },
+                    projects.findByIdAndUpdate({ _id: req.body.id }, { $push: { members: result._id } },
                         (err, result) => {
                             if (err) {
                                 console.log(err);
