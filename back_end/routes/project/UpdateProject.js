@@ -13,14 +13,15 @@ const router = express.Router();
  */
 router.patch('/project/:id', (req, res) => {
 
-  projects.findByIdAndUpdate({ "_id": req.params.id }, req.body, (error, result) => {
-    if (error) {
-      console.log(error);
-      res.json({ error: "(" });
-    }
-    console.log(req.body);
-    res.json(result);
-  })
+  // projects.findByIdAndUpdate({ "_id": req.params.id }, req.body, (error, result) => {
+  //   if (error) {
+  //     console.log(error);
+  //     res.json({ error: "(" });
+  //   }
+  //   console.log(req.body);
+  //   res.json(result);
+  // })
+  res.json(projects)
 });
 
 // router.patch('/project/update/:id', (req, res) => {
