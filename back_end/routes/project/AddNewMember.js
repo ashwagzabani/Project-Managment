@@ -86,7 +86,7 @@ router.post('/user/check/:userName', (req, res) => {
 
             if (result) {
                 router.patch('/members/new/:id', (req, res) => {
-                    projects.findByIdAndUpdate({ _id: req.body.id }, { $push: { members: result.userId } },
+                    projects.findByIdAndUpdate({ _id: req.body.id }, { $push: { members: result._id } },
                         (err, result) => {
                             if (err) {
                                 console.log(err);
