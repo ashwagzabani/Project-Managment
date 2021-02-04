@@ -108,7 +108,7 @@ class ProjectDetails extends Component {
     var yyyy = endtDate.getFullYear();
 
     endtDate = yyyy + "-" + mm + "-" + dd;
-
+    console.log(this.state.userLoggedInId);
     return (
       <div className="container">
         <div className="card">
