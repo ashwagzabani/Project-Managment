@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import Sidebar from "../Sidebar.js";
 import Apiconfig from '../../ApiConfig'
 export default class AddMembers extends Component {
     constructor(props) {
@@ -11,6 +10,7 @@ export default class AddMembers extends Component {
             member: {},
             projectName: '',
             projectId: props.projectId
+
         }
     }
     //Add user into Project
@@ -46,6 +46,7 @@ export default class AddMembers extends Component {
     //         console.log(res.body)
     //     })
     // }
+
     render() {
         let allMembers = this.state.members.map((member) => {
             return <td>member</td>
@@ -58,12 +59,14 @@ export default class AddMembers extends Component {
                     <h2>Project</h2>
 
 
+
                     <h4>Add Project Team</h4>
 
                     <label for="ProjectName">Project Name:</label>
                     <input type="text" onChange={(e) => {
                         this.setState({
                             projectName: e.target.value,
+
                         });
                     }} value={this.state.projectName} />
 

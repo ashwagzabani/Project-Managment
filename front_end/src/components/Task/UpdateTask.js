@@ -3,6 +3,7 @@ import axios from "axios";
 import API_URL from "../../ApiConfig";
 import Members from "../Member/Members";
 import DeleteAllTasksToUser from "./DeleteAllTasksToUser"
+
 class UpdateTask extends Component {
   constructor(props) {
     super(props);
@@ -13,16 +14,17 @@ class UpdateTask extends Component {
       projectId: props.projectId,
     };
   }
-  componentDidMount = () => { };
+
+
   updateTask = (event) => {
     event.preventDefault();
     axios
       .patch(`${API_URL}/tasks/${this.state.taskId}`, this.state)
       .then((res) => {
         console.log("Response Data:", res.data);
-        if (window.confirm(`update this Task?`)) {
-          this.deleteTaskByID(this.state.taskId);
-        }
+//         if (window.confirm(`update this Task?`)) {
+//           this.deleteTaskByID(this.state.taskId);
+//         }
       })
       .catch((error) => {
         console.log("ERROR:", error);
@@ -69,6 +71,7 @@ class UpdateTask extends Component {
               value="Submit"
             />
           </>
+
         </form>
       </div>
     );

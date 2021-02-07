@@ -21,6 +21,7 @@ export default class TaskProgressBar extends Component {
           width={7}
           theme={{
             success: {
+
               color: "rgb(223, 105, 180)",
             },
           }}

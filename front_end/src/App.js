@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import "./App.css";
 import Sidebar from "./components/Sidebar";
 import Forms from "./components/Forms";
+
 export default class App extends Component {
-  constructor() {
+constructor() {
     super();
     //signUp faild
     this.state = {
       user: {},
       isLogged: false,
+
     };
     this.loginHandler = this.loginHandler.bind(this);
     this.logOut = this.logOut.bind(this);
@@ -19,9 +21,13 @@ export default class App extends Component {
   };
 
   logOut = () => {
-    this.setState({ isLogged: false, user: {}, projectList: [] });
+    this.setState({ isLogged: false, user: {} });
+
   };
+
+ 
   render() {
+    
     return (
       <>
         {this.state.isLogged ? (

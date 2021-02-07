@@ -18,6 +18,7 @@ const updateProjectRouter = require("./routes/project/UpdateProject");
 const membersInProjectRouter = require("./routes/project/Members");
 const deleteProjectRouter = require("./routes/project/DeleteProject");
 const addNewMember = require("./routes/project/AddNewMember");
+const removeMember = require("./routes/project/RemoveMember");
 
 const userRouter = require("./routes/user/users");
 const loginRouter = require("./routes/login");
@@ -51,6 +52,8 @@ app.use(cors(corsOptions));
 //must change your port to this for deployment else it wont work
 
 
+
+
 // Establish Database Connection
 mongoose.connect(process.env.MongoDBURL, { useNewUrlParser: true, useUnifiedTopology: true });
 // Instantiate Express Application Object
@@ -78,13 +81,16 @@ app.use('/api', updateProjectRouter);
 app.use('/api', deleteProjectRouter);
 app.use('/api', addNewMember);
 //Task imorted routers
+
 app.use('/api', NewTaskRouter);
 app.use('/api', TasksRouter);
 app.use('/api', updateTasksRouter);
 app.use('/api', deleteTaskRouter);
 app.use('/api', userRouter);
+app.use('/api', removeMember);
 
 // app.use('/api',removeMember);
+
 
 //serves all our static files from the build directory.
 app.use(express.static(path.join(__dirname, "build")));

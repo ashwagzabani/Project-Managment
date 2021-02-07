@@ -11,7 +11,7 @@ import DeleteProject from "./project/DeletProject";
 import ProjectDetails from "./project/ProjectDetails";
 import AddMembers from "./Member/AddMembers";
 import ShowAllTasks from "./Task/ShowAllTasks";
-import "../App.css";
+
 
 export default class Sidebar extends Component {
   render() {
@@ -96,6 +96,13 @@ export default class Sidebar extends Component {
         sidebar: () => <div></div>,
         main: () => <AddMembers />,
       },
+
+      {
+        path: "/ShowAllTasks",
+        exact: true,
+        sidebar: () => <div></div>,
+        main: () => <ShowAllTasks userId={this.props.userId}/>,
+      }
     ];
 
     return (
@@ -109,6 +116,7 @@ export default class Sidebar extends Component {
               </li>
               <li className="">
                 <Link to="/ShowAllTasks">My Tasks</Link>
+
               </li>
               <li className="">
                 <Link to="/" onClick={this.props.logOut}>

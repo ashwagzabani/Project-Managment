@@ -11,6 +11,7 @@ export default class DeleteAllTasksToUser extends Component {
   }
   componentDidMount = () => {
     if (window.confirm(`Delete All task?`)) {
+
       this.deletetaskByuserID(this.state.userId);
     }
   };

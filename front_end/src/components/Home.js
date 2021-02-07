@@ -7,17 +7,7 @@ export default class Home extends Component {
     return (
       <div>
         <h1>welcome</h1>{" "}
-        {/* <Link
-          className="fa fa-file-text-o icon-wrapper project-name items"
-          to={{
-            pathname: "/newProject",
-            state: {
-              userId: this.props.userId,
-            },
-          }}
-        >     <p className="pragraphNewProject">New Project</p>
-        </Link>
-        <p className="line">My Project</p> */}
+        
         <Link
           to={{
             pathname: "/newProject",
@@ -31,6 +21,7 @@ export default class Home extends Component {
         </Link>
         <p className='line'>My Project</p>
         <ProjectsList userId={this.props.userId} />
+=
       </div>
     );
   }

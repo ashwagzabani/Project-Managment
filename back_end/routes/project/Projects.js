@@ -22,6 +22,8 @@ router.get("/user/projects/:id", (req, res) => {
       //get user's projects with role === '...'
       members: { $elemMatch: { userId: req.params.id } },
     },
+
+
     // user.findById({ "_id": userId },
     (err, result) => {
       if (err) {

@@ -64,6 +64,7 @@ const router = express.Router();
 
 router.patch('/members/new/:id', (req, res) => {
     projects.findByIdAndUpdate({ _id: req.params.id }, { $push: { members: req.body } },
+
         (err, result) => {
             if (err) {
                 console.log(err);

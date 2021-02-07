@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-
+import API_URL from "../../ApiConfig";
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Members from "../Member/Members";
 import "font-awesome/css/font-awesome.min.css";
 import "../../App.css";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+
 import Tasks from "../Task/Tasks";
 import AddMembers from "../Member/AddMembers";
 import DeletProject from "./DeletProject";
@@ -22,6 +24,7 @@ class ProjectDetails extends Component {
   deleteMember = (index) => {
     console.log("delete btn clicked");
     <DeletProject projectId={this.state.projecsDetails._id} />;
+
   };
   updateMember = (index) => {
     console.log("update btn clicked");
@@ -61,6 +64,7 @@ class ProjectDetails extends Component {
                 />
               </tr>)
           })
+
           : ""
         : "";
 
@@ -78,6 +82,7 @@ class ProjectDetails extends Component {
 
     endtDate = yyyy + "-" + mm + "-" + dd;
     console.log(this.state.userLoggedInId);
+
     return (
       <div className="container">
         <div className="card">
@@ -85,17 +90,9 @@ class ProjectDetails extends Component {
             <h3>{this.state.projecsDetails.title}</h3>
             {isUserLoggedInManager ? (
               <div>
-                {/* <Link to={{
-                  pathname: "/project/update", state: {
-                    id: this.state.projecsDetails._id,
-                    title: this.state.projecsDetails.title,
-                    startDate: startDate,
-                    endDate: endtDate
-                  }
-                }}>
+      //call delete methhod 
                   <i className="fa fa-trash">
                   </i>
-                </Link> {" "} */}
                 {isUserLoggedInManager ? (
                   <Link
                     to={{
@@ -151,6 +148,7 @@ class ProjectDetails extends Component {
                     </button>
                   )
               ) : ''}
+
             <table className="table">
               <tr>
                 <th>Team Members</th>
@@ -164,6 +162,7 @@ class ProjectDetails extends Component {
           </div>
         </div>
       </div >
+
     );
   }
 }

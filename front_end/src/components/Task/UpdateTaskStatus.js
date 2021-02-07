@@ -9,6 +9,7 @@ class UpdateTaskStatus extends Component {
     this.state = {
       allTasksDetails: props.allTasksDetails,
       complete:[]
+
     };
   }
   componentDidMount = () => {
@@ -17,6 +18,7 @@ class UpdateTaskStatus extends Component {
   updateOneTaskStat = (event) => {
     event.preventDefault();
     const complete = this.state.complete;
+
     axios
       .patch(
         `${API_URL}/tasks/${this.state.allTasksDetails._id}`,
@@ -24,11 +26,13 @@ class UpdateTaskStatus extends Component {
       )
       .then((res) => {
         console.log("Response Data:", res.data);
+
                   complete.push(res.data)
 this.setState({complete})
         this.checkAllTask();
       })
     
+
   };
   checkAllTask = () => {
     this.state.allTasksDetails.every((taskstatus) => {
@@ -41,6 +45,7 @@ this.setState({complete})
         <TaskProgressBar allTask = {this.state.allTasksDetails.length} complete={this.state.complete.length}/>;
   };
   render() {
+  
     return <div></div>;
   }
 }
