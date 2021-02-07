@@ -11,6 +11,7 @@ export default class UpdateProjectStatus extends Component {
   }
   componentDidMount = () => {
     this.updateProjectStatus(this.state.projectid);
+
   };
   updateProjectStatus = (id) => {
     axios.patch(`${API_URL}/project/${id}`, this.state.status).then((res) => {

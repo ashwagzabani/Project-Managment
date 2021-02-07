@@ -5,12 +5,11 @@ export default class TaskProgressBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      //   allTask: props.allTask,
-      //   complete: props.complete,
-      allTask: 5,
-      complete: 3,
+        allTask: props.allTask,
+        complete: props.complete,
     };
   }
+
   render() {
     const progress = (this.state.complete / this.state.allTask) * 100;
     // const progress = (this.state.complete.length / this.state.allTask.length) * 100;
@@ -22,7 +21,7 @@ export default class TaskProgressBar extends Component {
           width={7}
           theme={{
             success: {
-              //   symbol: "🏄‍",
+
               color: "rgb(223, 105, 180)",
             },
           }}

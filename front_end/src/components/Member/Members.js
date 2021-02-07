@@ -24,17 +24,17 @@ class Members extends Component {
       });
     // return (<td>this.state.memberDetails.userName</td>)
   };
+
   render() {
     const isOption = this.props.option ? (
       <option value={this.props.userId} className="Members">
         {this.state.memberDetails.userName}
       </option>
     ) : (
-      <div className="Members">
         <td>{this.state.memberDetails.userName}</td>
-      </div>
-    );
+      );
     return <>{isOption} </>;
   }
 }
 export default Members;
+

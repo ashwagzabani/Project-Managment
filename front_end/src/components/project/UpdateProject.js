@@ -12,6 +12,7 @@ class UpdateProject extends Component {
             projectStartDate: props.location.state.startDate,
             projectEndDate: props.location.state.endDate,
             newData: {},
+            userLoggedInId: props.location.state.userLoggedInId,
             redirect: false
         }
     }
@@ -31,7 +32,7 @@ class UpdateProject extends Component {
             "startDate": this.state.projectStartDate,
             "endDate": this.state.projectEndDate
         };
-        axios.patch(`${API_URL}/project/${this.state.projectid}`, newData)
+        axios.patch(`${API_URL}/project/update/${this.state.projectid}`, newData)
             .then(res => {
                 console.log('Response Data:', res.data)
                 this.setState({
@@ -46,10 +47,15 @@ class UpdateProject extends Component {
     }
 
     render() {
+        console.log(this.state.userLoggedInId);
         if (this.state.redirect) {
             return <Redirect to={{
                 pathname: `/project/details/${this.state.projectid}`
-                , state: { projectDetils: this.state.newData }
+                , state:
+                {
+                    projectDetils: this.state.newData,
+                    userLoggedInId: this.state.userLoggedInId
+                }
             }
             } />;
         }

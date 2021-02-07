@@ -33,7 +33,7 @@ router.post("/projects/:id/tasks", (req, res) => {
   //Miss some steps
   //1. get project id
   //2. get user id ==> ddl all member
-  //3. set a new task for user
+  //3. set a new task for project
   Tasks.create(req.body, (err, result) => {
     if (err) {
       res.json("error :(");

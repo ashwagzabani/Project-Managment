@@ -4,6 +4,7 @@ import axios from "axios";
 import Apiconfig from "../../ApiConfig";
 import Members from "../Member/Members";
 
+
 export default class CreateNewTask extends Component {
   constructor(props) {
     super();
@@ -15,7 +16,9 @@ export default class CreateNewTask extends Component {
       status: false,
     };
   }
-  componentDidMount = () => {};
+  
+
+  
   //create new task
   newTask = (e) => {
     e.preventDefault();
@@ -30,12 +33,21 @@ export default class CreateNewTask extends Component {
         console.log("Task Data:", this.state);
       });
     }
+    if (window.confirm(`update this Task?`)) {
+      this.deleteTaskByID(this.state.taskId);
+    }
+  };
+  loginHandler = (userInfo) => {
+    // const userId = this.state.userId;
+    this.setState({ user: userInfo, isLogged: true });
+
   };
   handleChange = (e) => {
     this.setState({ userId: e.target.value });
   };
+
   render() {
-    console.log(this.props.teamMember);
+     console.log(this.props.teamMember);
     return (
       <div>
         <div className="container">

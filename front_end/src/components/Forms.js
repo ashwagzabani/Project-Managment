@@ -35,6 +35,7 @@ export default class Forms extends Component {
           <div className="auth-wrapper">
             <div className="auth-inner">
               <Switch>
+
                 <Route exact path="/" component={()=> <Login loginHandler={this.props.loginHandler}/>} />
                 <Route path="/sign-in" component={()=> <Login loginHandler={this.props.loginHandler}/>} />
                 <Route path="/sign-up" component={SignUp} />

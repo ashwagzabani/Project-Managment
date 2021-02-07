@@ -9,11 +9,11 @@ import CreateNewproject from "./project/CreateNewproject";
 import Members from "./Member/Members";
 import DeleteProject from "./project/DeletProject";
 import ProjectDetails from "./project/ProjectDetails";
-import AddMembers from './Member/AddMembers';
-import ShowAllTasks from './Task/ShowAllTasks'
+import AddMembers from "./Member/AddMembers";
+import ShowAllTasks from "./Task/ShowAllTasks";
+
 
 export default class Sidebar extends Component {
-
   render() {
     // <div class="dropdown-container">
     //   <a href="#">Link 1</a>
@@ -32,7 +32,9 @@ export default class Sidebar extends Component {
         path: "/newProject",
         exact: true,
         sidebar: () => <div></div>,
-        main: () => <CreateNewproject username={this.props.username} />,
+        main: (props) => (
+          <CreateNewproject username={this.props.username} {...props} />
+        ),
       },
       {
         path: "/project/update",
@@ -45,8 +47,13 @@ export default class Sidebar extends Component {
         exact: true,
         sidebar: () => <div></div>,
         main: () => <DeleteProject />,
-      }
-      ,
+      },
+      {
+        path: "/ShowAllTasks",
+        exact: true,
+        sidebar: () => <div></div>,
+        main: (props) => <ShowAllTasks userId={this.props.userId} {...props} />
+      },
       {
         path: "/project/list",
         exact: true,
@@ -63,17 +70,7 @@ export default class Sidebar extends Component {
         path: "/signup",
         exact: true,
         sidebar: () => <div></div>,
-        main: () => (
-          <SignUp
-            changeEmail={this.props.changeEmail}
-            changepassword={this.props.changepassword}
-            changeUserName={this.props.changeUserName}
-            onSubmit={this.props.onSubmit}
-            userName={this.props.userName}
-            passwprd={this.props.password}
-            email={this.props.email}
-          />
-        ),
+        main: () => <SignUp loginHandler={this.props.loginHandler} />,
       },
       {
         path: "/login",
@@ -92,14 +89,14 @@ export default class Sidebar extends Component {
         exact: true,
         sidebar: () => <div></div>,
         main: (props) => <ProjectDetails {...props} />,
-      }
-      ,
+      },
       {
         path: "/AddMember",
         exact: true,
         sidebar: () => <div></div>,
         main: () => <AddMembers />,
       },
+
       {
         path: "/ShowAllTasks",
         exact: true,
@@ -111,32 +108,20 @@ export default class Sidebar extends Component {
     return (
       <Router>
         <div style={{ display: "flex" }}>
-          <div className="nav">
+          <div className="navbar">
             <header>project managment</header>
             <ul>
               <li className="fas fa-home">
                 <Link to="/">Home</Link>
               </li>
-              <li className="fas fa-home">
-                <Link to="/project/update">Update Project</Link>
-              </li>
-
-              <li className="fas fa-home">
-                <Link to="/AddMember">Add Member</Link>
-              </li>
-
-
-              <li className="fas fa-home">
-                <Link to="/members">Members</Link>
-              </li>
-              <li className="">
-                <Link to="/project/list">Projects list</Link>
-              </li>
               <li className="">
                 <Link to="/ShowAllTasks">My Tasks</Link>
+
               </li>
               <li className="">
-                <Link to="/" onClick={this.props.logOut}>Log Out</Link>
+                <Link to="/" onClick={this.props.logOut}>
+                  Log Out
+                </Link>
               </li>
             </ul>
 

@@ -3,6 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
 import API_URL from "../ApiConfig";
 import Sidebar from "./Sidebar";
+import { Redirect } from "react-router-dom";
+
 export default class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -55,6 +57,7 @@ export default class SignUp extends Component {
       if (res.data._message === "User validation failed") {
         alert("Error!!");
       } else {
+        this.props.loginHandler(res.data);
         alert("Welcome");
         console.log("User Data", registered);
       }
@@ -62,54 +65,60 @@ export default class SignUp extends Component {
   };
   render() {
     return (
-      <div>
-        <div className="container">
-          <form onSubmit={this.onSubmit}>
-            <h3>Sign Up</h3>
-            <div className="form-group">
-              <label>User Name</label>
-              <input
-                type="text"
-                placeholder="User Name "
-                onChange={(e) => {
-                  this.changeUserName(e);
-                }}
-                value={this.state.userName}
-                className="form-control-from-group"
-              />
+      <>
+        {this.props.isLogged ? (
+          <Redirect to="/" />
+        ) : (
+            <div>
+              <div className="container">
+                <form onSubmit={this.onSubmit}>
+                  <h3>Sign Up</h3>
+                  <div className="form-group">
+                    <label>User Name</label>
+                    <input
+                      type="text"
+                      placeholder="User Name "
+                      onChange={(e) => {
+                        this.changeUserName(e);
+                      }}
+                      value={this.state.userName}
+                      className="form-control"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Email address</label>
+                    <input
+                      type="email"
+                      placeholder="Email "
+                      onChange={(e) => {
+                        this.changeEmail(e);
+                      }}
+                      value={this.state.email}
+                      className="form-control"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Password</label>
+                    <input
+                      type="password"
+                      placeholder="Password "
+                      onChange={(e) => {
+                        this.changepassword(e);
+                      }}
+                      value={this.state.password}
+                      className="form-control"
+                    />
+                  </div>
+                  <input
+                    type="submit"
+                    className="btn btn-danger btn-black"
+                    value="Sign Up"
+                  />
+                </form>
+              </div>
             </div>
-            <div className="form-group">
-              <label>Email address</label>
-              <input
-                type="email"
-                placeholder="Email "
-                onChange={(e) => {
-                  this.changeEmail(e);
-                }}
-                value={this.state.email}
-                className="form-control-from-group"
-              />
-            </div>
-            <div className="form-group">
-              <label>Password</label>
-              <input
-                type="password"
-                placeholder="Password "
-                onChange={(e) => {
-                  this.changepassword(e);
-                }}
-                value={this.state.password}
-                className="form-control-from-group"
-              />
-            </div>
-            <input
-              type="submit"
-              className="btn btn-danger btn-black"
-              value="Sign Up"
-            />
-          </form>
-        </div>
-      </div>
+          )}
+      </>
     );
   }
 }

@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import Apiconfig from "../ApiConfig";
-import {Redirect} from "react-router-dom";
+import { Redirect } from "react-router-dom";
+
 
 export default class Login extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ export default class Login extends Component {
     };
     axios.post(`${Apiconfig}/login`, loginInfo).then((res) => {
       console.log("Response Data:", res.data, res.data._id);
+
       if (typeof res.data === 'object') {
         // this.setState({ userId: res.data._id, isLogged:true });
         this.props.loginHandler(res.data);
@@ -50,6 +52,51 @@ export default class Login extends Component {
     });
     console.log(this.state.password);
   };
+
+//   render() {
+//     return (
+//       <>
+//         {this.props.isLogged ? (
+//           <Redirect to="/" />
+//         ) : (
+//           <div>
+//             <div className="form-div">
+//               <form onSubmit={this.onSubmit}>
+//                 <h3>Sign In</h3>
+//                 <label>Email address</label> <br />
+//                 <input
+//                   type="email"
+//                   className="form-control"
+//                   placeholder="Email "
+//                   onChange={(e) => {
+//                     this.getEmail(e);
+//                   }}
+//                   value={this.state.email}
+//                   className="form-control"
+//                 />
+//                 <br />
+//                 <label>Password</label>
+//                 <br />
+//                 <input
+//                   type="password"
+//                   placeholder="Password "
+//                   onChange={(e) => {
+//                     this.getPassword(e);
+//                   }}
+//                   value={this.state.password}
+//                   className="form-control"
+//                 />
+//                 <br />
+//                 <br />
+//                 <input
+//                   type="submit"
+//                   className="btn btn-danger btn-black"
+//                   value="Log in"
+//                 />
+//               </form>
+//             </div>
+//           </div>
+
   
   render() {
     return (
@@ -95,7 +142,7 @@ export default class Login extends Component {
         </div>
       </div>
         )}
-        </>
-      );  
+      </>
+    );
   }
 }
